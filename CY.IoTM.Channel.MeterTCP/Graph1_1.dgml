@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="(@1 @2 @3 Member=(Name=Initi OverloadingParameters=[(@6 @7 Type=String),(@1 @2 Type=MeterLink),(@6 @7 Type=Byte),(@6 @7 Type=(Name=Byte ArrayRank=1 ParentType=Byte))]))" Category="CodeSchema_Method" Bounds="-798.117205994376,-841.623790332031,282.113333333333,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Initi" Icon="Microsoft.VisualStudio.Method.Public" Label="Initi(string, MeterLink, byte, byte[]) : string" SourceLocation="(Assembly=file:///E:/文档库/项目库/物联网表项目/Code/CY.IoTM.Channel.MeterTCP/IoTMeter.cs StartLineNumber=74 StartCharacterOffset=22 EndLineNumber=74 EndCharacterOffset=27)" UseManualLocation="True" />
+    <Node Id="(@1 @2 @3 Member=(Name=ReportData OverloadingParameters=[(@6 @7 Type=Byte),(@6 @7 Type=(Name=Byte ArrayRank=1 ParentType=Byte))]))" Category="CodeSchema_Method" Bounds="-1060.39573343913,-666.748901367188,214.71,26" CodeSchemaProperty_IsPublic="True" CommonLabel="ReportData" Icon="Microsoft.VisualStudio.Method.Public" Label="ReportData(byte, byte[]) : void" SourceLocation="(Assembly=file:///E:/文档库/项目库/物联网表项目/Code/CY.IoTM.Channel.MeterTCP/IoTMeter.cs StartLineNumber=411 StartCharacterOffset=20 EndLineNumber=411 EndCharacterOffset=30)" UseManualLocation="True" />
+    <Node Id="(@5 Namespace=CY.IoTM.DataService.Business Type=Settlement)" Category="CodeSchema_Class" Bounds="-379.879052327474,-842.623890332031,103.596666666667,26" CodeSchemaProperty_IsInternal="True" CommonLabel="Settlement" Icon="Microsoft.VisualStudio.Class.Internal" Label="Settlement" SourceLocation="(Assembly=file:///E:/文档库/项目库/物联网表项目/Code/CY.IoTM.DataService.BusinessSystem/Settlement.cs StartLineNumber=12 StartCharacterOffset=10 EndLineNumber=12 EndCharacterOffset=20)" UseManualLocation="True" />
+    <Node Id="@10" Category="CodeSchema_Method" Bounds="-551.879036153158,-666.061359814453,328.676666666667,26" CodeSchemaProperty_IsPublic="True" CommonLabel="Calculate" Icon="Microsoft.VisualStudio.Method.Public" Label="Calculate(Meter, SubmitData, SubmitResult) : bool" SourceLocation="(Assembly=file:///E:/文档库/项目库/物联网表项目/Code/CY.IoTM.DataService.BusinessSystem/Settlement.cs StartLineNumber=20 StartCharacterOffset=20 EndLineNumber=20 EndCharacterOffset=29)" UseManualLocation="True" />
+    <Node Id="@4" Category="CodeSchema_Class" Bounds="-954.095722922037,-842.623840126526,93.4333333333334,26" CodeSchemaProperty_IsInternal="True" CommonLabel="IoTMeter" Icon="Microsoft.VisualStudio.Class.Internal" Label="IoTMeter" SourceLocation="(Assembly=file:///E:/文档库/项目库/物联网表项目/Code/CY.IoTM.Channel.MeterTCP/IoTMeter.cs StartLineNumber=16 StartCharacterOffset=10 EndLineNumber=16 EndCharacterOffset=18)" UseManualLocation="True" />
+    <Node Id="@8" Category="CodeSchema_Method" Bounds="-815.685733439128,-667.061279296875,185.466666666667,26" CodeSchemaProperty_IsPrivate="True" CommonLabel="ReportData" Icon="Microsoft.VisualStudio.Method.Private" Label="ReportData(object) : void" SourceLocation="(Assembly=file:///E:/文档库/项目库/物联网表项目/Code/CY.IoTM.Channel.MeterTCP/IoTMeter.cs StartLineNumber=348 StartCharacterOffset=21 EndLineNumber=348 EndCharacterOffset=31)" UseManualLocation="True" />
+  </Nodes>
+  <Links>
+    <Link Source="(@5 Namespace=CY.IoTM.DataService.Business Type=Settlement)" Target="@10" Category="Contains" Bounds="-380.290390399575,-816.623901367188,47.8317338036297,142.033211983398" />
+    <Link Source="@4" Target="(@1 @2 @3 Member=(Name=Initi OverloadingParameters=[(@6 @7 Type=String),(@1 @2 Type=MeterLink),(@6 @7 Type=Byte),(@6 @7 Type=(Name=Byte ArrayRank=1 ParentType=Byte))]))" Category="Contains" Bounds="-860.662361653646,-829.437202090933,53.5452274824917,0.213919095466736" />
+    <Link Source="@4" Target="(@1 @2 @3 Member=(Name=ReportData OverloadingParameters=[(@6 @7 Type=Byte),(@6 @7 Type=(Name=Byte ArrayRank=1 ParentType=Byte))]))" Category="Contains" Bounds="-947.403942819667,-816.623840332031,36.6497766312857,141.163743476731" />
+    <Link Source="@4" Target="@8" Category="Contains" Bounds="-893.722664727458,-816.623840332031,150.59521508049,143.357181634413" />
+    <Link Source="@8" Target="@10" Bounds="-630.219059244792,-653.784825406026,69.3400630845701,0.2067145603678" />
+  </Links>
+  <Categories>
+    <Category Id="CodeSchema_Class" Label="类" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="类" />
+    <Category Id="CodeSchema_Member" Label="编号" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Field" NavigationActionLabel="成员" />
+    <Category Id="CodeSchema_Method" Label="方法" BasedOn="CodeSchema_Member" CanBeDataDriven="True" DefaultAction="Link:Forward:CodeSchema_Calls" Icon="CodeSchema_Method" NavigationActionLabel="方法" />
+    <Category Id="CodeSchema_Type" Label="类型" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="类型" />
+    <Category Id="Contains" Label="包含" Description="链接的源是否包含目标对象" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="包含者" IsContainment="True" OutgoingActionLabel="包含" />
+  </Categories>
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsInternal" Label="是内部的" Description="一个标志，用于指示该方法是“内部”方法" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPrivate" Label="是私有的" Description="一个标志，用于指示该范围是“私有”范围" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPublic" Label="是公共的" Description="一个标志，用于指示该范围是“公共”范围" DataType="System.Boolean" />
+    <Property Id="CommonLabel" DataType="System.String" />
+    <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
+    <Property Id="Expression" DataType="System.String" />
+    <Property Id="GroupLabel" DataType="System.String" />
+    <Property Id="Icon" Label="图标" Description="图标" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="IsEnabled" DataType="System.Boolean" />
+    <Property Id="Label" Label="标签" Description="可批注对象的可显示标签" DataType="System.String" />
+    <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+    <Property Id="SourceLocation" Label="起始行号" DataType="Microsoft.VisualStudio.GraphModel.CodeSchema.SourceLocation" />
+    <Property Id="TargetType" DataType="System.Type" />
+    <Property Id="UseManualLocation" DataType="System.Boolean" />
+    <Property Id="Value" DataType="System.String" />
+    <Property Id="ValueLabel" DataType="System.String" />
+  </Properties>
+  <QualifiedNames>
+    <Name Id="ArrayRank" Label="数组秩" ValueType="System.String" />
+    <Name Id="Assembly" Label="程序集" ValueType="Uri" />
+    <Name Id="Member" Label="编号" ValueType="System.Object" />
+    <Name Id="Name" Label="名称" ValueType="System.String" />
+    <Name Id="Namespace" Label="命名空间" ValueType="System.String" />
+    <Name Id="OverloadingParameters" Label="参数" ValueType="Microsoft.VisualStudio.GraphModel.GraphNodeIdCollection" Formatter="NameValueNoEscape" />
+    <Name Id="ParentType" Label="父类型" ValueType="System.Object" />
+    <Name Id="Type" Label="类型" ValueType="System.Object" />
+  </QualifiedNames>
+  <IdentifierAliases>
+    <Alias n="1" Uri="Assembly=$(2903e93e-4cf0-42df-a8ff-85ed9a707b00.OutputPathUri)" />
+    <Alias n="2" Id="Namespace=CY.IoTM.Channel.MeterTCP" />
+    <Alias n="3" Id="Type=IoTMeter" />
+    <Alias n="4" Id="(@1 @2 @3)" />
+    <Alias n="5" Uri="Assembly=$(74671c7c-639a-4099-b9f9-682da95ced06.OutputPathUri)" />
+    <Alias n="6" Uri="Assembly=$(FxReferenceAssembliesUri)/.NETFramework/v4.5/mscorlib.dll" />
+    <Alias n="7" Id="Namespace=System" />
+    <Alias n="8" Id="(@1 @2 @3 Member=(Name=ReportData OverloadingParameters=[(@6 @7 Type=Object)]))" />
+    <Alias n="9" Uri="Assembly=$(1488c3c7-25ff-470c-9ae1-63aa5b90526d.OutputPathUri)" />
+    <Alias n="10" Id="(@5 Namespace=CY.IoTM.DataService.Business Type=Settlement Member=(Name=Calculate OverloadingParameters=[(@9 Namespace=CY.IoTM.Common.Business Type=Meter),(@9 Namespace=CY.IoTM.Common.Business Type=SubmitData),(@9 Namespace=CY.IoTM.Common.Business Type=SubmitResult)]))" />
+  </IdentifierAliases>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="注释" ValueLabel="包含注释">
+      <Condition Expression="HasCategory('Comment')" />
+      <Setter Property="Background" Value="#FFFFFACD" />
+      <Setter Property="Stroke" Value="#FFE5C365" />
+      <Setter Property="StrokeThickness" Value="1" />
+      <Setter Property="NodeRadius" Value="2" />
+      <Setter Property="MaxWidth" Value="250" />
+    </Style>
+  </Styles>
+  <Paths>
+    <Path Id="1488c3c7-25ff-470c-9ae1-63aa5b90526d.OutputPathUri" Value="file:///E:/文档库/项目库/物联网表项目/Code/CY.IoTM.Common.BusinessSystem/bin/Debug/CY.IoTM.Common.BusinessSystem.dll" />
+    <Path Id="2903e93e-4cf0-42df-a8ff-85ed9a707b00.OutputPathUri" Value="file:///E:/文档库/项目库/物联网表项目/Code/编译目录/Channel/CY.IoTM.Channel.MeterTCP.dll" />
+    <Path Id="74671c7c-639a-4099-b9f9-682da95ced06.OutputPathUri" Value="file:///E:/文档库/项目库/物联网表项目/Code/编译目录/CY.IoTM.DataService.BusinessSystem.dll" />
+    <Path Id="FxReferenceAssembliesUri" Value="file:///C:/Program Files/Reference Assemblies/Microsoft/Framework" />
+  </Paths>
+</DirectedGraph>

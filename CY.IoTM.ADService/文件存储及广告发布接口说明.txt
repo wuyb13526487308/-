@@ -1,0 +1,46 @@
+﻿存储文件时，调用IADFileService服务接口，远程服务对象：ADFileService
+WCF服务注册
+--文件服务
+INSERT INTO Frame_RemotingObject(ObjectType, objectDll,URI, interfaceType, interfaceDll)
+values( 'CY.IoTM.ADService.ADFileService',
+'CY.IoTM.ADService.dll',
+'ADFileService',
+'CY.IoTM.Common.ADSystem.IADFileService',
+'CY.IoTM.Common.ADSystem.dll'
+)
+
+客户端配置：
+<endpoint address="net.tcp://localhost:9000/ADFileService" binding="netTcpBinding" bindingConfiguration="myBinding" contract="CY.IoTM.Common.ADSystem.IADFileService" name="ADFileService" kind="" endpointConfiguration=""/>
+
+
+IADFileService服务接口定义：
+全称：CY.IoTM.Common.ADSystem.IADFileService
+
+/*
+   下载文件，参数：companyId 企业编码  filename 存储的文件名 
+   返回byte数组
+*/
+byte[] DownLoad(string companyId, string filename);
+
+
+/*上传文件，*/
+string UpLoad(string companyid, string filename, byte[] data);
+
+/*删除文件*/
+string Delete(string companyid, string filename);
+
+/*检查文件是否存在*/
+bool Exists(string companyid, string filename);
+
+/*读取指定文件长度*/
+int FileLength(string companyid, string filename);
+
+*****************************************************
+广告发布接口调用：
+广告发布直接调用ADPublishManager类
+
+//发布广告 
+ public string ADPublish(long ap_id, PublishType type= PublishType.NewPublish)
+
+//撤销广告发布
+public string UnADPublish(long ap_id)

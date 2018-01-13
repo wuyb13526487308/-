@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.75" name="AlarmDB">
+  <DataContextMoniker Name="/AlarmDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="86ca716c-6ea2-46c9-84d0-7110eb1bc379" absoluteBounds="3.5, 3, 2, 1.9068933105468746">
+      <DataClassMoniker Name="/AlarmDBDataContext/IoT_AlarmInfo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2794258b-fc04-4502-9310-9ff2fa95a5ab" absoluteBounds="3.5149999999999997, 3.46, 1.9700000000000002, 1.346893310546875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cc4a818b-8538-469c-b1b5-d4d2eabdd3a2" absoluteBounds="6.25, 3.375, 2, 2.6460697428385416">
+      <DataClassMoniker Name="/AlarmDBDataContext/View_AlarmInfo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8f814a92-100e-4480-bec2-ed4dd4ae3097" absoluteBounds="6.265, 3.835, 1.9700000000000002, 2.0860697428385415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="66dda71f-7929-424e-8a61-2153eadb7e5e" absoluteBounds="6.25, 0.5, 2, 2.4612756347656251">
+      <DataClassMoniker Name="/AlarmDBDataContext/View_AlarmMeter" />
+      <nestedChildShapes>
+        <elementListCompartment Id="480c2701-339d-4d73-ad3f-28f44b2e5b56" absoluteBounds="6.265, 0.96, 1.9700000000000002, 1.901275634765625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c278b510-ca1a-43b5-9006-1eb6c4b707e4" absoluteBounds="3.625, 0.625, 2, 2.0916874186197916">
+      <DataClassMoniker Name="/AlarmDBDataContext/IoT_AlarmMeter" />
+      <nestedChildShapes>
+        <elementListCompartment Id="71888a0d-ad45-4f71-b9a7-df22722d083a" absoluteBounds="3.6399999999999997, 1.085, 1.9700000000000002, 1.5316874186197915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ff53c9a8-d3ca-4bd2-9a11-aa580a82d0b1" absoluteBounds="0.75, 0.875, 2, 4.3092167154947916">
+      <DataClassMoniker Name="/AlarmDBDataContext/IoT_SetAlarm" />
+      <nestedChildShapes>
+        <elementListCompartment Id="68321068-c277-4c01-9348-8dbbd9a985a4" absoluteBounds="0.76500000000000012, 1.335, 1.9700000000000002, 3.7492167154947915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d3db25b1-e200-412b-b343-d33eb8cf17ad" absoluteBounds="0.625, 5.625, 2, 2.8308638509114581">
+      <DataClassMoniker Name="/AlarmDBDataContext/Iot_MeterAlarmPara" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b3d48012-dfa6-4d4a-b1e3-906ae4f4e13d" absoluteBounds="0.64000000000000012, 6.085, 1.9700000000000002, 2.270863850911458" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

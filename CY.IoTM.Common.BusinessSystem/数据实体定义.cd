@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CY.IoTM.Common.Business.User">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAgAAAAAAAACAQAAAAAAAAA=</HashCode>
+      <FileName>User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CY.IoTM.Common.Business.Meter">
+    <Position X="2.25" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>JAAACQQAARAQABQAsAQAIEhEAEIIAAAAAAAAAQABAQA=</HashCode>
+      <FileName>Meter.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PricingPlan" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CY.IoTM.Common.Business.BaseEntity" Collapsed="true">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BaseEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CY.IoTM.Common.Business.Task">
+    <Position X="4.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAACAAQAgAAEAAgAQAAAAAAACAAACAA=</HashCode>
+      <FileName>Task.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CY.IoTM.Common.Business.Command">
+    <Position X="6.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAGAAAABAAAAAAAAAAQCAAAAgQgAAACACAAAAAAAAAA=</HashCode>
+      <FileName>Command.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CY.IoTM.Common.Business.CorrectRecord">
+    <Position X="8.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAEAgAACAICAgAAAgAhAEAAAA=</HashCode>
+      <FileName>CorrectRecord.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CY.IoTM.Common.Business.Bill">
+    <Position X="5.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CY.IoTM.Common.Business.PricingPlan">
+    <Position X="2.25" Y="9" Width="1.75" />
+    <InheritanceLine Type="CY.IoTM.Common.Business.BaseEntity" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="1.048" />
+        <Point X="5.75" Y="1.375" />
+        <Point X="4.25" Y="1.375" />
+        <Point X="4.25" Y="10.615" />
+        <Point X="4" Y="10.615" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAsAQAIABEAEAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>PricingPlan.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,12 @@
+--在表中增加如下字段
+ALTER TABLE [dbo].[IoT_MeterTopUp]
+    ADD [IsPrint]    BIT           DEFAULT 0 NULL,
+        [PayType]    CHAR (1)      DEFAULT '0' NULL,
+        [SFOperID]   NVARCHAR (50) NULL,
+        [SFOperName] NVARCHAR (50) NULL;
+
+
+GO
+
+update [dbo].[IoT_MeterTopUp] set IsPrint = 0 ,payType = '0' where IsPrint  is null
+GO

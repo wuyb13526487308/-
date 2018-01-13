@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1488C3C7-25FF-470C-9AE1-63AA5B90526D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CY.IoTM.Common.Business</RootNamespace>
+    <AssemblyName>CY.IoTM.Common.BusinessSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MongoDB.Bson, Version=0.0.0.0, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\Mongodb_2.0.1\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ADCFile.cs" />
+    <Compile Include="ADFile.cs" />
+    <Compile Include="AdInfoDB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdInfoDB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="AlarmDB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AlarmDB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="BaseEntity.cs" />
+    <Compile Include="Bill.cs" />
+    <Compile Include="Command.cs" />
+    <Compile Include="CorrectRecord.cs" />
+    <Compile Include="DataHistoryDB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataHistoryDB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="IAdInfoManage.cs" />
+    <Compile Include="IChongzhiManage.cs" />
+    <Compile Include="IChaoBiao.cs" />
+    <Compile Include="IDianHuo.cs" />
+    <Compile Include="IGetMonitorInfo.cs" />
+    <Compile Include="IHuanBiao.cs" />
+    <Compile Include="IMeterGasBill.cs" />
+    <Compile Include="IMeterTopUp.cs" />
+    <Compile Include="IPriceParManage.cs" />
+    <Compile Include="ICommunityManage.cs" />
+    <Compile Include="IPricingManage.cs" />
+    <Compile Include="IReportData.cs" />
+    <Compile Include="ISetMeterParameter.cs" />
+    <Compile Include="ISettlement.cs" />
+    <Compile Include="ISetUploadCycle.cs" />
+    <Compile Include="ISetAlarm.cs" />
+    <Compile Include="IStreetManage.cs" />
+    <Compile Include="ISystemParManage.cs" />
+    <Compile Include="ITaskManage.cs" />
+    <Compile Include="IMeterManage.cs" />
+    <Compile Include="IUserManage.cs" />
+    <Compile Include="IValveControl.cs" />
+    <Compile Include="Meter.cs" />
+    <Compile Include="PricingDB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PricingDB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="PricingPlan.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SettlementDB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SettlementDB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemDB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SystemDB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Task.cs" />
+    <Compile Include="TopUpDB.cs">
+      <DependentUpon>TopUpDB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="TopUpDB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TopUpDB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="UploadCycleDB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UploadCycleDB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs" />
+    <Compile Include="UserMeterDB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserMeterDB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="ValveControlDB.cs">
+      <DependentUpon>ValveControlDB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="ValveControlDB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValveControlDB.dbml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AdInfoDB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>AdInfoDB.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AlarmDB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>AlarmDB.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="app.config" />
+    <None Include="DataHistoryDB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataHistoryDB.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PricingDB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>PricingDB.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="SettlementDB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>SettlementDB.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SystemDB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>SystemDB.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TopUpDB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>TopUpDB.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="UploadCycleDB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>UploadCycleDB.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="UserMeterDB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>UserMeterDB.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ValveControlDB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>ValveControlDB.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="接口定义.cd" />
+    <None Include="数据实体定义.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CY.IotM.Common.BaseSystem\CY.IoTM.Common.BaseSystem.csproj">
+      <Project>{66f59a48-cea8-42e1-98f5-d09a95760022}</Project>
+      <Name>CY.IoTM.Common.BaseSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CY.IoTM.Common.Classes\CY.IoTM.Common.Classes.csproj">
+      <Project>{bd8c35ab-663d-4407-93dd-d6389bbeaddf}</Project>
+      <Name>CY.IoTM.Common.Classes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CY.IoTM.Common.Log\CY.IoTM.Common.Log.csproj">
+      <Project>{1713b87c-379e-44f3-9de8-8d538ba2ba3e}</Project>
+      <Name>CY.IoTM.Common.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CY.IoTM.Common.Protocol\CY.IoTM.Common.Protocol.csproj">
+      <Project>{3f572432-d7fd-40a5-9b4d-e53a1e8f90d2}</Project>
+      <Name>CY.IoTM.Common.Protocol</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="UserMeterDB.dbml.layout">
+      <DependentUpon>UserMeterDB.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SystemDB.dbml.layout">
+      <DependentUpon>SystemDB.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ValveControlDB.dbml.layout">
+      <DependentUpon>ValveControlDB.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TopUpDB.dbml.layout">
+      <DependentUpon>TopUpDB.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AlarmDB.dbml.layout">
+      <DependentUpon>AlarmDB.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataHistoryDB.dbml.layout">
+      <DependentUpon>DataHistoryDB.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="UploadCycleDB.dbml.layout">
+      <DependentUpon>UploadCycleDB.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SettlementDB.dbml.layout">
+      <DependentUpon>SettlementDB.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PricingDB.dbml.layout">
+      <DependentUpon>PricingDB.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AdInfoDB.dbml.layout">
+      <DependentUpon>AdInfoDB.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

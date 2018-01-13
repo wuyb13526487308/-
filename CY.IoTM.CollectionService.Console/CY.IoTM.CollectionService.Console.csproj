@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AE2A4E3C-87B3-40B2-9FBD-C1986DDE8DC0}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CY.IoTM.CollectionService.Console</RootNamespace>
+    <AssemblyName>CY.IoTM.CollectionService.Console</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\编译目录\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CY.IoTM.Channel.MeterTCP\CY.IoTM.Channel.MeterTCP.csproj">
+      <Project>{2903e93e-4cf0-42df-a8ff-85ed9a707b00}</Project>
+      <Name>CY.IoTM.Channel.MeterTCP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CY.IoTM.DataCenter\CY.IoTM.DataCenter.csproj">
+      <Project>{31fde6d3-26e9-41d2-bad1-2bb8710f5fc1}</Project>
+      <Name>CY.IoTM.DataCenter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CY.IoTM.DataCollectionService\CY.IoTM.DataCollectionService.csproj">
+      <Project>{0e9ab555-a0ba-463d-9519-d6d75381a711}</Project>
+      <Name>CY.IoTM.DataCollectionService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CY.IoTM.DataService.BusinessSystem\CY.IoTM.DataService.BusinessSystem.csproj">
+      <Project>{74671c7c-639a-4099-b9f9-682da95ced06}</Project>
+      <Name>CY.IoTM.DataService.BusinessSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CY.IotM.DataService\CY.IotM.DataService.csproj">
+      <Project>{a7330e40-6544-4705-8810-bcb8be626264}</Project>
+      <Name>CY.IotM.DataService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CY.IoTM.DataTransmitHelper\CY.IoTM.DataTransmitHelper.csproj">
+      <Project>{888aa0e3-7a2a-44cb-9b69-f8414155b004}</Project>
+      <Name>CY.IoTM.DataTransmitHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CY.IoTM.Service.Common\CY.IoTM.Service.Common.csproj">
+      <Project>{5a91c157-b70a-4991-8d31-bb87b3e88650}</Project>
+      <Name>CY.IoTM.Service.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CY.IoTM.Channel\CY.IoTM.Channel.csproj">
+      <Project>{1a201dab-660b-446f-836b-a8a8658c76d8}</Project>
+      <Name>CY.IoTM.Channel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CY.IotM.WCFServiceRegister\CY.IotM.WCFServiceRegister.csproj">
+      <Project>{c5171eaf-f9ed-4157-a7af-4ec365e82be0}</Project>
+      <Name>CY.IotM.WCFServiceRegister</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

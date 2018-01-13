@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataHistoryDB">
+  <DataContextMoniker Name="/DataHistoryDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="b17a625d-def0-4950-b1b2-4235a5eba7b6" absoluteBounds="0.5, 1.125, 2, 2.7176639811197916">
+      <DataClassMoniker Name="/DataHistoryDBDataContext/IoT_DayReadMeter" />
+      <nestedChildShapes>
+        <elementListCompartment Id="de7a36e3-c0e6-437f-ad1e-15051c20dd40" absoluteBounds="0.51499999999999968, 1.585, 1.9700000000000002, 2.1576639811197915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6857ca3a-eced-4492-ab7e-ad7e962dd1bd" absoluteBounds="2.875, 1.125, 2, 2.7176639811197916">
+      <DataClassMoniker Name="/DataHistoryDBDataContext/IoT_MeterDataHistory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="62e656f0-c913-452a-8f79-4d81ef310c4c" absoluteBounds="2.8900000000000006, 1.585, 1.9700000000000002, 2.1576639811197915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d6edade0-ac29-4a96-84a2-74931b726800" absoluteBounds="5.125, 1.125, 2, 4.2458215332031246">
+      <DataClassMoniker Name="/DataHistoryDBDataContext/View_UserMeterHistory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ff0a775d-a996-4d38-adb8-d2c14ca88108" absoluteBounds="5.14, 1.585, 1.9700000000000002, 3.685821533203125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

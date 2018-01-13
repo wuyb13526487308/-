@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="SystemDB">
+  <DataContextMoniker Name="/SystemDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="5651c2c2-bc2e-4407-9cc3-7cc0834bc38c" absoluteBounds="0.5, 0.75, 2, 1.5715458170572916">
+      <DataClassMoniker Name="/SystemDBDataContext/IoT_Street" />
+      <nestedChildShapes>
+        <elementListCompartment Id="07ca0146-bf38-4ac1-b804-294d6dcaffc9" absoluteBounds="0.51500000000000012, 1.21, 1.9700000000000002, 1.0115458170572915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b655daca-7af1-4f74-a2a9-3d9e14ebff00" absoluteBounds="6.25, 0.5, 2, 2.7176639811197916">
+      <DataClassMoniker Name="/SystemDBDataContext/IoT_SystemPar" />
+      <nestedChildShapes>
+        <elementListCompartment Id="97eceaca-f2ec-4f6d-84f2-00cdf6721494" absoluteBounds="6.265, 0.96, 1.9700000000000002, 2.1576639811197915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="664582bd-7d26-40fb-8952-4dea067bd5c4" absoluteBounds="0.75, 3, 2, 1.5715458170572916">
+      <DataClassMoniker Name="/SystemDBDataContext/IoT_Community" />
+      <nestedChildShapes>
+        <elementListCompartment Id="42e21ce6-f9e3-4f59-a74d-f1755d3fdee3" absoluteBounds="0.76500000000000012, 3.46, 1.9700000000000002, 1.0115458170572915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8436fe4a-1b68-454d-a058-81fa8c85a757" absoluteBounds="6.25, 3.75, 2, 2.3356245930989585">
+      <DataClassMoniker Name="/SystemDBDataContext/View_Community" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7f50b21e-eeab-4b0e-9e3e-5848764ccdaa" absoluteBounds="6.265, 4.21, 1.9700000000000002, 1.7756245930989585" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f61f0d97-9b45-4439-9e59-ff1d7d1597ef" absoluteBounds="3.375, 0.5, 2, 4.4368412272135416">
+      <DataClassMoniker Name="/SystemDBDataContext/IoT_PricePar" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d2776108-cc67-4de0-b72a-ed09b32e5279" absoluteBounds="3.3899999999999997, 0.96, 1.9700000000000002, 3.876841227213542" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

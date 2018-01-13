@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E8BFDD81-341F-4451-A3BC-8AB207197509}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CY.IotM.WebHander</RootNamespace>
+    <AssemblyName>CY.IotM.WebHander</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CY.Gas.ReportLib.v3.0">
+      <HintPath>..\DLL\CY.Gas.ReportLib.v3.0.dll</HintPath>
+    </Reference>
+    <Reference Include="RX.Version.FileManage">
+      <HintPath>..\DLL\RX.Version.FileManage.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="zlib.net">
+      <HintPath>..\DLL\zlib.net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseHandler.cs" />
+    <Compile Include="ClientHelper.cs" />
+    <Compile Include="CommonModelFactory.cs" />
+    <Compile Include="CommonOperRightHelper.cs" />
+    <Compile Include="CommonSearch.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\ReportManage.cs" />
+    <Compile Include="Report\UploadReportTemplate.cs" />
+    <Compile Include="SystemManage\MenuManage.cs" />
+    <Compile Include="SystemManage\CompanyManage.cs" />
+    <Compile Include="SystemManage\CompanyOperatorManage.cs" />
+    <Compile Include="SystemManage\CompanyRightManage.cs" />
+    <Compile Include="SystemManage\OperatorLoginManage.cs" />
+    <Compile Include="SystemManage\SystemLogManage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CY.IotM.Common.BaseSystem\CY.IoTM.Common.BaseSystem.csproj">
+      <Project>{66f59a48-cea8-42e1-98f5-d09a95760022}</Project>
+      <Name>CY.IoTM.Common.BaseSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CY.IoTM.Common.BusinessSystem\CY.IoTM.Common.BusinessSystem.csproj">
+      <Project>{1488c3c7-25ff-470c-9ae1-63aa5b90526d}</Project>
+      <Name>CY.IoTM.Common.BusinessSystem</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>CY.IotM.DataBase</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{fc2ded4d-d13b-4151-b6af-8e32f811985f}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql100DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>CY.IotM.DataBase</RootNamespace>
+    <AssemblyName>CY.IotM.DataBase</AssemblyName>
+    <ModelCollation>2052,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>Chinese_PRC_CI_AS</DefaultCollation>
+    <DacApplicationName>IotMeter</DacApplicationName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccProvider>
+    </SccProvider>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccLocalPath>
+    </SccLocalPath>
+    <GenerateCreateScript>True</GenerateCreateScript>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <SqlTargetName>IotMeter</SqlTargetName>
+  </PropertyGroup>
+  <!-- VS10 without SP1 will not have VisualStudioVersion set, so do that here -->
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <!-- Default to the v10.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Script" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="dbo\Views\" />
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Script\WCFServiceRegister.sql" />
+    <PostDeploy Include="Script\DefineMenu.sql" />
+    <Build Include="dbo\Views\View_UserMeterHistory.sql" />
+    <None Include="CY.IotM.DataBase.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\S_SystemLog.sql" />
+    <Build Include="dbo\Tables\S_DefineRightMenu.sql" />
+    <Build Include="dbo\Tables\S_DefineRight.sql" />
+    <Build Include="dbo\Tables\S_DefineOperRight.sql" />
+    <Build Include="dbo\Tables\S_DefineMenu.sql" />
+    <Build Include="dbo\Tables\S_CompanyOperator.sql" />
+    <Build Include="dbo\Tables\S_CompanyMenu.sql" />
+    <Build Include="dbo\Tables\S_CompanyInfo.sql" />
+    <Build Include="dbo\Tables\ReportTemplate.sql" />
+    <Build Include="dbo\Tables\Frame_RemotingObject.sql" />
+    <Build Include="dbo\Stored Procedures\SP_GetDefineRightMenu.sql" />
+    <Build Include="dbo\Stored Procedures\SP_GetDefineRight.sql" />
+    <Build Include="dbo\Stored Procedures\SP_GetDefineOperRight.sql" />
+    <Build Include="dbo\Stored Procedures\SP_GetDefineMenu.sql" />
+    <Build Include="dbo\Stored Procedures\SP_CommonPageSearch.sql" />
+    <Build Include="dbo\Stored Procedures\SP_AddDefaultRight.sql" />
+    <Build Include="dbo\Tables\ReportDataParameter.sql" />
+    <Build Include="dbo\Tables\ReportDataProvider.sql" />
+    <Build Include="dbo\Tables\ReportDataType.sql" />
+    <Build Include="dbo\Tables\ReportPaperKind.sql" />
+    <Build Include="dbo\Tables\ReportParameterType.sql" />
+    <Build Include="dbo\Tables\ReportTableColumns.sql" />
+    <Build Include="dbo\Tables\ReportTableProvider.sql" />
+    <Build Include="dbo\Views\View_CompanyReport.sql" />
+    <Build Include="dbo\Stored Procedures\SP_UpdateReportTemplate.sql" />
+    <Build Include="dbo\Tables\IoT_User.sql" />
+    <Build Include="dbo\Tables\IoT_SystemPar.sql" />
+    <Build Include="dbo\Tables\IoT_Street.sql" />
+    <Build Include="dbo\Tables\IoT_PricePar.sql" />
+    <Build Include="dbo\Tables\IoT_Meter.sql" />
+    <Build Include="dbo\Tables\IoT_Community.sql" />
+    <Build Include="dbo\Views\View_UserMeter.sql" />
+    <Build Include="dbo\Tables\IoT_ValveControl.sql" />
+    <Build Include="dbo\Tables\IoT_MeterTopUp.sql" />
+    <Build Include="dbo\Tables\IoT_SetAlarm.sql" />
+    <Build Include="dbo\Tables\IoT_AlarmMeter.sql" />
+    <Build Include="dbo\Tables\IoT_AlarmInfo.sql" />
+    <Build Include="dbo\Views\View_ValveControl.sql" />
+    <Build Include="dbo\Tables\IoT_MeterDataHistory.sql" />
+    <Build Include="dbo\Tables\IoT_DayReadMeter.sql" />
+    <Build Include="dbo\Views\View_Community.sql" />
+    <Build Include="dbo\Views\View_AlarmMeter.sql" />
+    <Build Include="dbo\Views\View_AlarmInfo.sql" />
+    <Build Include="dbo\Tables\IoT_UploadCycleMeter.sql" />
+    <Build Include="dbo\Tables\IoT_SetUploadCycle.sql" />
+    <Build Include="dbo\Views\View_UpLoadDate.sql" />
+    <Build Include="dbo\Views\View_UpLoadDateView.sql" />
+    <Build Include="dbo\Tables\IoT_SettlementDayMeter.sql" />
+    <Build Include="dbo\Tables\IoT_SetSettlementDay.sql" />
+    <Build Include="dbo\Views\View_ChongZhi.sql" />
+    <Build Include="dbo\Tables\IoT_PricingMeter.sql" />
+    <Build Include="dbo\Tables\IoT_Pricing.sql" />
+    <Build Include="dbo\Views\View_PricingMeter.sql" />
+    <Build Include="dbo\Views\View_SettlementDayMeterView.sql" />
+    <Build Include="dbo\Views\View_SettlementDayMeter.sql" />
+    <Build Include="dbo\Tables\IoT_UserTemp.sql" />
+    <Build Include="dbo\Tables\IoT_MeterHistory.sql" />
+    <Build Include="dbo\Tables\IoT_ChangeMeter.sql" />
+    <Build Include="dbo\Views\View_HuanBiao.sql" />
+    <Build Include="dbo\Views\View_HistoryUserMeter.sql" />
+    <Build Include="dbo\Views\View_UserMeterDayFirstHistory.sql" />
+    <Build Include="dbo\Tables\IoT_AdInfo.sql" />
+    <Build Include="dbo\Tables\IoT_AdInfoMeter.sql" />
+    <Build Include="dbo\Tables\IoT_SetAdInfo.sql" />
+    <Build Include="dbo\Views\View_AdInfoMeter.sql" />
+    <Build Include="dbo\Tables\ADContext.sql" />
+    <Build Include="dbo\Tables\ADItem.sql" />
+    <Build Include="dbo\Tables\ADPublish.sql" />
+    <Build Include="dbo\Tables\ADPublishUser.sql" />
+    <Build Include="dbo\Tables\ADUser.sql" />
+    <None Include="Scripts\ScriptsIgnoredOnImport.sql" />
+    <Build Include="dbo\Views\View_AdUser.sql" />
+    <Build Include="dbo\Views\View_UserInfo.sql" />
+    <Build Include="dbo\Views\View_AdPublish.sql" />
+    <Build Include="dbo\Views\View_AdPublishUserInfo.sql" />
+    <Build Include="dbo\Views\View_UserInfoADD.sql" />
+    <Build Include="dbo\Views\View_UserInfoADDC.sql" />
+    <Build Include="dbo\Tables\Iot_MeterAlarmPara.sql" />
+    <Build Include="dbo\Views\View_MeterTopUp.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Script\CompanyRight.sql" />
+  </ItemGroup>
+</Project>

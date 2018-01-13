@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="PricingDB">
+  <DataContextMoniker Name="/PricingDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="5c6957e9-dfda-4a71-962f-67485a0deecf" absoluteBounds="4.25, 1.125, 2, 2.1446048990885416">
+      <DataClassMoniker Name="/PricingDBDataContext/IoT_PricingMeter" />
+      <nestedChildShapes>
+        <elementListCompartment Id="19fd1016-2270-419b-921b-4238c279f493" absoluteBounds="4.265, 1.585, 1.9700000000000002, 1.5846048990885415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="543c72f7-c507-47c9-8fae-93853be531d7" absoluteBounds="6.875, 1, 2, 2.7176639811197916">
+      <DataClassMoniker Name="/PricingDBDataContext/View_PricingMeter" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7402ce45-08c0-49b0-8396-f528a97d3012" absoluteBounds="6.8900000000000006, 1.46, 1.9700000000000002, 2.1576639811197915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5f03465d-e5b3-4380-8463-71406c93d0b0" absoluteBounds="1.5, 1, 2, 5.3919396972656246">
+      <DataClassMoniker Name="/PricingDBDataContext/IoT_Pricing" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c27c0bb1-e1f8-4667-bcb9-502425ab45d4" absoluteBounds="1.5150000000000001, 1.46, 1.9700000000000002, 4.831939697265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

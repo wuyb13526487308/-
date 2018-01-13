@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="IotMeter" Class="DataHistoryDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=IotMeter;Integrated Security=True" SettingsObjectName="CY.IoTM.Common.Business.Properties.Settings" SettingsPropertyName="IotMeterConnectionString3" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.IoT_DayReadMeter" Member="IoT_DayReadMeter">
+    <Type Name="IoT_DayReadMeter">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MeterID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="MeterNo" Type="System.String" DbType="Char(20)" CanBeNull="true" />
+      <Column Name="Ser" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Gas" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="ReadDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RemainingAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="LastTotal" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="ST1" Type="System.String" DbType="Char(16)" CanBeNull="true" />
+      <Column Name="ST2" Type="System.String" DbType="Char(8)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IoT_MeterDataHistory" Member="IoT_MeterDataHistory">
+    <Type Name="IoT_MeterDataHistory">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MeterID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="MeterNo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Ser" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Gas" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="ReadDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RemainingAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="LastTotal" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="ST1" Type="System.String" DbType="Char(16)" CanBeNull="true" />
+      <Column Name="ST2" Type="System.String" DbType="Char(8)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_UserMeterHistory" Member="View_UserMeterHistory">
+    <Type Name="View_UserMeterHistory">
+      <Column Name="CompanyID" Type="System.String" DbType="Char(4)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="State" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Street" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Community" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Door" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MeterNo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MeterType" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="ValveState" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="LastTotal" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="TotalAmount" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="RemainingAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ReadDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InstallDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Gas" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="ST1" Type="System.String" DbType="Char(16)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

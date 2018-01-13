@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Olb_DataBase" Class="OlbCommonDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.1.22;Initial Catalog=Olb_DataBase;User ID=sa;Pooling=True;Min Pool Size=50;Max Pool Size=512;Connect Timeout=120000;Load Balance Timeout=30" SettingsObjectName="CY.IoTM.OlbCommon.Properties.Settings" SettingsPropertyName="Olb_DataBaseConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Olb_User" Member="Olb_User">
+    <Type Name="Olb_User">
+      <Column Name="Account" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PassWord" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="IdentityCard" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Olb_PaymentRecord" Member="Olb_PaymentRecord">
+    <Type Name="Olb_PaymentRecord">
+      <Column Name="Account" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="GasUserID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="GasUserName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="GasUserAddress" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="PayMoney" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="PayTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Balance" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="CompanyID" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Olb_GasUserRelation" Member="Olb_GasUserRelation">
+    <Type Name="Olb_GasUserRelation">
+      <Column Name="Account" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="GasUserID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Olb_ChargeOrder" Member="Olb_ChargeOrder">
+    <Type Name="Olb_ChargeOrder">
+      <Column Name="ID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Account" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="GasUserID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OrderMoney" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="OrderTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CompanyID" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

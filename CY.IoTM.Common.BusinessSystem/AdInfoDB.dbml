@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="IotMeter" Class="AdInfoDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=IotMeter;User ID=sa" SettingsObjectName="CY.IoTM.Common.Business.Properties.Settings" SettingsPropertyName="IotMeterConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.IoT_AdInfoMeter" Member="IoT_AdInfoMeter">
+    <Type Name="IoT_AdInfoMeter">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MeterID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MeterNo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="State" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FinishedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Context" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TaskID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IoT_AdInfo" Member="IoT_AdInfo">
+    <Type Name="IoT_AdInfo">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FileIndex" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FileName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FileSize" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CycleTime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PublishStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ShowStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FileData" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CompanyID" Type="System.String" DbType="Char(4)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_AdInfoMeter" Member="View_AdInfoMeter">
+    <Type Name="View_AdInfoMeter">
+      <Column Name="CompanyID" Type="System.String" DbType="Char(4)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="MeterNo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="FileName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="State" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FinishedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Context" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IoT_SetAdInfo" Member="IoT_SetAdInfo">
+    <Type Name="IoT_SetAdInfo">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FileIndex" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FileName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SetType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CycleTime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PublishStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ShowStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DeleteStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CompanyID" Type="System.String" DbType="Char(4)" CanBeNull="true" />
+      <Column Name="Context" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="SendTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

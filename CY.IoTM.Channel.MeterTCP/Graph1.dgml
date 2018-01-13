@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="51070af7-c3c3-4b95-817f-350abf7c61e81" Bounds="-461.8,-412.570432576605,68,25.24" Label="新建节点" UseManualLocation="True" />
+  </Nodes>
+  <Links />
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="Label" Label="标签" Description="可批注对象的可显示标签" DataType="System.String" />
+    <Property Id="UseManualLocation" DataType="System.Boolean" />
+  </Properties>
+</DirectedGraph>

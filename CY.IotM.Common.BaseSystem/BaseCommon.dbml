@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="IotMeter" Class="BaseCommonDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=IotMeter;Persist Security Info=True;User ID=sa" SettingsObjectName="CY.IotM.Common.Properties.Settings" SettingsPropertyName="IotMeterConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.S_CompanyInfo" Member="CompanyInfo">
+    <Type Name="CompanyInfo">
+      <Column Name="CompanyID" Type="System.String" DbType="Char(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CompanyName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SimpleName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Provinces" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Linkman" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="URL" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Context" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.S_CompanyMenu" Member="CompanyMenu">
+    <Type Name="CompanyMenu">
+      <Column Name="CompanyID" Type="System.String" DbType="Char(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MenuCode" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.S_CompanyOperator" Member="CompanyOperator">
+    <Type Name="CompanyOperator">
+      <Column Name="OperID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.String" DbType="Char(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Pwd" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Sex" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="Char(11)" CanBeNull="true" />
+      <Column Name="PhoneLogin" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Mail" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="State" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="OperType" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.S_DefineMenu" Member="MenuInfo">
+    <Type Name="MenuInfo">
+      <Column Name="MenuCode" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="UrlClass" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ImageUrl" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="OrderNum" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="FatherCode" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="RID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.S_SystemLog" Member="SystemLog">
+    <Type Name="SystemLog">
+      <Column Name="LogID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LogType" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="OperID" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="OperName" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="LogTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LoginIP" Type="System.String" DbType="VarChar(17) NOT NULL" CanBeNull="false" />
+      <Column Name="LoginBrowser" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LoginSystem" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Context" Type="System.String" DbType="VarChar(2000)" CanBeNull="true" />
+      <Column Name="CompanyID" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ReportTemplate" Member="ReportTemplate">
+    <Type Name="ReportTemplate">
+      <Column Name="RID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ReportName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ReportType" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="RD_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReportTemplate" Member="ReportTemplate1" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MenuName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IsUse" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

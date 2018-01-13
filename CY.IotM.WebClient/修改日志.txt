@@ -1,0 +1,6 @@
+﻿
+2018.1.2 修改人:Wuyb
+1、在根目录中增加了Success.hmtl和Fail.html两个页面；
+2、在Login.aspx页面中增加了一个Javascipt方法 SFXTLogin，用于收费系统客户端登录该系统；
+3、增加了CheckLogin.html页面，在里面写了个登录检查的JavaScript方法；
+

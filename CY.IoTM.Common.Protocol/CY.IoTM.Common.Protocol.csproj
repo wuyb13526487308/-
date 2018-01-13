@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3F572432-D7FD-40A5-9B4D-E53A1E8F90D2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CY.IoTM.Common</RootNamespace>
+    <AssemblyName>CY.IoTM.Protocol.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Channel\DataChannel.cs" />
+    <Compile Include="Channel\IDataChannel.cs" />
+    <Compile Include="Encryption.cs" />
+    <Compile Include="Frame.cs" />
+    <Compile Include="Item\DataItem_ASK.cs" />
+    <Compile Include="Item\上报数据\DataItem_C002.cs" />
+    <Compile Include="Item\创源写操作\DataItem_C107.cs" />
+    <Compile Include="Item\创源写操作\DataItem_C108.cs" />
+    <Compile Include="Item\创源写操作\DataItem_C109.cs" />
+    <Compile Include="Item\读操作\DataItem_ReadData_ASK.cs" />
+    <Compile Include="MyDataConvert.cs" />
+    <Compile Include="ProtocolType.cs" />
+    <Compile Include="Protocol\ControlCode.cs" />
+    <Compile Include="Helper\BCD.cs" />
+    <Compile Include="Helper\ConvertHelper.cs" />
+    <Compile Include="Helper\EncryptHelper.cs" />
+    <Compile Include="Item\DataItem.cs" />
+    <Compile Include="Channel\Link.cs" />
+    <Compile Include="Item\上报数据\DataItem_C001.cs" />
+    <Compile Include="Item\写操作\DataItem_A010.cs" />
+    <Compile Include="Item\写操作\DataItem_A011.cs" />
+    <Compile Include="Item\写操作\DataItem_A012.cs" />
+    <Compile Include="Item\写操作\DataItem_A013.cs" />
+    <Compile Include="Item\写操作\DataItem_A014.cs" />
+    <Compile Include="Item\写操作\DataItem_A015.cs" />
+    <Compile Include="Item\写操作\DataItem_A016.cs" />
+    <Compile Include="Item\写操作\DataItem_A017.cs" />
+    <Compile Include="Item\写操作\DataItem_A018.cs" />
+    <Compile Include="Item\写操作\DataItem_A019.cs" />
+    <Compile Include="Item\创源写操作\DataItem_C101.cs" />
+    <Compile Include="Item\创源写操作\DataItem_C102.cs" />
+    <Compile Include="Item\创源写操作\DataItem_C103.cs" />
+    <Compile Include="Item\创源写操作\DataItem_C104.cs" />
+    <Compile Include="Item\创源写操作\DataItem_C105.cs" />
+    <Compile Include="Item\创源写操作\DataItem_C106.cs" />
+    <Compile Include="Item\创源读操作\DataItem_C200.cs" />
+    <Compile Include="Item\创源读操作\DataItem_C201.cs" />
+    <Compile Include="Item\创源读操作\DataItem_C202.cs" />
+    <Compile Include="Item\创源读操作\DataItem_C203.cs" />
+    <Compile Include="Item\创源读操作\DataItem_C204.cs" />
+    <Compile Include="Item\读操作\DataItem_8102.cs" />
+    <Compile Include="Item\读操作\DataItem_8103.cs" />
+    <Compile Include="Item\读操作\DataItem_8104.cs" />
+    <Compile Include="Item\读操作\DataItem_8105.cs" />
+    <Compile Include="Item\读操作\DataItem_8106.cs" />
+    <Compile Include="Item\读操作\DataItem_810A.cs" />
+    <Compile Include="Item\读操作\DataItem_901F.cs" />
+    <Compile Include="Item\读操作\DataItem_D120.cs" />
+    <Compile Include="Item\读操作\DataItem_D121.cs" />
+    <Compile Include="Item\读操作\DataItem_D122.cs" />
+    <Compile Include="Item\读操作\DataItem_D123.cs" />
+    <Compile Include="Item\读操作\DataItem_D124.cs" />
+    <Compile Include="Item\读操作\DataItem_D125.cs" />
+    <Compile Include="Item\读操作\DataItem_D126.cs" />
+    <Compile Include="Item\读操作\DataItem_D127.cs" />
+    <Compile Include="Item\读操作\DataItem_D128.cs" />
+    <Compile Include="Item\读操作\DataItem_D129.cs" />
+    <Compile Include="Item\读操作\DataItem_D12A.cs" />
+    <Compile Include="Item\读操作\DataItem_D12B.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Protocol\RecordData.cs" />
+    <Compile Include="Item\ST.cs" />
+    <Compile Include="Protocol\TaskArge.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Channel\Channel.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CY.IoTM.Common.Log\CY.IoTM.Common.Log.csproj">
+      <Project>{1713b87c-379e-44f3-9de8-8d538ba2ba3e}</Project>
+      <Name>CY.IoTM.Common.Log</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

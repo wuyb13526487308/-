@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="ValveControlDB">
+  <DataContextMoniker Name="/ValveControlDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="bb0ecbbf-3888-40fd-b74a-ad055af0d9b6" absoluteBounds="0.5, 0.875, 2, 3.2907230631510416">
+      <DataClassMoniker Name="/ValveControlDBDataContext/IoT_ValveControl" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2306683d-7e92-4fa3-99f3-a217a64f8c9b" absoluteBounds="0.51499999999999968, 1.335, 1.9700000000000002, 2.7307230631510415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ecaa7f15-7ee7-4a58-97d2-84dea70e6f8a" absoluteBounds="3.75, 1, 2, 3.2907230631510416">
+      <DataClassMoniker Name="/ValveControlDBDataContext/View_ValveControl" />
+      <nestedChildShapes>
+        <elementListCompartment Id="12e493c2-4eef-4ed4-a79d-43a03d91615e" absoluteBounds="3.7649999999999997, 1.46, 1.9700000000000002, 2.7307230631510415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

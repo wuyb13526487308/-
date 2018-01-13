@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <link id="easyuiTheme" href="../Scripts/easyui1.3.3/themes/default/easyui.css" rel="stylesheet" type="text/css" />
+    <link href="../Scripts/easyui1.3.3/themes/icon.css" rel="stylesheet" type="text/css" />
+
+    <script src="../Scripts/easyui1.3.3/jquery.min.js" type="text/javascript"></script>
+    <script src="../Scripts/easyui1.3.3/jquery.easyui.min.js" type="text/javascript"></script>
+    <script src="../Scripts/IotM.js" type="text/javascript"></script>
+    <script src="../Scripts/IotM.Menu.js" type="text/javascript"></script>
+    <script src="../Scripts/AppData.js" type="text/javascript"></script>
+    <script >
+
+    function SfxtCheckLogin() {
+        $.ajax(
+        {
+            url: "../Handler/SystemManage/CompanyOperatorManageHandler.ashx?AType=LoadLoginer",
+            async: false,
+            type: "POST",
+            data: {},
+            success: function (data, textStatus) {
+                if (textStatus == 'success') {
+                    data = eval('(' + data + ')');
+                    if (data == null || !data.Result) {
+                        //未登录
+                        window.top.location.href = "Fail.html";
+                    }
+                    else {
+                        window.top.location.href = "Success.html";
+                    }          
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                window.top.location.href = "Fail.html";
+            }
+        });
+    }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

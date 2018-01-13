@@ -1,0 +1,41 @@
+{
+  "total": 1,
+  "rows": [
+    {
+      "CompanyID": "zzcy",
+      "UserID": "2017120337",
+      "UserName": "test1",
+      "State": "3",
+      "Address": "²âÊÔ½ÖµÀ²âÊÔÐ¡Çø1233",
+      "Street": "1",
+      "Community": "1",
+      "Door": "1233",
+      "MeterNo": "13526487308001",
+      "MeterType": "01",
+      "ValveState": "0",
+      "LastTotal": 0.00,
+      "TotalTopUp": 20.0000,
+      "TotalAmount": 3.49,
+      "RemainingAmount": 8.3100,
+      "ReadDate": "2018/1/10 20:59:55",
+      "InstallDate": "2018/1/9 0:00:00",
+      "MeterID": 2171,
+      "Gas1": 100.00,
+      "Gas2": 200.00,
+      "Gas3": 300.00,
+      "Gas4": 0.00,
+      "Price1": 3.3500,
+      "Price2": 3.5500,
+      "Price3": 3.8000,
+      "Price4": 3.9000,
+      "Price5": 0.0000,
+      "SettlementDay": 15,
+      "SettlementType": "01",
+      "Ladder": 4,
+      "IsUsed": true,
+      "UploadCycle": "01012359",
+      "EnableMeterOper": "w",
+      "Direction": "×ó"
+    }
+  ]
+}

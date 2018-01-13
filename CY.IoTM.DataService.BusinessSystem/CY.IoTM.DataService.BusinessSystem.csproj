@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{74671C7C-639A-4099-B9F9-682DA95CED06}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CY.IoTM.DataService.Business</RootNamespace>
+    <AssemblyName>CY.IoTM.DataService.BusinessSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\编译目录\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdInfoService.cs" />
+    <Compile Include="ChongzhiManageService.cs" />
+    <Compile Include="CommunityManageService.cs" />
+    <Compile Include="ChaoBiaoService.cs" />
+    <Compile Include="DianHuoService.cs" />
+    <Compile Include="GetMonitorInfoService.cs" />
+    <Compile Include="HuanBiaoService.cs" />
+    <Compile Include="MeterGasBillService.cs" />
+    <Compile Include="PricingManageService.cs" />
+    <Compile Include="ReportDataService.cs" />
+    <Compile Include="SetMeterParameter.cs" />
+    <Compile Include="Settlement.cs" />
+    <Compile Include="SettlementService.cs" />
+    <Compile Include="SetUploadCycleService.cs" />
+    <Compile Include="SetAlarmService.cs" />
+    <Compile Include="StreetManageService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PriceParManageService.cs" />
+    <Compile Include="SystemParManageService.cs" />
+    <Compile Include="TaskManageService.cs" />
+    <Compile Include="MeterManageService.cs" />
+    <Compile Include="TopUpService.cs" />
+    <Compile Include="UserManageService.cs" />
+    <Compile Include="ValveControlService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CY.IotM.Common.BaseSystem\CY.IoTM.Common.BaseSystem.csproj">
+      <Project>{66f59a48-cea8-42e1-98f5-d09a95760022}</Project>
+      <Name>CY.IoTM.Common.BaseSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CY.IoTM.Common.BusinessSystem\CY.IoTM.Common.BusinessSystem.csproj">
+      <Project>{1488c3c7-25ff-470c-9ae1-63aa5b90526d}</Project>
+      <Name>CY.IoTM.Common.BusinessSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CY.IoTM.Common.Classes\CY.IoTM.Common.Classes.csproj">
+      <Project>{bd8c35ab-663d-4407-93dd-d6389bbeaddf}</Project>
+      <Name>CY.IoTM.Common.Classes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CY.IoTM.Common.Log\CY.IoTM.Common.Log.csproj">
+      <Project>{1713b87c-379e-44f3-9de8-8d538ba2ba3e}</Project>
+      <Name>CY.IoTM.Common.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CY.IoTM.Common.Protocol\CY.IoTM.Common.Protocol.csproj">
+      <Project>{3f572432-d7fd-40a5-9b4d-e53a1e8f90d2}</Project>
+      <Name>CY.IoTM.Common.Protocol</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CY.IoTM.DataCenter\CY.IoTM.DataCenter.csproj">
+      <Project>{31fde6d3-26e9-41d2-bad1-2bb8710f5fc1}</Project>
+      <Name>CY.IoTM.DataCenter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CY.IoTM.DataCollectionService\CY.IoTM.DataCollectionService.csproj">
+      <Project>{0e9ab555-a0ba-463d-9519-d6d75381a711}</Project>
+      <Name>CY.IoTM.DataCollectionService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CY.IoTM.MongoDataService\CY.IoTM.MongoDataService.csproj">
+      <Project>{9ace8331-748f-4d23-ab03-831e04a5ff1b}</Project>
+      <Name>CY.IoTM.MongoDataService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CY.IoTM.Service.Common\CY.IoTM.Service.Common.csproj">
+      <Project>{5a91c157-b70a-4991-8d31-bb87b3e88650}</Project>
+      <Name>CY.IoTM.Service.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

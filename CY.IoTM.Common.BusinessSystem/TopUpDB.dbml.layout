@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="TopUpDB">
+  <DataContextMoniker Name="/TopUpDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="19b91082-f88e-4e98-96ca-09d7e603bc8f" absoluteBounds="0.5, 0.5, 2, 4.1244226074218746">
+      <DataClassMoniker Name="/TopUpDBDataContext/IoT_MeterTopUp" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4bc513d5-616c-4a7a-9256-bb58e7f8491d" absoluteBounds="0.51499999999999968, 0.96, 1.9700000000000002, 3.564422607421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e35ad5f0-7dc7-4847-96a6-e643e0faab75" absoluteBounds="3.5, 0.5, 2, 5.2331872558593746">
+      <DataClassMoniker Name="/TopUpDBDataContext/View_ChongZhi" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e7dce1b8-38ab-4639-930b-11b24dfc9351" absoluteBounds="3.5149999999999997, 0.96, 1.9700000000000002, 4.673187255859375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
