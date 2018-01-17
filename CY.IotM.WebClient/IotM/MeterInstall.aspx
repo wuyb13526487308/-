@@ -93,7 +93,7 @@
                             </td>
                              <td>表读数:</td>
                             <td>
-                              <input class="easyui-numberbox" type="text" name="CNTotalAmount" precision="2"  default="" />
+                              <input class="easyui-numberbox" type="text" id="CNTotalAmount"  name="CNTotalAmount" precision="2"  default="" />
                             </td>
 
                         </tr>

@@ -20,6 +20,7 @@
       <Column Name="PayType" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
       <Column Name="SFOperID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="SFOperName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PayDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.View_ChongZhi" Member="View_ChongZhi">
@@ -48,6 +49,7 @@
       <Column Name="PayType" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
       <Column Name="SFOperID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="SFOperName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PayDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

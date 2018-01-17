@@ -8,6 +8,7 @@ IotM.User.LoadDataGridView = function () {
         url: url,
         height: IotM.MainGridHeight,
         fitColumns: true,
+        pageSize:50,
         pagination: true,
         //rownumbers: true,
         singleSelect: true,
@@ -174,6 +175,7 @@ IotM.User.LoadDataGrid = function () {
         toolbar: '#tb',
         url: url,
         height: IotM.MainGridHeight,
+        pageSize:50,
         fitColumns: true,
         pagination: true,
         rownumbers: true,
@@ -455,7 +457,8 @@ IotM.User.LoadDataGridDelete = function () {
         title: '',
         toolbar: '#tb_deleteUser',
         url: url,
-        height: IotM.MainGridHeight*0.5,
+        height: IotM.MainGridHeight * 0.5,
+        pageSize:50,
         fitColumns: true,
         pagination: true,
         rownumbers: true,
@@ -873,7 +876,7 @@ IotM.User.OpenExcelAdd = function () {
     $('#btnUpLoadCancel').unbind('click').bind('click', function () { $('#importImg').window('close'); });
     
 
-    IotM.User.InitUploadFile();
+    //IotM.User.InitUploadFile();
 
     $('#importImg').window({
         resizable: false,
@@ -949,7 +952,30 @@ IotM.User.DownTemplateClick = function () {
 
 //文件导入
 IotM.User.UploadClick = function () {
-    $('#UploadFile').uploadifyUpload();
+    var fd = new FormData();
+    fd.append("upload", 1);
+    fd.append("upfile", $("#file1").get(0).files[0]);
+    $.ajax({
+        url: "../Handler/UserUploadHandler.ashx?AType=Upload",
+        type: "POST",
+        processData: false,
+        contentType: false,
+        data: fd,
+        success: function (d) {
+            var tResult = eval('(' + d + ')');
+            if (tResult.Result) {
+
+                IotM.User.NextExcelAdd();
+
+            }
+            else {
+                $.messager.alert('警告', tResult.TxtMessage, 'warn');
+            }
+            alert(d);
+            console.log(d);
+        }
+    });
+    //$('#UploadFile').uploadifyUpload();
 
 };
 

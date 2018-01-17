@@ -80,6 +80,10 @@
       <HintPath>..\DLL\DevExpress.XtraReports.v12.2.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>UserUpload\dotnet4\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Linq" />
@@ -177,7 +181,16 @@
     <Content Include="Scripts\easyui1.3.3\jquery.form.min.js" />
     <Content Include="Scripts\IotM\IotM.AdInfo.js" />
     <Content Include="Scripts\IotM\IotM.MeterGasBill.js" />
+    <Content Include="Success.html" />
     <Content Include="Test.html" />
+    <Content Include="UserUpload\dotnet4\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="UserUpload\dotnet4\NPOI.dll" />
+    <Content Include="UserUpload\dotnet4\NPOI.OOXML.dll" />
+    <Content Include="UserUpload\dotnet4\NPOI.OOXML.XML" />
+    <Content Include="UserUpload\dotnet4\NPOI.OpenXml4Net.dll" />
+    <Content Include="UserUpload\dotnet4\NPOI.OpenXml4Net.XML" />
+    <Content Include="UserUpload\dotnet4\NPOI.OpenXmlFormats.dll" />
+    <Content Include="UserUpload\dotnet4\NPOI.XML" />
     <Content Include="WebService\OlbService.asmx" />
     <Content Include="OperatorChangePwd.aspx" />
     <Content Include="Report\CompanyReportManage.aspx" />
@@ -297,6 +310,8 @@
     <Content Include="Handler\AdmListHandler.ashx" />
     <Content Include="Handler\AdPublishHandler.ashx" />
     <Content Include="Handler\ADUserHandler.ashx" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\iotmeter %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\iotmeter.pubxml" />
     <None Include="Properties\PublishProfiles\Web.pubxml" />
     <Content Include="Scripts\IotM\IotM.HuanBiaoManege.js" />

@@ -38,7 +38,7 @@ namespace CY.IoTM.Common.Business
         /// </summary>
         /// <param name="task"></param>
         [OperationContract]
-        void TaskCompletes(Task task, decimal ljGas);
+        string TaskCompletes(Task task, decimal ljGas);
 
         /// <summary>
         /// 设置对时任务

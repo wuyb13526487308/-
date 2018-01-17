@@ -290,8 +290,12 @@
 
                 <tr>
                     <td>
-                        <input id="UploadFile" type="file" name="UploadFile" />
-                   
+<%--                        <input id="UploadFile" type="file" name="UploadFile" />--%>
+                        <div style="margin-bottom:20px">
+                           <input id="file2" type="file" accept="file/*.xls" name="file" />
+
+                            <input id="file1" type="file" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name="file" />
+                        </div>
                     </td>
 
                     <td>

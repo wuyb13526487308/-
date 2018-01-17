@@ -124,6 +124,8 @@ namespace CY.IoTM.Common.Business
 		
 		private string _SFOperName;
 		
+		private System.Nullable<System.DateTime> _PayDate;
+		
     #region 可扩展性方法定义
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -164,6 +166,8 @@ namespace CY.IoTM.Common.Business
     partial void OnSFOperIDChanged();
     partial void OnSFOperNameChanging(string value);
     partial void OnSFOperNameChanged();
+    partial void OnPayDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnPayDateChanged();
     #endregion
 		
 		public IoT_MeterTopUp()
@@ -531,6 +535,26 @@ namespace CY.IoTM.Common.Business
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PayDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> PayDate
+		{
+			get
+			{
+				return this._PayDate;
+			}
+			set
+			{
+				if ((this._PayDate != value))
+				{
+					this.OnPayDateChanging(value);
+					this.SendPropertyChanging();
+					this._PayDate = value;
+					this.SendPropertyChanged("PayDate");
+					this.OnPayDateChanged();
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -603,6 +627,8 @@ namespace CY.IoTM.Common.Business
 		private string _SFOperID;
 		
 		private string _SFOperName;
+		
+		private System.Nullable<System.DateTime> _PayDate;
 		
 		public View_ChongZhi()
 		{
@@ -988,6 +1014,22 @@ namespace CY.IoTM.Common.Business
 				if ((this._SFOperName != value))
 				{
 					this._SFOperName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PayDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> PayDate
+		{
+			get
+			{
+				return this._PayDate;
+			}
+			set
+			{
+				if ((this._PayDate != value))
+				{
+					this._PayDate = value;
 				}
 			}
 		}

@@ -15,6 +15,7 @@ IotM.ChongZhi.LoadDataGrid = function () {
         url: url,
         height: IotM.MainGridHeight,
         fitColumns: true,
+        pageSize:50,
         pagination: true,
         rownumbers: true,
         singleSelect: true,

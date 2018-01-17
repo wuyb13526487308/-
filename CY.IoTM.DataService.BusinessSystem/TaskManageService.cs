@@ -74,9 +74,9 @@ namespace CY.IoTM.DataService.Business
         /// 任务执行完成
         /// </summary>
         /// <param name="task"></param>
-        public void TaskCompletes(Task task,decimal ljGas =0)
+        public string TaskCompletes(Task task,decimal ljGas =0)
         {
-
+            string result = "";
             lock (_readlock)
             {
                 //任务完成，设置表状态点火完成
@@ -108,7 +108,11 @@ namespace CY.IoTM.DataService.Business
                         case TaskType.TaskType_充值:
                             //充值完成
                             TopUpService tps = new TopUpService();
-                            tps.TopupFinished(task.TaskID, task.TaskState, "");
+                            string topup = tps.TopupFinished(task.TaskID, task.TaskState, "");
+                            if (topup != "")
+                            {
+                                throw new Exception($"表号：{task.MeterMac} 充值完成，但更新mongo内存数据失败，原因：{topup}");
+                            }
                             break;
                         case TaskType.TaskType_调整价格:
                             //表具已接受调价指令
@@ -149,8 +153,10 @@ namespace CY.IoTM.DataService.Business
                 {
                     Console.WriteLine(e.Message);
                     Log.getInstance().Write(MsgType.Error, "TaskCompletes 任务完成状态更新失败，原因：" + e.Message);
-
+                    Log.getInstance().Write(new OneMeterDataLogMsg(task.MeterMac, e.Message));
                 }
+
+                return result;
             }
         }
         #endregion

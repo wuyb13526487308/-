@@ -36,7 +36,7 @@ namespace CY.IoTM.DataService.Business
             _topUp.Amount = (decimal)money;
             _topUp.Oper = oper;
             _topUp.OrgCode = orgCode;
-            _topUp.Ser = _m.LastTopUpSer++;
+            _topUp.Ser = _m.LastTopUpSer;
             _topUp.State = '0';
             _topUp.IsPrint = false;
             _topUp.TopUpDate = DateTime.UtcNow.AddHours(8);

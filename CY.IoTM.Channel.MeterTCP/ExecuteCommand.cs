@@ -37,9 +37,12 @@ namespace CY.IoTM.Channel.MeterTCP
         /// 根据指令创建指定数据项对象（代码未完成）
         /// </summary>
         /// <returns></returns>
-        public DataItem getDataItem()
+        public DataItem getDataItem(byte ser)
         {
             byte[] cmdData = strToToHexByte(_cmd.DataCommand);
+            //重新编写指令序列号
+            cmdData[2] = ser;
+
             DataItem item = null;
             switch ((ControlCode)_cmd.ControlCode)
             {

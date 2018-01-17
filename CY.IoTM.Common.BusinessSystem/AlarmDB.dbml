@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="IotMeter" Class="AlarmDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=IotMeter;Integrated Security=True" SettingsObjectName="CY.IoTM.Common.Business.Properties.Settings" SettingsPropertyName="IotMeterConnectionString3" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(local)\SQLEXPRESS;Initial Catalog=IotMeter;User ID=sa;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True" SettingsObjectName="CY.IoTM.Common.Business.Properties.Settings" SettingsPropertyName="IotMeterConnectionString4" Provider="System.Data.SqlClient" />
   <Table Name="dbo.IoT_AlarmInfo" Member="IoT_AlarmInfo">
     <Type Name="IoT_AlarmInfo">
       <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -84,6 +84,22 @@
       <Column Name="Par7" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Par8" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Par9" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IoT_AlarmDefaultParam" Member="IoT_AlarmDefaultParam">
+    <Type Name="IoT_AlarmDefaultParam">
+      <Column Name="RegisterDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SwitchTag" Type="System.String" DbType="Char(16)" CanBeNull="true" />
+      <Column Name="Par1" Type="System.Data.Linq.Binary" DbType="Binary(1)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Par2" Type="System.Data.Linq.Binary" DbType="Binary(1)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Par3" Type="System.Data.Linq.Binary" DbType="Binary(1)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Par4" Type="System.String" DbType="Char(4)" CanBeNull="true" />
+      <Column Name="par5" Type="System.Data.Linq.Binary" DbType="Binary(1)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Par6" Type="System.Data.Linq.Binary" DbType="Binary(1)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Par7" Type="System.Data.Linq.Binary" DbType="Binary(1)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Par8" Type="System.Data.Linq.Binary" DbType="Binary(1)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Par9" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="CompanyID" Type="System.String" DbType="Char(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

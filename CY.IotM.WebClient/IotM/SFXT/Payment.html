@@ -83,11 +83,19 @@
             $.post(url,
                 param,
                 function (data, textStatus) {
-                    if (data.Result) {
-                        document.title = data.TxtMessage;
+                    if (textStatus == 'success') {
+                        if (data.Result) {
+                            document.title = data.TxtMessage;
+                        }
+                        else {
+                            document.title = "";
+                        }
                     }
                     else {
-                        document.title = "";
+                        var msg = {};
+                        msg.Result = false;
+                        mst.TxtMessage = "向服务器请求失败";
+                        document.title = JSON.stringify(msg);
                     }
 
                 }, "json");
@@ -102,13 +110,20 @@
             $.post("../../Handler/YingYeTingCZHandler.ashx?AType=Query",
                 param,
                 function (data, textStatus) {
-                    if (data.Result) {
-                        document.title = data.TxtMessage;
+                    if (textStatus == 'success') {
+                        if (data.Result) {
+                            document.title = data.TxtMessage;
+                        }
+                        else {
+                            document.title = "";
+                        }
                     }
                     else {
-                        document.title = "";
+                        var msg = {};
+                        msg.Result = false;
+                        mst.TxtMessage = "向服务器请求失败";
+                        document.title = JSON.stringify(msg);
                     }
-
                 }, "json");
         }
 

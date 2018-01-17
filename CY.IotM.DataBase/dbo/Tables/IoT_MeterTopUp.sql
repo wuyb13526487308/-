@@ -23,6 +23,7 @@ CREATE TABLE [dbo].[IoT_MeterTopUp] (
     [PayType] CHAR(1) NULL DEFAULT '0', 
     [SFOperID] NVARCHAR(50) NULL, 
     [SFOperName] NVARCHAR(50) NULL, 
+    [PayDate] DATETIME NULL, 
     CONSTRAINT [PK_IoT_MeterTopUp] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
 
@@ -102,3 +103,12 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'IoT_MeterTopUp',
     @level2type = N'COLUMN',
     @level2name = N'Context'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'支付完成时间',
+    @level0type = N'SCHEMA',
+    @level0name = N'dbo',
+    @level1type = N'TABLE',
+    @level1name = N'IoT_MeterTopUp',
+    @level2type = N'COLUMN',
+    @level2name = N'PayDate'

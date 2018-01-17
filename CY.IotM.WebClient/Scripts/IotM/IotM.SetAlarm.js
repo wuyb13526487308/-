@@ -9,6 +9,7 @@ IotM.SetAlarm.LoadDataGrid = function () {
         toolbar: '#tb',
         url: url,
         height: IotM.MainGridHeight,
+        pageSize: 50,
         fitColumns: true,
         pagination: true,
         rownumbers: true,
@@ -118,7 +119,7 @@ IotM.SetAlarm.OpenformParam = function (obj) {
     $('#dataGrid').datagrid('selectRow', index);
     var data = $('#dataGrid').datagrid('getSelected');
     IotM.SetData('formAdd', data);
-
+    $('#CNPar4').numberbox('setValue',parseFloat(data.Par4)/100);
     $("#userListTR").hide();
     $('#btnOk').hide(); $('#btnCancel').hide();
 

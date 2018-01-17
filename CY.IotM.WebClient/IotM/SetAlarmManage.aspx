@@ -238,7 +238,7 @@
                                     <td>异常大流量:
                                     </td>
                                     <td>
-                                        <input class="easyui-validatebox" type="text" name="CNPar4" default="" />m³/h &nbsp;&nbsp;
+                                        <input class="easyui-numberbox" type="text" id="CNPar4" name="CNPar4" precision="2"  default="" />m³/h &nbsp;&nbsp;
                                     </td>
 
 
@@ -246,7 +246,7 @@
                                         <%-- 燃气表公称流量:--%>
                                     </td>
                                     <td style="display: none">
-                                        <input class="easyui-validatebox" type="text" name="CNPar9" default="0" />m³/h
+                                        <input class="easyui-numberbox" type="text" name="CNPar9" precision="2" default="0" />m³/h
                                     </td>
 
                                 </tr>

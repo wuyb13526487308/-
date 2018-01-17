@@ -274,6 +274,19 @@ namespace CY.IoTM.DataService.Business
                 var data = dhTbl.Where(p => p.MeterNo == info.MeterNo);
                 dhTbl.DeleteAllOnSubmit(data);
 
+                Table<IoT_ValveControl> valTB = dd.GetTable<IoT_ValveControl>();
+                var vavData = valTB.Where(p => p.CompanyID == info.CompanyID && p.MeterNo == info.MeterNo);
+
+                valTB.DeleteAllOnSubmit(vavData);
+
+                Table<IoT_AlarmInfo> alertTb = dd.GetTable<IoT_AlarmInfo>();
+                var alertData = alertTb.Where(p => p.MeterNo == info.MeterNo);
+                alertTb.DeleteAllOnSubmit(alertData);
+
+                Table<Iot_MeterAlarmPara> mapTb = dd.GetTable<Iot_MeterAlarmPara>();
+                var meterAlertData = mapTb.Where(p => p.MeterNo == info.MeterNo);
+                mapTb.DeleteAllOnSubmit(meterAlertData);
+
                 Table<IoT_User> tbl_user = dd.GetTable<IoT_User>();
                 var u = tbl_user.Where(p => p.CompanyID == info.CompanyID && p.UserID == info.UserID).Single();
                 tbl_user.DeleteOnSubmit(u as IoT_User);

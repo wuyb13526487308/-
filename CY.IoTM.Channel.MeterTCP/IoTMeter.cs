@@ -147,6 +147,9 @@ namespace CY.IoTM.Channel.MeterTCP
             //处理接收到应答数据
             if (this._currentCommand != null)
             {
+                this.meter.LastTopUpSer++;
+                this.tms.UpdateMeter(this.meter);
+
                 this._semaphore.Release();
                 //判断表回复广告文件
                 if (_currentCommand.Task.TaskType == TaskType.TaskType_发布广告)
@@ -165,7 +168,9 @@ namespace CY.IoTM.Channel.MeterTCP
                     }
                     //this._semaphore.Release();
                 }
-                
+                //TODO:需要处理确认
+
+
             }
         }
         List<Task> _failTaskList = new List<Task>();
@@ -176,7 +181,7 @@ namespace CY.IoTM.Channel.MeterTCP
         /// </summary>
         private void DoTask(object parObject)
         {
-            while (this._reportWatch.ElapsedMilliseconds < 1000 * 5)
+            //while (this._reportWatch.ElapsedMilliseconds < 1000 * 5)
                 Thread.Sleep(50);
 
             List<Task> taskList = null;
@@ -234,7 +239,7 @@ namespace CY.IoTM.Channel.MeterTCP
            
             Command cmd = new Command();
             //1.校时
-            byte ser = Convert.ToByte(new Random().Next(0, 255));
+            byte ser = this.meter.LastTopUpSer;// Convert.ToByte(new Random().Next(0, 255));
             DataItem_A015 item_A015 = new DataItem_A015(ser);//
             cmd.TaskID = task.TaskID;
             cmd.Identification = ((UInt16)item_A015.IdentityCode).ToString("X2");
@@ -298,7 +303,7 @@ namespace CY.IoTM.Channel.MeterTCP
                                 if (task.TaskType == TaskType.TaskType_发布广告)
                                 {
                                     //广告命令 不加密 透明传输
-                                    TaskArge taskArge = new TaskArge(this.meter.Mac, _currentCommand.getDataItem(), (ControlCode)cmd.ControlCode,IotProtocolType.LCD, null);
+                                    TaskArge taskArge = new TaskArge(this.meter.Mac, _currentCommand.getDataItem(this.meter.LastTopUpSer), (ControlCode)cmd.ControlCode,IotProtocolType.LCD, null);
                                     this._meterLink.Send(new Protocol.Frame(taskArge).GetBytes());//发送请求指令
 
                                     Log.getInstance().Write(DateTime.Now.ToString() + " 主站向表【" + this.MAC + "】发送广告指令：" + i.ToString() + " " + taskArge.Data.IdentityCode + " 控制码：" + ((byte)taskArge.ControlCode).ToString("X2"), MsgType.Information);
@@ -309,7 +314,7 @@ namespace CY.IoTM.Channel.MeterTCP
                                 #region   其他命令 加密 传输
                                 else
                                 {
-                                    TaskArge taskArge = new TaskArge(this.meter.Mac, _currentCommand.getDataItem(), (ControlCode)cmd.ControlCode, MKey);
+                                    TaskArge taskArge = new TaskArge(this.meter.Mac, _currentCommand.getDataItem(this.meter.LastTopUpSer), (ControlCode)cmd.ControlCode, MKey);
                                     this._meterLink.Send(new Protocol.Frame(taskArge).GetBytes());//发送请求指令
                                     Log.getInstance().Write(DateTime.Now.ToString() + " 主站向表【" + this.MAC + "】发送指令：" + taskArge.Data.IdentityCode + " 控制码：" + ((byte)taskArge.ControlCode).ToString("X2"), MsgType.Information);
                                     Log.getInstance().Write(new OneMeterDataLogMsg(this.MAC, "主站向表【" + this.MAC + "】发送指令：" + taskArge.Data.IdentityCode + " 控制码：" + ((byte)taskArge.ControlCode).ToString("X2") + "; 时间:" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")));
@@ -394,6 +399,10 @@ namespace CY.IoTM.Channel.MeterTCP
 
             //WCFServiceProxy<IReportData> _iReportDataProxy = new WCFServiceProxy<IReportData>();
             this.meter.TotalAmount = item_C001.LJGas;
+            if (!meter.IsDianHuo && meter.LastGasPoint>item_C001.LJGas && meter.TotalTopUp ==0)
+            {
+                this.meter.LastGasPoint = item_C001.LJGas;
+            }
 
             CY.IoTM.DataService.Business.ReportDataService rds = new DataService.Business.ReportDataService();
             //SubmitResult result = _iReportDataProxy.getChannel
@@ -561,7 +570,7 @@ namespace CY.IoTM.Channel.MeterTCP
                 task.Finished = DateTime.Now;
                 if (task.TaskType == TaskType.TaskType_充值 && task.TaskState == TaskState.Failed) return;//充值失败允许多次操作，所以不更新充值任务的队列状态
 
-                this.tms.TaskCompletes(task,this._lastReportData.LJGas);
+                string result = this.tms.TaskCompletes(task,this._lastReportData.LJGas);
                 //完成下列任务时需要重新加载表对象数据
                 if (task.TaskType == TaskType.TaskType_点火)
                 {
@@ -570,7 +579,14 @@ namespace CY.IoTM.Channel.MeterTCP
                 }
                 else if (task.TaskType == TaskType.TaskType_充值)
                 {
-                    meter = this.tms.GetMeter(this.MAC);
+                    DataItem_A013 a013 = this._currentCommand.getDataItem(this.meter.LastTopUpSer) as DataItem_A013;
+                    this.meter.TotalTopUp += a013.BuyMoney;
+                    this.meter.LastSettlementAmount += a013.BuyMoney;
+                    this.meter.CurrentBalance += a013.BuyMoney;
+                    if (result != "")
+                    {
+                        this.tms.UpdateMeter(this.meter);
+                    }
                 }
                 else if (task.TaskType == TaskType.TaskType_设置结算日期)
                 {

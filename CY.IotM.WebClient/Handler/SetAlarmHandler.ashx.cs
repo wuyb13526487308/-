@@ -91,6 +91,7 @@ namespace CY.IotM.WebClient.Handler
                             Info.CompanyID = base.loginOperator.CompanyID;
                             Info.Oper = base.loginOperator.Name;
                             Info.RegisterDate = DateTime.Now;
+                            Info.Par4 = Convert.ToInt32(Convert.ToDecimal(Info.Par4) * 100).ToString();
 
                             proxy = new WCFServiceProxy<ISetAlarm>();
 

@@ -42,10 +42,13 @@ namespace CY.IoTM.Common.Business
     partial void InsertIot_MeterAlarmPara(Iot_MeterAlarmPara instance);
     partial void UpdateIot_MeterAlarmPara(Iot_MeterAlarmPara instance);
     partial void DeleteIot_MeterAlarmPara(Iot_MeterAlarmPara instance);
+    partial void InsertIoT_AlarmDefaultParam(IoT_AlarmDefaultParam instance);
+    partial void UpdateIoT_AlarmDefaultParam(IoT_AlarmDefaultParam instance);
+    partial void DeleteIoT_AlarmDefaultParam(IoT_AlarmDefaultParam instance);
     #endregion
 		
 		public AlarmDBDataContext() : 
-				base(global::CY.IoTM.Common.Business.Properties.Settings.Default.IotMeterConnectionString3, mappingSource)
+				base(global::CY.IoTM.Common.Business.Properties.Settings.Default.IotMeterConnectionString4, mappingSource)
 		{
 			OnCreated();
 		}
@@ -119,6 +122,14 @@ namespace CY.IoTM.Common.Business
 			get
 			{
 				return this.GetTable<Iot_MeterAlarmPara>();
+			}
+		}
+		
+		public System.Data.Linq.Table<IoT_AlarmDefaultParam> IoT_AlarmDefaultParam
+		{
+			get
+			{
+				return this.GetTable<IoT_AlarmDefaultParam>();
 			}
 		}
 	}
@@ -1642,6 +1653,332 @@ namespace CY.IoTM.Common.Business
 					this._Par9 = value;
 					this.SendPropertyChanged("Par9");
 					this.OnPar9Changed();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.IoT_AlarmDefaultParam")]
+	public partial class IoT_AlarmDefaultParam : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Nullable<System.DateTime> _RegisterDate;
+		
+		private string _SwitchTag;
+		
+		private System.Data.Linq.Binary _Par1;
+		
+		private System.Data.Linq.Binary _Par2;
+		
+		private System.Data.Linq.Binary _Par3;
+		
+		private string _Par4;
+		
+		private System.Data.Linq.Binary _par5;
+		
+		private System.Data.Linq.Binary _Par6;
+		
+		private System.Data.Linq.Binary _Par7;
+		
+		private System.Data.Linq.Binary _Par8;
+		
+		private string _Par9;
+		
+		private string _CompanyID;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRegisterDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnRegisterDateChanged();
+    partial void OnSwitchTagChanging(string value);
+    partial void OnSwitchTagChanged();
+    partial void OnPar1Changing(System.Data.Linq.Binary value);
+    partial void OnPar1Changed();
+    partial void OnPar2Changing(System.Data.Linq.Binary value);
+    partial void OnPar2Changed();
+    partial void OnPar3Changing(System.Data.Linq.Binary value);
+    partial void OnPar3Changed();
+    partial void OnPar4Changing(string value);
+    partial void OnPar4Changed();
+    partial void Onpar5Changing(System.Data.Linq.Binary value);
+    partial void Onpar5Changed();
+    partial void OnPar6Changing(System.Data.Linq.Binary value);
+    partial void OnPar6Changed();
+    partial void OnPar7Changing(System.Data.Linq.Binary value);
+    partial void OnPar7Changed();
+    partial void OnPar8Changing(System.Data.Linq.Binary value);
+    partial void OnPar8Changed();
+    partial void OnPar9Changing(string value);
+    partial void OnPar9Changed();
+    partial void OnCompanyIDChanging(string value);
+    partial void OnCompanyIDChanged();
+    #endregion
+		
+		public IoT_AlarmDefaultParam()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RegisterDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> RegisterDate
+		{
+			get
+			{
+				return this._RegisterDate;
+			}
+			set
+			{
+				if ((this._RegisterDate != value))
+				{
+					this.OnRegisterDateChanging(value);
+					this.SendPropertyChanging();
+					this._RegisterDate = value;
+					this.SendPropertyChanged("RegisterDate");
+					this.OnRegisterDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SwitchTag", DbType="Char(16)")]
+		public string SwitchTag
+		{
+			get
+			{
+				return this._SwitchTag;
+			}
+			set
+			{
+				if ((this._SwitchTag != value))
+				{
+					this.OnSwitchTagChanging(value);
+					this.SendPropertyChanging();
+					this._SwitchTag = value;
+					this.SendPropertyChanged("SwitchTag");
+					this.OnSwitchTagChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Par1", DbType="Binary(1)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Par1
+		{
+			get
+			{
+				return this._Par1;
+			}
+			set
+			{
+				if ((this._Par1 != value))
+				{
+					this.OnPar1Changing(value);
+					this.SendPropertyChanging();
+					this._Par1 = value;
+					this.SendPropertyChanged("Par1");
+					this.OnPar1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Par2", DbType="Binary(1)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Par2
+		{
+			get
+			{
+				return this._Par2;
+			}
+			set
+			{
+				if ((this._Par2 != value))
+				{
+					this.OnPar2Changing(value);
+					this.SendPropertyChanging();
+					this._Par2 = value;
+					this.SendPropertyChanged("Par2");
+					this.OnPar2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Par3", DbType="Binary(1)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Par3
+		{
+			get
+			{
+				return this._Par3;
+			}
+			set
+			{
+				if ((this._Par3 != value))
+				{
+					this.OnPar3Changing(value);
+					this.SendPropertyChanging();
+					this._Par3 = value;
+					this.SendPropertyChanged("Par3");
+					this.OnPar3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Par4", DbType="Char(4)")]
+		public string Par4
+		{
+			get
+			{
+				return this._Par4;
+			}
+			set
+			{
+				if ((this._Par4 != value))
+				{
+					this.OnPar4Changing(value);
+					this.SendPropertyChanging();
+					this._Par4 = value;
+					this.SendPropertyChanged("Par4");
+					this.OnPar4Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_par5", DbType="Binary(1)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary par5
+		{
+			get
+			{
+				return this._par5;
+			}
+			set
+			{
+				if ((this._par5 != value))
+				{
+					this.Onpar5Changing(value);
+					this.SendPropertyChanging();
+					this._par5 = value;
+					this.SendPropertyChanged("par5");
+					this.Onpar5Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Par6", DbType="Binary(1)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Par6
+		{
+			get
+			{
+				return this._Par6;
+			}
+			set
+			{
+				if ((this._Par6 != value))
+				{
+					this.OnPar6Changing(value);
+					this.SendPropertyChanging();
+					this._Par6 = value;
+					this.SendPropertyChanged("Par6");
+					this.OnPar6Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Par7", DbType="Binary(1)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Par7
+		{
+			get
+			{
+				return this._Par7;
+			}
+			set
+			{
+				if ((this._Par7 != value))
+				{
+					this.OnPar7Changing(value);
+					this.SendPropertyChanging();
+					this._Par7 = value;
+					this.SendPropertyChanged("Par7");
+					this.OnPar7Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Par8", DbType="Binary(1)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Par8
+		{
+			get
+			{
+				return this._Par8;
+			}
+			set
+			{
+				if ((this._Par8 != value))
+				{
+					this.OnPar8Changing(value);
+					this.SendPropertyChanging();
+					this._Par8 = value;
+					this.SendPropertyChanged("Par8");
+					this.OnPar8Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Par9", DbType="Char(2)")]
+		public string Par9
+		{
+			get
+			{
+				return this._Par9;
+			}
+			set
+			{
+				if ((this._Par9 != value))
+				{
+					this.OnPar9Changing(value);
+					this.SendPropertyChanging();
+					this._Par9 = value;
+					this.SendPropertyChanged("Par9");
+					this.OnPar9Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyID", DbType="Char(4) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string CompanyID
+		{
+			get
+			{
+				return this._CompanyID;
+			}
+			set
+			{
+				if ((this._CompanyID != value))
+				{
+					this.OnCompanyIDChanging(value);
+					this.SendPropertyChanging();
+					this._CompanyID = value;
+					this.SendPropertyChanged("CompanyID");
+					this.OnCompanyIDChanged();
 				}
 			}
 		}

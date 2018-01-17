@@ -82,7 +82,8 @@ namespace CY.IotM.WebClient.Handler
                             Info.MeterNo = MeterNo;              //充值表号
                             Info.Oper = base.loginOperator.Name; //操作员
                             Info.CompanyID = base.loginOperator.CompanyID;//公司
-                            Info.TopUpDate = DateTime.Now;       //充值时间
+                            Info.TopUpDate = DateTime.Now;       //充值时间，后面会被写到表上的时间覆盖，用来表示写到表上的时间
+                            Info.PayDate = DateTime.Now;//充值时间，用户支付完成的时间
                             Info.UserID = UserID;                //充值户号
                             Info.TopUpType = '0';                //充值类型为"本地营业厅"
                             Info.State = '0';                    //等待充值状态

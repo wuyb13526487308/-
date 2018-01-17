@@ -237,6 +237,7 @@ IotM.CheckLogin = function () {
             if (textStatus == 'success') {
                 data = eval('(' + data + ')');
                 if (data == null || !data.Result) {
+                    document.title = "relogin";
                     window.top.location.href = "../Login.aspx";
                 }
                 else {

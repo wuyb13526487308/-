@@ -45,7 +45,7 @@ namespace CY.IoTM.DataService.Business
                     Meter _meter = tmd.QueryMeter(m.MeterNo.Trim());
                     tmd.InsertMeter(m);
                     IoT_SetAlarm alarmPar = new IoT_SetAlarm();
-                    alarmPar.SwitchTag = "100100011       ";
+                    alarmPar.SwitchTag = "000000000       ";
                     alarmPar.Par1 = 30;
                     alarmPar.Par2 = 10;
                     alarmPar.Par3 = 30;

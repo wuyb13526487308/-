@@ -7,6 +7,7 @@ IotM.Meter.LoadDataGrid = function () {
         toolbar: '#tb',
         url: url,
         height: IotM.MainGridHeight,
+        pageSize:20,
         fitColumns: true,
         pagination: true,
         rownumbers: true,
@@ -76,7 +77,8 @@ IotM.Meter.OpenformEdit = function (obj) {
     var data = $('#dataGrid').datagrid('getSelected');
     IotM.SetData('formAdd', data);
     $("#CNMeterNo").val("");
-   
+    $("#CNTotalAmount").numberbox('clear');
+
     $('#wAdd').window({
         resizable: false,
         width: IotM.MainGridWidth * 0.5,

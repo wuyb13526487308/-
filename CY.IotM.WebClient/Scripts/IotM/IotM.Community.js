@@ -7,6 +7,7 @@ IotM.Community.LoadDataGrid = function (streetArr) {
         toolbar: '#tbCommunity',
         url: url,
         fit:true,
+        pageSize: 50,
         fitColumns: true,
         pagination: true,
         rownumbers: true,

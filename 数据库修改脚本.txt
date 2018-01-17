@@ -2,6 +2,7 @@
 ALTER TABLE [dbo].[IoT_MeterTopUp]
     ADD [IsPrint]    BIT           DEFAULT 0 NULL,
         [PayType]    CHAR (1)      DEFAULT '0' NULL,
+		[PayDate]    DateTime getDate(),
         [SFOperID]   NVARCHAR (50) NULL,
         [SFOperName] NVARCHAR (50) NULL;
 
@@ -9,4 +10,39 @@ ALTER TABLE [dbo].[IoT_MeterTopUp]
 GO
 
 update [dbo].[IoT_MeterTopUp] set IsPrint = 0 ,payType = '0' where IsPrint  is null
+GO
+
+
+--修改视图
+ALTER VIEW [dbo].[View_ChongZhi]
+AS
+SELECT   a.ID AS AID, a.Ser, a.UserID, a.MeterID, a.MeterNo, a.Amount, a.TopUpDate, a.TopUpType, a.Oper, a.OrgCode, a.State, 
+                a.CompanyID, a.Context, a.TaskID, b.Address, b.Community, b.Door, b.Phone, b.Street, b.UserName, a.IsPrint, 
+                a.PayType, a.SFOperID, a.SFOperName, a.PayDate
+FROM      dbo.IoT_MeterTopUp AS a INNER JOIN
+                dbo.IoT_User AS b ON a.UserID = b.UserID AND a.CompanyID = b.CompanyID
+GO
+
+--增加报警默认参数表
+CREATE TABLE [dbo].[IoT_AlarmDefaultParam](
+	[RegisterDate] [datetime] NULL,
+	[SwitchTag] [char](16) NULL,
+	[Par1] [binary](1) NULL,
+	[Par2] [binary](1) NULL,
+	[Par3] [binary](1) NULL,
+	[Par4] [char](4) NULL,
+	[par5] [binary](1) NULL,
+	[Par6] [binary](1) NULL,
+	[Par7] [binary](1) NULL,
+	[Par8] [binary](1) NULL,
+	[Par9] [char](2) NULL,
+	[CompanyID] [char](4) NOT NULL,
+ CONSTRAINT [PK_IoT_AlarmDefaultParam_1] PRIMARY KEY CLUSTERED 
+(
+	[CompanyID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[IoT_AlarmDefaultParam] ADD  CONSTRAINT [DF_IoT_AlarmDefaultParam_RegisterDate]  DEFAULT (getdate()) FOR [RegisterDate]
 GO

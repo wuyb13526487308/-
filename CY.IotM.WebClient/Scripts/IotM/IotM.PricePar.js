@@ -7,6 +7,7 @@ IotM.PricePar.LoadDataGrid = function () {
         toolbar: '#tb',
         url: url,
         height: IotM.MainGridHeight,
+        pageSize:20,
         fitColumns: true,
         pagination: true,
         rownumbers: true,

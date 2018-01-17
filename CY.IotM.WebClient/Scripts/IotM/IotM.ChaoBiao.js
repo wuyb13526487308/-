@@ -16,6 +16,7 @@ IotM.ChaoBiao.LoadDataGrid = function () {
         toolbar: '#tb',
         url: url,
         height: IotM.MainGridHeight,
+        pageSize: 50,
         fitColumns: true,
         pagination: true,
         rownumbers: true,
