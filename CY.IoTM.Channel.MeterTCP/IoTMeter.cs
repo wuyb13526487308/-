@@ -147,7 +147,16 @@ namespace CY.IoTM.Channel.MeterTCP
             //处理接收到应答数据
             if (this._currentCommand != null)
             {
+                if (this._currentCommand.Command.Identification == "A013" && data.Control== 0xc4)
+                {
+                    
+                    this.meter.LastTopUpSer++;
+                    this._currentCommand.IsReSend = true;
+                    this._semaphore.Release();
+                    return;
+                }
                 this.meter.LastTopUpSer++;
+
                 this.tms.UpdateMeter(this.meter);
 
                 this._semaphore.Release();
@@ -320,6 +329,8 @@ namespace CY.IoTM.Channel.MeterTCP
                                     Log.getInstance().Write(new OneMeterDataLogMsg(this.MAC, "主站向表【" + this.MAC + "】发送指令：" + taskArge.Data.IdentityCode + " 控制码：" + ((byte)taskArge.ControlCode).ToString("X2") + "; 时间:" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")));
                                 }
                                 #endregion   其他命令 加密 传输
+                                
+
                                 if (!this._currentCommand.IsFinished && !_semaphore.WaitOne(SigeWaittingTime, false))
                                 {
                                     iTimes++;
@@ -344,6 +355,10 @@ namespace CY.IoTM.Channel.MeterTCP
                                         goto ReStart;
                                     }
                                 }
+                                if (this.IsReSend)
+                                {
+                                    goto ReStart;
+                                }
                             }
                             Thread.Sleep(100);
                             #endregion 发送命令
@@ -352,8 +367,7 @@ namespace CY.IoTM.Channel.MeterTCP
                                 task.TaskState = TaskState.Failed;
                                 break;
                             }
-                        }
-
+                        } 
                     }
                     //处理任务,只要有指令执行失败，本次任务不能完成。
                     if (task.TaskState != TaskState.Failed)
@@ -575,7 +589,7 @@ namespace CY.IoTM.Channel.MeterTCP
                 if (task.TaskType == TaskType.TaskType_点火)
                 {
                     this.meter.MeterState = "0";
-                    this.meter.TotalAmount = this._lastReportData.LJGas;
+                    //this.meter.TotalAmount = this._lastReportData.LJGas;
                 }
                 else if (task.TaskType == TaskType.TaskType_充值)
                 {

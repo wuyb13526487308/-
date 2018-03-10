@@ -400,7 +400,7 @@ namespace CY.IoTM.DataService.Business
             ReCalulate:
             decimal JieDuanYongQiLiang = ljGas - meter.LastGasPoint;
 
-            if (meter.NextSettlementPointGas != -1 && ljGas >= meter.NextSettlementPointGas)
+            if (meter.IsUsedLadder && meter.IsDianHuo && meter.Ladder >1 && meter.NextSettlementPointGas != -1 && ljGas >= meter.NextSettlementPointGas)
             {
                 //已到达阶梯结算点
                 JieDuanYongQiLiang = meter.NextSettlementPointGas - meter.LastGasPoint;

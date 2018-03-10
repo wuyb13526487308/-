@@ -30,7 +30,15 @@ namespace CY.IoTM.DataService.Business
                     meter = new CY.IoTM.MongoDataHelper.TaskManageDA().QueryMeter(mac);
                 }
             }
-
+            short ver = meter.LastTopUpSer;
+            Random rd = new Random();
+            int newVer = rd.Next(0, 255);
+            while(ver == newVer)
+            {
+                rd = new Random();
+                newVer = rd.Next(0, 255);
+            }
+            meter.LastTopUpSer = (byte)newVer;
             return meter;
         }
 

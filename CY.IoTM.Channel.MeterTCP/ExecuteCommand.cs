@@ -24,6 +24,8 @@ namespace CY.IoTM.Channel.MeterTCP
         {
             get { return this.isFinished; }
         }
+        private bool isReSend = false;
+
 
 
         public ExecuteCommand(Command cmd, Task task, ITaskManage iTaskManage)
@@ -42,6 +44,11 @@ namespace CY.IoTM.Channel.MeterTCP
             byte[] cmdData = strToToHexByte(_cmd.DataCommand);
             //重新编写指令序列号
             cmdData[2] = ser;
+
+            if (_cmd.Identification == "A013" && _cmd.ControlCode==0x04)
+            {
+                cmdData[3] = ser;
+            }
 
             DataItem item = null;
             switch ((ControlCode)_cmd.ControlCode)
@@ -85,6 +92,8 @@ namespace CY.IoTM.Channel.MeterTCP
 
         public Command Command { get { return this._cmd; } }
         public Task Task { get { return this._task; } }
+
+        public bool IsReSend { get => isReSend; set => isReSend = value; }
 
         /// <summary>
         /// 主站请求的创源读指令
