@@ -238,7 +238,7 @@
                                     <td>异常大流量:
                                     </td>
                                     <td>
-                                        <input class="easyui-numberbox" type="text" id="CNPar4" name="CNPar4" precision="2"  default="" />m³/h &nbsp;&nbsp;
+                                        <input class="easyui-numberbox" type="text" id="CNPar4" name="CNPar4" data-options="min:0,max:100,precision:2" default="" />m³/h &nbsp;&nbsp;
                                     </td>
 
 

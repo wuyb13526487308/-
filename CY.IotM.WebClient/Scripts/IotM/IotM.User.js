@@ -7,7 +7,7 @@ IotM.User.LoadDataGridView = function () {
         toolbar: '#tb',
         url: url,
         height: IotM.MainGridHeight,
-        fitColumns: true,
+        //fitColumns: true,
         pageSize:50,
         pagination: true,
         //rownumbers: true,
@@ -15,12 +15,14 @@ IotM.User.LoadDataGridView = function () {
         sort: "UserID",
         order: "ASC",
         columns: [
-                    [
-                     
-                     { field: 'UserID', title: '户号', rowspan: 2, width: IotM.MainGridWidth * 0.1, align: 'center', sortable: true },
-                     { field: 'UserName', title: '户名', rowspan: 2, width: IotM.MainGridWidth * 0.1, align: 'center', sortable: true },
-                     {
-                         field: 'State', title: '状态', rowspan: 2, width: IotM.MainGridWidth * 0.1, align: 'center', sortable: true,
+                    [                     
+                     { field: 'UserID', title: '户号', rowspan: 1, width: 100, align: 'center', sortable: true },
+                     { field: 'UserName', title: '户名', rowspan: 1, width: 100, align: 'center', sortable: true },
+                     { field: 'UserName1', title: '用户类型', rowspan: 1, width: 100, align: 'center', sortable: true },
+                     { field: 'UserName1', title: '联系人电话', rowspan: 1, width: 100, align: 'center', sortable: true },
+                     { field: 'UserName1', title: '身份证号', rowspan: 1, width: 120, align: 'center', sortable: true },
+                     { field: 'UserName1', title: '安装日期', rowspan: 1, width: 120, align: 'center', sortable: true },
+                     { field: 'State', title: '状态', rowspan: 1, width: 80, align: 'center', sortable: true,
                          formatter: function (value, rec, index) {
 
                              if (value == "0") { return "等待安装"; }
@@ -30,11 +32,10 @@ IotM.User.LoadDataGridView = function () {
 
                          }
                      },
-                     { field: 'Address', title: '地址', rowspan: 2, width: IotM.MainGridWidth * 0.3, align: 'center', sortable: true },
-                     { field: 'MeterNo', title: '表号', rowspan: 2, width: IotM.MainGridWidth * 0.2, align: 'center', sortable: true },
-                     {
-                         field: 'MeterType', title: '表类型', rowspan: 2, width: IotM.MainGridWidth * 0.1, align: 'center', sortable: true,
-
+                     { field: 'Address', title: '地址', rowspan: 1, width: 150, align: 'center', sortable: true },
+                     { field: 'MeterNo', title: '表号', rowspan: 1, width: 120, align: 'center', sortable: true },
+                     { field: 'UserName', title: '进气方向', rowspan: 1, width: 90, align: 'center', sortable: true },
+                     { field: 'MeterType', title: '表类型', rowspan: 1, width: 100, align: 'center', sortable: true,
                          formatter: function (value, rec, index) {
 
                              if (value == "00") { return "气量表"; }
@@ -43,9 +44,7 @@ IotM.User.LoadDataGridView = function () {
 
                          }
                      },
-                     {
-                         field: 'ValveState', title: '阀门状态', rowspan: 2, width: IotM.MainGridWidth * 0.1, align: 'center', sortable: true,
-
+                     { field: 'ValveState', title: '阀门状态', rowspan: 1, width: 80, align: 'center', sortable: true,
                              formatter: function (value, rec, index) {
                                  if (value == "0") { return "阀开"; }
                                  else if (value == "1") { return "阀关"; }
@@ -53,16 +52,16 @@ IotM.User.LoadDataGridView = function () {
 
                              }
                      },
-                     { field: 'TotalAmount', title: '总用量', rowspan: 2, width: IotM.MainGridWidth * 0.1, align: 'center', sortable: true },
-                     { field: 'TotalTopUp', title: '总充值金额', rowspan: 2, width: IotM.MainGridWidth * 0.1, align: 'center', sortable: true },
-                     {
-                         field: 'RemainingAmount', title: '剩余金额', rowspan: 2, width: IotM.MainGridWidth * 0.08, align: 'center', formatter: function (value, rec, index) {
+                     { field: 'TotalAmount', title: '总用量', rowspan: 1, width: 120, align: 'center', sortable: true },
+                     { field: 'TotalTopUp', title: '总充值金额', rowspan: 1, width: 100, align: 'center', sortable: true },
+                     { field: 'RemainingAmount', title: '剩余金额', rowspan: 1, width: 100, align: 'center', formatter: function (value, rec, index) {
                              return IotM.NumberFormat(rec.RemainingAmount, 2, '--');
                          }
                      },
-                     { field: 'ReadDate', title: '最后抄表日期', rowspan: 2, width: IotM.MainGridWidth * 0.12, align: 'center', sortable: true },
-                      {
-                          field: 'opt', title: '操作', rowspan: 2, width: IotM.MainGridWidth * 0.1, align: 'center',
+                     { field: 'UserName1', title: '备注', rowspan:1, width: 200, align: 'center', sortable: true },
+                     { field: 'ReadDate', title: '最后抄表日期', rowspan: 1, width: 120, align: 'center', sortable: true },
+                     {
+                          field: 'opt', title: '操作', rowspan: 1, width: 100, align: 'center',
                           formatter: function (value, rec, index) {
                               var a = '<a href="#" mce_href="#" menucode="bjyh" onclick="IotM.User.OpenformAlarmParm(this)"><span style="color:blue">报警参数</span></a> ';
                               var e = '<a href="#" mce_href="#" menucode="bjyh" onclick="IotM.User.OpenformEdit(this)"><span style="color:blue">编辑</span></a> ';

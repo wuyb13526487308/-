@@ -282,8 +282,8 @@ namespace CY.IoTM.Common
             byte[] buffer = new byte[2];
             if (bcd.Length < 4)
                 bcd = bcd.PadLeft(4, '0');
-            buffer[0] = BCD.S2B(bcd.Substring(0, 2));
-            buffer[1] = BCD.S2B(bcd.Substring(2, 2));
+            buffer[1] = BCD.S2B(bcd.Substring(0, 2));
+            buffer[0] = BCD.S2B(bcd.Substring(2, 2));
             StringBuilder sb = new StringBuilder();
             sb.Append(string.Format("{0:X2}.", buffer[1]));
             sb.Append(string.Format("{0:X2}", buffer[0]));

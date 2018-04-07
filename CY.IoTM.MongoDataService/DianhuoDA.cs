@@ -48,7 +48,7 @@ namespace CY.IoTM.MongoDataHelper
             CommandDA.Insert(cmd);
 
             //3.设置报警参数
-            DataItem_C103 item_C103 = new DataItem_C103(Convert.ToByte(new Random().Next(0, 255)), new WaringSwitchSign() { 长期未使用切断报警 = true,长期未与服务器通讯报警 = true,移动报警_地址震感器动作切断报警 = true,异常大流量切断报警=true});
+            DataItem_C103 item_C103 = new DataItem_C103(Convert.ToByte(new Random().Next(0, 255)), new WaringSwitchSign() { 长期未使用切断报警 = false,长期未与服务器通讯报警 = false,移动报警_地址震感器动作切断报警 = false,异常大流量切断报警=false});
             cmd = new Command();
             cmd.TaskID = task.TaskID;
             cmd.Identification = ((UInt16)item_C103.IdentityCode).ToString("X2");

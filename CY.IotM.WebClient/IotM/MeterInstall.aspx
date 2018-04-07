@@ -30,7 +30,7 @@
 
             IotM.Initiate.LoadGasDirectionComboBox('CNDirection', false, true);
             IotM.Initiate.LoadMeterTypeComboBox('CNMeterType', false, true);
-
+            $('#CNMeterType').combobox('setValue', '00');
 
             IotM.regvalidatebox("formAdd");
             $(window).resize(function () {

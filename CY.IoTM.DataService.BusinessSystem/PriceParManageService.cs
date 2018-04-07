@@ -99,7 +99,11 @@ namespace CY.IoTM.DataService.Business
                 int iCount =  dd.ExecuteQuery<int>(checkSQL, param).Single<int>();
                 if (iCount > 0)
                     throw new Exception("价格类型已被使用，不能删除");
-
+                //检查是否被调价计划试用
+                checkSQL = $"Select count(*) from IoT_Pricing where PriceType={info.ID}";
+                iCount = dd.ExecuteQuery<int>(checkSQL, param).Single<int>();
+                if (iCount > 0)
+                    throw new Exception("价格类型已被调价计划使用，不能删除");
                 // 获得上下文对象中的表信息
                 Table<IoT_PricePar> tbl = dd.GetTable<IoT_PricePar>();
                 var s = tbl.Where(p => p.CompanyID == info.CompanyID && p.ID == info.ID).Single();

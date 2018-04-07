@@ -39,6 +39,15 @@ IotM.DianHuo.loadDataGrid = function () {
                         { field: 'Address', title: '地址', rowspan: 2, width: IotM.MainGridWidth * 0.4, align: 'center', sortable: true },
                         { field: 'InstallDate', title: '安装日期', rowspan: 2, width: IotM.MainGridWidth * 0.15, align: 'center', sortable: true },
                         { field: 'MeterNo', title: '表号', rowspan: 2, width: IotM.MainGridWidth * 0.15, align: 'center', sortable: true },
+                        {
+                            field: 'MeterType', title: '表类型', rowspan: 2, width: IotM.MainGridWidth * 0.15, align: 'center', sortable: true,
+                            formatter: function (value, rec, index) {
+
+                                if (value == "00") { return "气量表"; }
+                                else { return "金额表"; }
+
+                            }
+                        },
                         { field: 'EnableMeterOper', title: '参与人员', rowspan: 2, width: IotM.MainGridWidth * 0.1, align: 'center', sortable: true },
                         {
                             field: 'opt', title: '操作', rowspan: 2, width: IotM.MainGridWidth * 0.1, align: 'center',
@@ -125,6 +134,7 @@ IotM.DianHuo.OpenformEdit = function () {
             strName += rows[i].UserName + ",";
         }
     }
+    $('#CNMeterType').combobox('setValue', rows[0].MeterType);
     //给按钮注册单击事件
     $('#btnCancel').unbind('click').bind('click', function () { $('#wAdd').window('close'); });
     $('#btnOk').unbind('click').bind('click', function () { IotM.DianHuo.Registration(); });
@@ -168,9 +178,13 @@ IotM.DianHuo.Registration = function () {
     var strNo = "";
     var strName = "";
     var data = {};
+    data.MType = $('#CNMeterType').combobox('getValue');        //点火用户表类型
+    var meterTypeChange = false;
     var rows = $('#dataGrid').datagrid('getSelections');//获取选中行的数据
     for (var i = 0; i < rows.length; i++) {//循环将需要点火的用户串接起来
         var index = $('#dataGrid').datagrid('getRowIndex', rows[i]);
+        if (data.MType != rows[i].MeterType)
+            meterTypeChange = true;
         if (i == rows.length - 1) {
             strUserID += rows[i].UserID;
             strNo += rows[i].MeterNo;
@@ -189,26 +203,52 @@ IotM.DianHuo.Registration = function () {
     data.strNo = strNo;     
     data.UserID = strUserID;                                      //点火用户ID
     data.strName = strName;                                     //点火用户姓名
-    data.MType = $('#CNMeterType').combobox('getValue');        //点火用户表类型
+
     data.PriceType = $('#CNPriceType').combobox('getValue');    //点火用户价格类型
     data.EnableDate = $('#CNInstallDate').datebox('getValue');; //点火用户
     data.EnableOper = $("#Description").val();                  //参与人员
 
-    $.post("../Handler/DianHuoHandler.ashx?AType=REGISTRATION",
-             data,
-              function (data, textStatus) {
-                  if (textStatus == 'success') {
-                      if (data.Result) {
-                          $.messager.alert('提示', '操作成功！', 'info', function () {
-                              $('#wAdd').window('close');
-                              $('#dataGrid').datagrid('reload');
-                          });
-                      }
-                      else
-                          $.messager.alert('警告', data.TxtMessage, 'warn');
+    if (meterTypeChange) {
+        $.messager.confirm('Confirm', '点火选择的表类型和安装时表类型不一致，是否继续点火?', function (r) {
+            if (r) {
+                $.post("../Handler/DianHuoHandler.ashx?AType=REGISTRATION",
+                    data,
+                    function (data, textStatus) {
+                        if (textStatus == 'success') {
+                            if (data.Result) {
+                                $.messager.alert('提示', '操作成功！', 'info', function () {
+                                    $('#wAdd').window('close');
+                                    $('#dataGrid').datagrid('reload');
+                                });
+                            }
+                            else
+                                $.messager.alert('警告', data.TxtMessage, 'warn');
 
-                  }
-              }, "json");
+                        }
+                    }, "json");
+            }
+        });
+    } else {
+        $.post("../Handler/DianHuoHandler.ashx?AType=REGISTRATION",
+            data,
+            function (data, textStatus) {
+                if (textStatus == 'success') {
+                    if (data.Result) {
+                        $.messager.alert('提示', '操作成功！', 'info', function () {
+                            $('#wAdd').window('close');
+                            $('#dataGrid').datagrid('reload');
+                        });
+                    }
+                    else
+                        $.messager.alert('警告', data.TxtMessage, 'warn');
+
+                }
+            }, "json");
+    }
+
+
+
+
 };
 /************************************
 *方法名称：IotM.DianHuo.btnRevoke 

@@ -415,6 +415,12 @@ IotM.SetAlarm.AddClick = function () {
                 strNo += rows[i].MeterNo + ",";
             }
         }
+
+        var switch3 = $('#switch3').prop('checked');
+        if (switch3 && data.Par4===''){
+            $.messager.alert('警告', '请输入异常大流量', 'warn');
+            return;
+        }
         data.strNo = strNo;
 
         data.Scope = IotM.SetAlarm.Scope;
