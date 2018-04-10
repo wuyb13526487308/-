@@ -216,6 +216,27 @@ namespace CY.IoTM.DataService.Business
                 dbinfo.Community = info.Community;
                 dbinfo.Door = info.Door;
                 dbinfo.Address = info.Address;
+                dbinfo.Phone = info.Phone;
+                dbinfo.LD = info.LD;
+                dbinfo.DY = info.DY;
+                dbinfo.BGL = info.BGL;
+                dbinfo.BWGCD = info.BWGCD;
+                dbinfo.YGBX = info.YGBX;
+                dbinfo.BXGMRQ = info.BXGMRQ;
+                dbinfo.BXGMRSFZ = info.BXGMRSFZ;
+                dbinfo.BXYXQ = info.BXYXQ;
+                dbinfo.BZCZYBH = info.BZCZYBH;
+                dbinfo.BZFY = info.BZFY;
+                dbinfo.BZRQ = info.BZRQ;
+                dbinfo.FYQHTR = info.FYQHTR;
+                dbinfo.QYQHTR = info.QYQHTR;
+                dbinfo.SFZH = info.SFZH;
+                dbinfo.SYBWG = info.SYBWG;
+                dbinfo.UserType = info.UserType;
+                dbinfo.ZS = info.ZS;
+                dbinfo.YQHTQD = info.YQHTQD;
+                dbinfo.YQHTQDRQ = info.YQHTQDRQ;
+                dbinfo.YQHTBH = info.YQHTBH;
 
                 IoT_Meter dbMeterinfo = dd.GetTable<IoT_Meter>().Where(p =>
                  p.CompanyID == info.CompanyID && p.UserID == info.UserID).SingleOrDefault();
@@ -223,6 +244,19 @@ namespace CY.IoTM.DataService.Business
                 if (dbMeterinfo.MeterNo.Trim() != info.MeterNo.Trim()) {
                     UpadteMeterNo(dbMeterinfo.MeterNo, info.MeterNo);
                 }
+                dbMeterinfo.FDKH1 = info.FDKH1;
+                dbMeterinfo.FDKH2 = info.FDKH2;
+                dbMeterinfo.InstallDate = info.InstallDate;
+                dbMeterinfo.Installer = info.Installer;
+                dbMeterinfo.InstallPlace = info.InstallPlace;
+                dbMeterinfo.InstallType = info.InstallType;
+                dbMeterinfo.IotPhone = info.IotPhone;
+                dbMeterinfo.MeterRange = info.MeterRange;
+                dbMeterinfo.Direction = info.Direction;
+                dbMeterinfo.MeterModel = info.MeterModel;
+
+
+
 
                 // 更新操作
                 dd.SubmitChanges();
@@ -556,18 +590,24 @@ namespace CY.IoTM.DataService.Business
                     CompanyID = dbInfo.CompanyID,
                     Address = dbInfo.Address,
                     Phone = dbInfo.Phone,
+                    UserType = dbInfo.UserType,
                     State='1'
 
                 };
+                bool result = DateTime.TryParse(dbInfo.InstallDate, out DateTime installDate);
                 IoT_Meter meter = new IoT_Meter()
                 {
                     MeterNo = dbInfo.MeterNo,
                     TotalAmount = dbInfo.MeterNum,
+                    InstallType = dbInfo.InstallType,
+                    Direction = dbInfo.Direction,
+                    InstallDate = result ? installDate : DateTime.Now,
                     CompanyID = dbInfo.CompanyID
                 };
 
                 m = BatchAddUserMeter(user, meter);
-
+                tbl.DeleteOnSubmit(dbInfo);
+                dd.SubmitChanges();
             }
             catch (Exception e)
             {

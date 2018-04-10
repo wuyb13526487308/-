@@ -34,6 +34,15 @@
     [EnableMeterOper] VARCHAR(200) NULL,
     [UploadCycle]     CHAR (8)        DEFAULT ((1012359)) NULL,
     [PriceID]         INT             NULL,
+    [MeterModel] NVARCHAR(50) NULL, 
+    [MeterRange] NVARCHAR(50) NULL, 
+    [Installer] NVARCHAR(50) NULL, 
+    [IotPhone] NVARCHAR(50) NULL, 
+    [InstallType] NVARCHAR(50) NULL, 
+    [InstallPlace] NVARCHAR(50) NULL, 
+    [FDKH1] NCHAR(10) NULL, 
+    [FDKH2] NCHAR(10) NULL, 
+    [InstallFDK] BIT NULL, 
     CONSTRAINT [PK_IoT_Meter] PRIMARY KEY CLUSTERED ([MeterNo] ASC)
 );
 

@@ -9,6 +9,10 @@
     [Address]   VARCHAR (100)   NULL,
     [MeterNo]   CHAR (20)       NOT NULL,
     [MeterNum]  DECIMAL (10, 2) NULL,
+    [Direction] NVARCHAR(50) NULL, 
+    [InstallType] NVARCHAR(50) NULL, 
+    [UserType] NVARCHAR(50) NULL, 
+    [InstallDate] VARCHAR(50) NULL, 
     CONSTRAINT [PK_IoT_UserTemp] PRIMARY KEY CLUSTERED ([MeterNo] ASC)
 );
 

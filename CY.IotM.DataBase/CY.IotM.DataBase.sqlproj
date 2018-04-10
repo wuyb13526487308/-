@@ -162,8 +162,13 @@
     <Build Include="dbo\Views\View_UserInfoADDC.sql" />
     <Build Include="dbo\Tables\Iot_MeterAlarmPara.sql" />
     <Build Include="dbo\Views\View_MeterTopUp.sql" />
+    <Build Include="dbo\Tables\IoT_Building.sql" />
+    <Build Include="dbo\Tables\IoT_Cell.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Script\CompanyRight.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="CY.IotM.DataBase.refactorlog" />
   </ItemGroup>
 </Project>

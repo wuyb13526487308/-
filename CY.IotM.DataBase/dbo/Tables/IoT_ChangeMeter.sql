@@ -13,6 +13,8 @@
     [NewMeterNo]      CHAR (20)       NULL,
     [FinishedDate]    DATETIME        NULL,
     [TaskID] VARCHAR(50) NULL, 
+    [Direction] NVARCHAR(50) NULL, 
+    [Changer] NVARCHAR(50) NULL, 
     CONSTRAINT [PK_IoT_ChangeMeter] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
 

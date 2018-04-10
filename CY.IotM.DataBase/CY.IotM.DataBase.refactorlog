@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="09309e46-3bf9-4b7f-9cfa-304f05a58152" ChangeDateTime="04/07/2018 02:22:25">
+    <Property Name="ElementName" Value="[dbo].[IoT_Meter].[Meter]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[IoT_Meter]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MeterRange" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b8ec3537-524b-4769-bf70-e679a17eb582" ChangeDateTime="04/10/2018 01:14:48">
+    <Property Name="ElementName" Value="[dbo].[IoT_Building].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[IoT_Building]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CompanyId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="aa9e94cb-0c57-46e1-817e-0989007f08b0" ChangeDateTime="04/10/2018 01:15:15">
+    <Property Name="ElementName" Value="[dbo].[IoT_Building].[CompanyId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[IoT_Building]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Id" />
+  </Operation>
+</Operations>

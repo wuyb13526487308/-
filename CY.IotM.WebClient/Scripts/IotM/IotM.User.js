@@ -15,13 +15,23 @@ IotM.User.LoadDataGridView = function () {
         sort: "UserID",
         order: "ASC",
         columns: [
-                    [                     
+                 [                     
                      { field: 'UserID', title: '户号', rowspan: 1, width: 100, align: 'center', sortable: true },
                      { field: 'UserName', title: '户名', rowspan: 1, width: 100, align: 'center', sortable: true },
-                     { field: 'UserName1', title: '用户类型', rowspan: 1, width: 100, align: 'center', sortable: true },
-                     { field: 'UserName1', title: '联系人电话', rowspan: 1, width: 100, align: 'center', sortable: true },
-                     { field: 'UserName1', title: '身份证号', rowspan: 1, width: 120, align: 'center', sortable: true },
-                     { field: 'UserName1', title: '安装日期', rowspan: 1, width: 120, align: 'center', sortable: true },
+                    {
+                    field: 'UserType', title: '用户类型', rowspan: 1, width: 60, align: 'center', sortable: true,
+                    formatter: function (value, rec, index) {
+
+                        if (value == "0") { return "居民"; }
+                        else if (value == "1") { return "工商业"; }             
+                        else { return "-"; }
+
+                    }},
+                    { field: 'Phone', title: '联系人电话', rowspan: 1, width: 100, align: 'center', sortable: true },
+                    { field: 'SFZH', title: '身份证号', rowspan: 1, width: 120, align: 'center', sortable: true },
+                    { field: 'BZRQ', title: '报装日期', rowspan: 1, width: 100, align: 'center', sortable: true },
+                
+
                      { field: 'State', title: '状态', rowspan: 1, width: 80, align: 'center', sortable: true,
                          formatter: function (value, rec, index) {
 
@@ -32,10 +42,11 @@ IotM.User.LoadDataGridView = function () {
 
                          }
                      },
-                     { field: 'Address', title: '地址', rowspan: 1, width: 150, align: 'center', sortable: true },
-                     { field: 'MeterNo', title: '表号', rowspan: 1, width: 120, align: 'center', sortable: true },
-                     { field: 'UserName', title: '进气方向', rowspan: 1, width: 90, align: 'center', sortable: true },
-                     { field: 'MeterType', title: '表类型', rowspan: 1, width: 100, align: 'center', sortable: true,
+                    { field: 'Address', title: '地址', rowspan: 1, width: 150, align: 'center', sortable: true },
+                    { field: 'MeterNo', title: '表号', rowspan: 1, width: 120, align: 'center', sortable: true },
+                    { field: 'IotPhone', title: '物联网卡', rowspan: 1, width: 120, align: 'center', sortable: true },
+                    { field: 'Direction', title: '进气方向', rowspan: 1, width: 60, align: 'center', sortable: true },
+                    { field: 'MeterType', title: '表类型', rowspan: 1, width: 90, align: 'center', sortable: true,
                          formatter: function (value, rec, index) {
 
                              if (value == "00") { return "气量表"; }
@@ -43,7 +54,10 @@ IotM.User.LoadDataGridView = function () {
                              else { return "未知"; }
 
                          }
-                     },
+                    },
+                    { field: 'InstallType', title: '安装类型', rowspan: 1, width: 60, align: 'center', sortable: true },
+                    { field: 'InstallDate', title: '安装日期', rowspan: 1, width: 100, align: 'center', sortable: true },
+                    { field: 'FDKH1', title: '防盗卡号', rowspan: 1, width: 100, align: 'center', sortable: true },
                      { field: 'ValveState', title: '阀门状态', rowspan: 1, width: 80, align: 'center', sortable: true,
                              formatter: function (value, rec, index) {
                                  if (value == "0") { return "阀开"; }
@@ -56,12 +70,51 @@ IotM.User.LoadDataGridView = function () {
                      { field: 'TotalTopUp', title: '总充值金额', rowspan: 1, width: 100, align: 'center', sortable: true },
                      { field: 'RemainingAmount', title: '剩余金额', rowspan: 1, width: 100, align: 'center', formatter: function (value, rec, index) {
                              return IotM.NumberFormat(rec.RemainingAmount, 2, '--');
-                         }
-                     },
-                     { field: 'UserName1', title: '备注', rowspan:1, width: 200, align: 'center', sortable: true },
-                     { field: 'ReadDate', title: '最后抄表日期', rowspan: 1, width: 120, align: 'center', sortable: true },
+                }
+                },
+
+                { field: 'ReadDate', title: '最后抄表日期', rowspan: 1, width: 120, align: 'center', sortable: true },
+                {
+                    field: 'BGL', title: '壁挂炉用户', rowspan: 1, width: 60, align: 'center', sortable: true,
+                    formatter: function (value, rec, index) {
+
+                        if (value) { return "是"; }
+                        else { return ""; }
+
+                    } },
+                {
+                    field: 'ZS', title: '自烧用户', rowspan: 1, width: 60, align: 'center', sortable: true,
+                    formatter: function (value, rec, index) {
+
+                        if (value) { return "是"; }
+                        else { return ""; }
+
+                    } },
+                {
+                    field: 'YGBX', title: '购买保险', rowspan: 1, width: 60, align: 'center', sortable: true,
+                    formatter: function (value, rec, index) {
+
+                        if (value) { return "是"; }
+                        else { return ""; }
+
+                    }},
+                { field: 'BXGMRQ', title: '购买日期', rowspan: 1, width: 60, align: 'center', sortable: true },
+                { field: 'BXYXQ', title: '保险有效期', rowspan: 1, width: 60, align: 'center', sortable: true },
+                {
+                    field: 'YQHTQD', title: '签用气合同', rowspan: 1, width: 60, align: 'center', sortable: true,
+                    formatter: function (value, rec, index) {
+
+                        if (value) { return "是"; }
+                        else { return ""; }
+
+                    }},
+                { field: 'YQHTQDRQ', title: '签约日期', rowspan: 1, width: 60, align: 'center', sortable: true },
+                { field: 'YQHTBH', title: '合同编号', rowspan: 1, width: 60, align: 'center', sortable: true },
+                { field: 'FYQHTR', title: '签发人', rowspan: 1, width: 60, align: 'center', sortable: true },
+                { field: 'QYQHTR', title: '签合同人', rowspan: 1, width: 60, align: 'center', sortable: true },
+
                      {
-                          field: 'opt', title: '操作', rowspan: 1, width: 100, align: 'center',
+                          field: 'opt', title: '操作', rowspan: 1, width: 120, align: 'center',
                           formatter: function (value, rec, index) {
                               var a = '<a href="#" mce_href="#" menucode="bjyh" onclick="IotM.User.OpenformAlarmParm(this)"><span style="color:blue">报警参数</span></a> ';
                               var e = '<a href="#" mce_href="#" menucode="bjyh" onclick="IotM.User.OpenformEdit(this)"><span style="color:blue">编辑</span></a> ';
@@ -230,7 +283,7 @@ IotM.User.OpenformAdd = function () {
   
     $('#wAdd').window({
         resizable: false,
-        width: IotM.MainGridWidth * 0.4,
+        width: 600,// IotM.MainGridWidth * 0.5,
         title: '创建用户',
         modal: true,
         shadow: true,
@@ -349,7 +402,7 @@ IotM.User.OpenformEdit = function (obj) {
    
     $('#wAdd').window({
         resizable: false,
-        width: IotM.MainGridWidth * 0.4,
+        width: 635,// IotM.MainGridWidth * 0.4,
         title: '编辑用户',
         modal: true,
         shadow: true,
@@ -528,10 +581,7 @@ IotM.User.OpenformDeleteUser = function () {
         closed: false,
         collapsible: false,
         minimizable: false,
-        maximizable: false,
-        left: 100,
-        top:100
-       
+        maximizable: false       
     });
 };
 
@@ -643,9 +693,7 @@ IotM.User.OpenformBatchAdd = function () {
         closed: false,
         collapsible: false,
         minimizable: false,
-        maximizable: false,
-        left: 100,
-        top: 100
+        maximizable: false
         
     });
 }
@@ -877,6 +925,7 @@ IotM.User.OpenExcelAdd = function () {
 
     //IotM.User.InitUploadFile();
 
+
     $('#importImg').window({
         resizable: false,
         width: IotM.MainGridWidth * 0.4,
@@ -949,6 +998,7 @@ IotM.User.DownTemplateClick = function () {
 
 
 
+
 //文件导入
 IotM.User.UploadClick = function () {
     var fd = new FormData();
@@ -965,12 +1015,12 @@ IotM.User.UploadClick = function () {
             if (tResult.Result) {
 
                 IotM.User.NextExcelAdd();
-
+                IotM.User.ChongFuMeter(eval('(' + tResult.TxtMessage + ')'));
             }
             else {
                 $.messager.alert('警告', tResult.TxtMessage, 'warn');
             }
-            alert(d);
+            //alert(d);
             console.log(d);
         }
     });
@@ -989,27 +1039,75 @@ IotM.User.NextExcelAdd = function () {
     $('#btnCancel_Importr').unbind('click').bind('click', function () { $('#importImgStep').window('close'); });
 
 
+    $('#tabs').tabs({
+        width: IotM.MainGridWidth * 0.7-35,
+        onSelect: function (title) {
+        }
+    });
+
     $('#importImg').window('close');
 
     IotM.User.LoadUserTempGrid();
-
-    $('#importImgStep').window({
-        resizable: false,
+   
+    $('#importImgStep').dialog({
         width: IotM.MainGridWidth * 0.7,
+        height: 600,
         title: '选择导入用户',
         modal: true,
         shadow: true,
         closed: false,
         collapsible: false,
         minimizable: false,
-        maximizable: false,
-        left: 100,
-        top: 100
+        maximizable: false
 
     });
 
 }
 
+IotM.User.ChongFuMeter = function(data){
+    $('#dg_cf').datagrid({
+        title: '',
+        data: data,
+        height: IotM.MainGridHeight * 0.7,
+        pageSize: 50,
+        fitColumns: true,
+        pagination: true,
+        rownumbers: true,
+        singleSelect: false,
+        sort: "MeterNo",
+        order: "ASC",
+        columns: [
+            [
+
+                { field: 'UserID', title: '户号', rowspan: 2, width: IotM.MainGridWidth * 0.15, align: 'center', sortable: true },
+                { field: 'UserName', title: '户名', rowspan: 2, width: IotM.MainGridWidth * 0.15, align: 'center', sortable: true },
+                { field: 'Street', title: '街道', rowspan: 2, width: IotM.MainGridWidth * 0.15, align: 'center', sortable: true },
+                { field: 'Community', title: '小区', rowspan: 2, width: IotM.MainGridWidth * 0.15, align: 'center', sortable: true },
+                { field: 'Address', title: '地址', rowspan: 2, width: IotM.MainGridWidth * 0.5, align: 'center', sortable: true },
+                { field: 'MeterNo', title: '表号', rowspan: 2, width: IotM.MainGridWidth * 0.2, align: 'center', sortable: true },
+                { field: 'MeterNum', title: '表底', rowspan: 2, width: IotM.MainGridWidth * 0.1, align: 'center', sortable: true }
+
+            ]
+
+        ],
+        queryParams: { TWhere: '' },
+        onLoadSuccess: function () { IotM.CheckMenuCode(); },
+        onBeforeLoad: function (param) {
+            var p = $('#dg_cf').datagrid('getPager');
+            $(p).pagination({
+                pageSize: parseInt($('.pagination-page-list').first().val()), //每页显示的记录条数，默认为10 
+                pageList: IotM.pageList, //可以设置每页记录条数的列表 
+                beforePageText: '第', //页数文本框前显示的汉字 
+                afterPageText: '页    共 {pages} 页',
+                displayMsg: '当前显示 {from} - {to} 条记录   共 {total} 条记录',
+                onBeforeRefresh: function () {
+                    $(this).pagination('loading');
+                    $(this).pagination('loaded');
+                }
+            });
+        }
+    });
+}
 
 IotM.User.LoadUserTempGrid = function () {
 
@@ -1017,7 +1115,8 @@ IotM.User.LoadUserTempGrid = function () {
     $('#dataGrid_Import').datagrid({
         title: '',
         url: url,
-        height: IotM.MainGridHeight * 0.5,
+        height: IotM.MainGridHeight * 0.7,
+        pageSize:50,
         fitColumns: true,
         pagination: true,
         rownumbers: true,

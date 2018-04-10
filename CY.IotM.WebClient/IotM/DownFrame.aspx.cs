@@ -27,7 +27,7 @@ namespace CY.IotM.WebClient
 
                 if (Directory.Exists(physicNewFilePath))
                 {
-                    string rarName = physicNewFilePath + "物联网表用户导入模板" + ".xlsx";
+                    string rarName = physicNewFilePath + "template" + ".xls";
                     //如果文件存在
                     if (File.Exists(rarName))
                     {
@@ -37,7 +37,7 @@ namespace CY.IotM.WebClient
                         Response.Charset = "GB2312";
                         Response.ContentEncoding = System.Text.Encoding.UTF8;
                         // 添加头信息，为"文件下载/另存为"对话框指定默认文件名
-                        Response.AddHeader("Content-Disposition", "attachment; filename=物联网表用户导入模板.xlsx");
+                        Response.AddHeader("Content-Disposition", "attachment; filename=template.xls");
                         // 添加头信息，指定文件大小，让浏览器能够显示下载进度
                         Response.AddHeader("Content-Length", file.Length.ToString());
                         // 指定返回的是一个不能被客户端读取的流，必须被下载

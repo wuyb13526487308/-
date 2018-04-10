@@ -39,17 +39,17 @@
 
             IotM.Initiate.LoadStreetComboBox('CNStreet', false, true);
             $('#CNStreet').combobox(
-            {
-                onSelect: function (rec) {
-                    IotM.Initiate.LoadCommunityComboBox('CNCommunity', false, true, rec.ID);
-                    IotM.User.AdressChange();
-                }
-            });
+                {
+                    onSelect: function (rec) {
+                        IotM.Initiate.LoadCommunityComboBox('CNCommunity', false, true, rec.ID);
+                        IotM.User.AdressChange();
+                    }
+                });
             IotM.Initiate.LoadCommunityComboBox('CNCommunity', false, true, $('#CNStreet').combobox("getValue"));
             $('#CNCommunity').combobox(
-            {
-                onSelect: function (rec) { IotM.User.AdressChange(); }
-            });
+                {
+                    onSelect: function (rec) { IotM.User.AdressChange(); }
+                });
 
 
         });
@@ -75,74 +75,238 @@
         <div id="wAdd" class="easyui-window" data-options="modal:true,closed:true,iconCls:'icon-add'"
             style="padding: 10px; width: auto">
             <form id='formAdd'>
+                <div class="easyui-tabs" style="width: 600px; height: 360px">
+                    <div title="用户信息" style="padding: 10px">
+                        <table style="border-spacing: 10px;">
+                            <tr>
+                                <td>户号:</td>
+                                <td>
+                                    <input type="hidden" name="CNCompanyID" default="" />
+                                    <input type="hidden" name="CNState" default="0" />
+                                    <input class="easyui-validatebox" type="text" name="CNUserID" default="" disabled="disabled" />
+                                </td>
+                                <td>户名:</td>
+                                <td>
+                                    <input class="easyui-validatebox" type="text" name="CNUserName" default="" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>用户类型:</td>
+                                <td>
+                                    <select class="easyui-combobox" name="CNUserType" id="CNUserType" style="width: 180px;">
+                                        <option value="0" selected>居民</option>
+                                        <option value="1">非居民</option>
+                                    </select>
+                                </td>
+                                <td>证号:</td>
+                                <td>
+                                    <input class="easyui-validatebox" type="text" name="CNSFZH" default="" style="width: 100%;" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>电话:</td>
+                                <td colspan="3">
+                                    <input class="easyui-validatebox" type="text" name="CNPhone" id="CNPhone" default="" onchange="IotM.User.AdressChange()" style="width: 100%" />
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>道路:</td>
+                                <td colspan="1">
+                                    <input class="easyui-combobox" type="text" name="CNStreet" id="CNStreet" default="" style="width: 180px;" />
+                                </td>
+                                <td>小区:</td>
+
+                                <td colspan="1">
+                                    <input class="easyui-combobox" type="text" name="CNCommunity" id="CNCommunity" default="" style="width: 210px;" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>楼栋:</td>
+
+                                <td colspan="1">
+                                    <input class="easyui-combobox" type="text" name="CNLD" id="CNLD" default="" style="width: 180px;" />
+                                </td>
+                                <td>单元:</td>
+                                <td colspan="1">
+                                    <input class="easyui-combobox" type="text" name="CNDY" id="CNDY" default="" style="width: 210px" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>门牌号:</td>
+                                <td colspan="3">
+                                    <input class="easyui-validatebox" type="text" name="CNDoor" id="CNDoor" default="" onchange="IotM.User.AdressChange()" style="width: 100%" />
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td>地址:</td>
+                                <td colspan="3">
+                                    <input class="easyui-validatebox" id="CNAddress" type="text" name="CNAddress" style="width: 100%" disabled="disabled" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>报装日期:</td>
+
+                                <td colspan="1">
+                                    <input class="easyui-validatebox" type="text" name="CNBZRQ" id="CNBZRQ" style="width: 180px" />
+                                </td>
+                                <td>报装费:</td>
+                                <td colspan="1">
+                                    <input class="easyui-validatebox" type="text" name="CNBZFY" id="CNBZFY" style="width: 60px" />
+                                    <input type="checkbox" id="CNYJBZFY" name="CNYJBZFY" />已交
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td colspan="3">
+                                    <input type="checkbox" name="CNBGL" />壁挂炉用户
+                            <input type="checkbox" name="CNZS" />自烧用户  </td>
+
+                            </tr>
+
+
+
+
+
+                            <tr>
+                            </tr>
+
+                        </table>
+                    </div>
+                    <div title="燃气表信息" style="padding: 10px">
+                        <table style="border-spacing: 10px;">
+                            <tr>
+
+                                <tr>
+                                    <td>表号:</td>
+                                    <td>
+
+                                        <input class="easyui-validatebox" type="text" id="CNMeterNo" name="CNMeterNo" validtype="regNumLength[14,14]" default="" />
+                                    </td>
+                                    <td>表读数:</td>
+                                    <td>
+                                        <input class="easyui-validatebox" type="text" name="CNTotalAmount" default="" disabled="disabled" />
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+                                    <td>表量程:</td>
+                                    <td>
+
+                                        <input class="easyui-validatebox" id="CNMeterRange" type="text" name="CNMeterRange" default="" />
+                                    </td>
+                                    <td>物联网卡</td>
+                                    <td>
+                                        <input class="easyui-validatebox" type="text" id="CNIotPhone" name="CNIotPhone" default="" />
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>安装日期</td>
+                                    <td>
+
+                                        <input class="easyui-datebox" data-options="formatter:IotM.MyDateformatter,parser:IotM.MyDateparser"
+                                            id="CNInstallDate" name="CNInstallDate" style="width: 108px" />
+
+                                    </td>
+                                    <td>安装人：</td>
+                                    <td>
+                                        <input class="easyui-validatebox" type="text" id="CNInstaller" name="CNInstaller" default="" /></td>
+
+                                </tr>
+
+                                <tr>
+                                    <td>安装类型:</td>
+                                    <td>
+                                        <select class="easyui-combobox" name="CNInstallType" id="CNInstallType" style="width: 120px;">
+                                            <option value="户内" selected>户内</option>
+                                            <option value="户外">户外</option>
+                                        </select>
+                                    </td>
+                                    <td>安装位置</td>
+                                    <td>
+                                        <input class="easyui-validatebox" type="text" id="CNInstallPlace" name="CNInstallPlace" default="" />
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>防盗卡号：</td>
+                                    <td>
+                                        <input class="easyui-validatebox" type="text" id="CNFDKH1" name="CNFDKH1" default="" /></td>
+                                    <td></td>
+                                </tr>                            
+
+                        </table>
+                    </div>
+
+                    <div title="用气合同及保险信息" style="padding: 10px">
+                        <table style="border-spacing: 10px;">
+                            <tr>
+                                <tr>
+                                    <td>用气合同:</td>
+                                    <td colspan="3">
+                                        <table>
+                                            <tr>
+                                                <td style="width: 60px">
+                                                    <input type="checkbox" name="CNYQHTQD" />已签约</td>
+                                                <td>
+                                                    <div>
+                                                        合同编号:<input class="easyui-validatebox" type="text" name="CNYQHTBH" id="CNYQHTBH" style="width: 80px" />
+                                                        签约日期:<input class="easyui-datebox" type="text" name="CNYQHTQDRQ" id="CNYQHTQDRQ" style="width: 80px" />
+                                                    </div>
+                                                    <br />
+                                                    <div>
+                                                        签约人：<input class="easyui-validatebox" type="text" name="CNQYQHTR" id="CNQYQHTR" style="width: 80px" />
+                                                        发放人：<input class="easyui-validatebox" type="text" name="CNFYQHTR" id="CNFYQHTR" style="width: 80px" />
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>购买保险:</td>
+                                    <td colspan="3">
+                                        <table>
+                                            <tr>
+                                                <td style="width: 60px">
+                                                    <input type="checkbox" name="CNYGBX" id="CNYGBX" />购买</td>
+                                                <td>
+                                                    <div>
+                                                        购买日期:<input class="easyui-datebox" type="text" name="CNBXGMRQ" id="CNBXGMRQ" style="width: 80px" />
+                                                        有效期:<input class="easyui-validatebox" type="text" name="CNBXYXQ" id="CNBXYXQ" style="width: 80px" />
+                                                    </div>
+                                                    <br />
+                                                    <div>
+                                                        购保人身份证号：<input class="easyui-validatebox" type="text" name="CNBXGMRSFZ" id="CNBXGMRSFZ" style="width: 220px" />
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </td>
+                                </tr>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+
 
                 <table style="border-spacing: 10px;">
                     <tr>
-                        <td>户号:</td>
-                        <td>
-                            <input type="hidden" name="CNCompanyID" default="" />
-                            <input type="hidden" name="CNState" default="0" />
-                            <input class="easyui-validatebox" type="text" name="CNUserID" default="" disabled="disabled" />
-                        </td>
-                        <td>户名:</td>
-                        <td>
-                            <input class="easyui-validatebox" type="text" name="CNUserName" default="" />
-                        </td>
-
-                    </tr>
-
-                    <tr>
-                        <td>道路:</td>
-                        <td colspan="3">
-                            <input class="easyui-combobox" type="text" name="CNStreet" id="CNStreet" default="" style="width: 320px" />
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>小区:</td>
-
-                        <td colspan="3">
-                            <input class="easyui-combobox" type="text" name="CNCommunity" id="CNCommunity" default="" style="width: 320px" />
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>门牌号:</td>
-                        <td colspan="3">
-                            <input class="easyui-validatebox" type="text" name="CNDoor" id="CNDoor" default="" onchange="IotM.User.AdressChange()" style="width: 320px" />
-                        </td>
-
-                    </tr>
-
-                    <tr>
-                        <td>地址:</td>
-                        <td colspan="3">
-                            <input class="easyui-validatebox" id="CNAddress" type="text" name="CNAddress" default="" style="width: 320px" disabled="disabled" />
-                        </td>
-                    </tr>
-
-
-
-
-                    <tr>
-                        <td>表号:</td>
-                        <td>
-
-                            <input class="easyui-validatebox" type="text" id="CNMeterNo" name="CNMeterNo" validtype="regNumLength[14,14]" default="" />
-                        </td>
-                        <td>表读数:</td>
-                        <td>
-                            <input class="easyui-validatebox" type="text" name="CNTotalAmount" default="" disabled="disabled" />
-                        </td>
-
-                    </tr>
-
-
-
-
-                    <tr>
-
-                        <td colspan="4" align="center">
+                        <td colspan="3" style="width:300px;"></td>
+                        <td colspan="1">
                             <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-ok'"
                                 id="btnOk">确定</a> <a href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-cancel'"
                                     id="btnCancel">取消</a>
@@ -150,6 +314,7 @@
                     </tr>
 
                 </table>
+
 
 
             </form>

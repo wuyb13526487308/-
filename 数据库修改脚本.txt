@@ -46,3 +46,80 @@ GO
 
 ALTER TABLE [dbo].[IoT_AlarmDefaultParam] ADD  CONSTRAINT [DF_IoT_AlarmDefaultParam_RegisterDate]  DEFAULT (getdate()) FOR [RegisterDate]
 GO
+
+
+
+--2018-4-7
+--在表中增加字段
+
+ALTER TABLE [dbo].[IoT_ChangeMeter]   ADD
+    [Direction] NVARCHAR(50) NULL, 
+    [Changer] NVARCHAR(50) NULL
+
+GO
+
+ALTER TABLE [dbo].[IoT_Meter]   ADD
+    [MeterModel] NVARCHAR(50) NULL, 
+    [MeterRange] NVARCHAR(50) NULL, 
+    [Installer] NVARCHAR(50) NULL, 
+    [IotPhone] NVARCHAR(50) NULL, 
+    [InstallType] NVARCHAR(50) NULL, 
+    [InstallPlace] NVARCHAR(50) NULL, 
+    [FDKH1] NCHAR(10) NULL, 
+    [FDKH2] NCHAR(10) NULL, 
+    [InstallFDK] BIT NULL
+GO
+
+
+ALTER TABLE [dbo].[IoT_User] ADD
+    [SF_UserId] NVARCHAR(50) NULL, 
+    [UserType] VARCHAR(2) NULL, 
+    [SFZH] VARCHAR(50) NULL, 
+    [BZRQ] NVARCHAR(50) NULL, 
+    [BZFY] MONEY NULL, 
+    [YJBZFY] BIT NULL DEFAULT 0, 
+    [LD] NVARCHAR(50) NULL, 
+    [DY] NVARCHAR(50) NULL, 
+    [BGL] BIT NULL, 
+    [ZS] BIT NULL, 
+    [YGBX] BIT NULL, 
+    [BXGMRQ] DATE NULL, 
+    [BXYXQ] INT NULL, 
+    [BXGMRSFZ] NVARCHAR(50) NULL, 
+    [YQHTQD] BIT NULL, 
+    [YQHTQDRQ] DATE NULL, 
+    [YQHTBH] NVARCHAR(50) NULL, 
+    [FYQHTR] NVARCHAR(50) NULL, 
+    [QYQHTR] NVARCHAR(50) NULL, 
+    [BZCZYBH] NVARCHAR(50) NULL, 
+    [SYBWG] BIT NULL, 
+    [BWGCD] INT NULL, 
+    [ZCZJE] MONEY NULL, 
+    [ZYQL] MONEY NULL, 
+    [ZQF] MONEY NULL
+
+	GO
+
+ALTER TABLE [dbo].[IoT_UserTemp] ADD
+	[Direction] NVARCHAR(50) NULL, 
+    [InstallType] NVARCHAR(50) NULL, 
+    [UserType] NVARCHAR(50) NULL, 
+    [InstallDate] VARCHAR(50) NULL
+	GO
+
+CREATE TABLE [dbo].[IoT_Building]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [CompanyId] NCHAR(4) NULL, 
+    [Building] NVARCHAR(50) NULL
+)
+
+GO
+
+CREATE TABLE [dbo].[IoT_Cell]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [CompanyId] NCHAR(4) NULL, 
+    [CellName] NVARCHAR(50) NULL
+)
+GO

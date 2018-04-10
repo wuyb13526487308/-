@@ -1,65 +1,65 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.375, 17.625" name="UserMeterDB">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.5, 21.875" name="UserMeterDB">
   <DataContextMoniker Name="/UserMeterDBDataContext" />
   <nestedChildShapes>
-    <classShape Id="090e06ed-a908-43b3-80a1-f3b83be5b32c" absoluteBounds="0.5, 0.5, 2, 2.5266442871093751">
-      <DataClassMoniker Name="/UserMeterDBDataContext/IoT_User" />
-      <nestedChildShapes>
-        <elementListCompartment Id="c48e0ec6-0b9a-4802-b4c2-04c90d2e085d" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 1.966644287109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="8cd8b204-9df7-458c-8b25-f7c74fa318c3" absoluteBounds="0.5, 3.375, 2, 2.7176639811197916">
-      <DataClassMoniker Name="/UserMeterDBDataContext/IoT_UserTemp" />
-      <nestedChildShapes>
-        <elementListCompartment Id="08d6fcc3-645f-41d6-ae3e-0dbbb7d01c6a" absoluteBounds="0.51499999999999968, 3.835, 1.9700000000000002, 2.1576639811197915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="42b975eb-5446-4f2b-b1c2-dfcfc08f8d17" absoluteBounds="9, 0.5, 2, 3.4817427571614576">
-      <DataClassMoniker Name="/UserMeterDBDataContext/IoT_ChangeMeter" />
-      <nestedChildShapes>
-        <elementListCompartment Id="8799f145-240c-4ef6-aa9a-85653babcafc" absoluteBounds="9.015, 0.96, 1.9700000000000002, 2.921742757161458" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="0bae68b1-ba4d-4e0c-b13d-161346de7085" absoluteBounds="3.25, 8.25, 2, 7.1111169433593746">
+    <classShape Id="0bae68b1-ba4d-4e0c-b13d-161346de7085" absoluteBounds="3.25, 9.75, 2, 6.8963342285156255">
       <DataClassMoniker Name="/UserMeterDBDataContext/View_HistoryUserMeter" />
       <nestedChildShapes>
-        <elementListCompartment Id="adc2db5b-e404-4a16-a2d9-23f0996df454" absoluteBounds="3.265, 8.71, 1.9700000000000002, 6.551116943359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="adc2db5b-e404-4a16-a2d9-23f0996df454" absoluteBounds="3.265, 10.21, 1.9700000000000002, 6.336334228515625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="4bd60350-6aa1-451b-b092-cfb75eba297d" absoluteBounds="9.125, 4.375, 2, 7.3021366373697907">
+    <classShape Id="4bd60350-6aa1-451b-b092-cfb75eba297d" absoluteBounds="12.25, 0.5, 2, 7.08112833658854">
       <DataClassMoniker Name="/UserMeterDBDataContext/IoT_MeterHistory" />
       <nestedChildShapes>
-        <elementListCompartment Id="d124d4ab-01da-4139-8415-670bc6d71338" absoluteBounds="9.14, 4.835, 1.9700000000000002, 6.7421366373697911" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="d124d4ab-01da-4139-8415-670bc6d71338" absoluteBounds="12.265, 0.96, 1.9700000000000002, 6.5211283365885411" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="f174c5c2-1ba9-4480-9070-bd9cd4aec612" absoluteBounds="6.25, 8.125, 2, 9.2123335774739576">
+    <classShape Id="f174c5c2-1ba9-4480-9070-bd9cd4aec612" absoluteBounds="9.125, 6.125, 2, 8.92906941731771">
       <DataClassMoniker Name="/UserMeterDBDataContext/View_HuanBiao" />
       <nestedChildShapes>
-        <elementListCompartment Id="7a997ad8-3b2f-4463-8dce-1901eccadbcb" absoluteBounds="6.265, 8.585, 1.9700000000000002, 8.6523335774739571" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="7a997ad8-3b2f-4463-8dce-1901eccadbcb" absoluteBounds="9.14, 6.5850000000000009, 1.9700000000000002, 8.3690694173177071" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="e1c64db3-d87b-47b7-80b2-85fd3bbb0bf1" absoluteBounds="0.5, 6.5, 2, 4.0548018391927076">
+    <classShape Id="e1c64db3-d87b-47b7-80b2-85fd3bbb0bf1" absoluteBounds="0.625, 9.75, 2, 3.9396284993489576">
       <DataClassMoniker Name="/UserMeterDBDataContext/View_UserMeterDayFirstHistory" />
       <nestedChildShapes>
-        <elementListCompartment Id="0a3b8384-222d-40a5-a9b0-92d5475cce0f" absoluteBounds="0.51500000000000012, 6.9600000000000009, 1.9700000000000002, 3.494801839192708" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="0a3b8384-222d-40a5-a9b0-92d5475cce0f" absoluteBounds="0.64000000000000012, 10.21, 1.9700000000000002, 3.379628499348958" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="96ccb2aa-d3b5-4a9f-a169-b368898a6491" absoluteBounds="6.125, 0.5, 2, 7.3021366373697907">
-      <DataClassMoniker Name="/UserMeterDBDataContext/View_UserMeter" />
-      <nestedChildShapes>
-        <elementListCompartment Id="67b4ace4-7768-4ca2-a2e0-7e08b7d97625" absoluteBounds="6.14, 0.96, 1.9700000000000002, 6.7421366373697911" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="66059163-bf2f-4989-a69f-9564006b5415" absoluteBounds="0.5, 11, 2, 4.2458215332031246">
+    <classShape Id="66059163-bf2f-4989-a69f-9564006b5415" absoluteBounds="0.625, 17.5, 2, 4.1244226074218755">
       <DataClassMoniker Name="/UserMeterDBDataContext/View_MeterGasBill" />
       <nestedChildShapes>
-        <elementListCompartment Id="5cb44346-e333-49d4-aea0-8969f5f735b2" absoluteBounds="0.51499999999999968, 11.46, 1.9700000000000002, 3.685821533203125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="5cb44346-e333-49d4-aea0-8969f5f735b2" absoluteBounds="0.63999999999999968, 17.96, 1.9700000000000002, 3.564422607421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="92a445b5-913d-4d55-8a2a-111d54ef28fc" absoluteBounds="3.375, 0.5, 2, 7.4931563313802076">
+    <classShape Id="55adef52-58ca-426d-be12-0a0556d923a0" absoluteBounds="3.125, 0.5, 2, 8.9290694173177076">
       <DataClassMoniker Name="/UserMeterDBDataContext/IoT_Meter" />
       <nestedChildShapes>
-        <elementListCompartment Id="3878edcc-8aed-4c1f-8960-4a7d12cb41e5" absoluteBounds="3.3899999999999997, 0.96, 1.9700000000000002, 6.933156331380208" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="2388a5ab-ecdd-41cb-b932-a87ac0d5dc7b" absoluteBounds="3.14, 0.96, 1.9700000000000002, 8.3690694173177071" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="af326c0d-b27f-4d03-8644-357718f4ab20" absoluteBounds="9.125, 0.5, 2, 3.7548343912760416">
+      <DataClassMoniker Name="/UserMeterDBDataContext/IoT_ChangeMeter" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0cbfb0d4-5b5a-47cd-95fd-c73679080f22" absoluteBounds="9.14, 0.96, 1.9700000000000002, 3.1948343912760415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b92f2479-ce91-493e-9753-53e181768dab" absoluteBounds="6.25, 0.625, 2, 13.548922119140626">
+      <DataClassMoniker Name="/UserMeterDBDataContext/View_UserMeter" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a63c100c-f4a1-4822-9f49-ddea7aa7b1db" absoluteBounds="6.265, 1.085, 1.9700000000000002, 12.988922119140625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a7c0ea45-2590-4cf3-b34a-9670664a6dec" absoluteBounds="3.5, 17.625, 2, 3.3852461751302081">
+      <DataClassMoniker Name="/UserMeterDBDataContext/IoT_UserTemp" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0eea7f45-5dbb-453d-95ec-5f2cce1812a5" absoluteBounds="3.5149999999999997, 18.085, 1.9700000000000002, 2.825246175130208" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="364ad14b-cecd-415f-b572-e5269ce8d3b8" absoluteBounds="0.5, 0.5, 2, 7.0811283365885407">
+      <DataClassMoniker Name="/UserMeterDBDataContext/IoT_User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="44386747-0f8e-40c3-b13e-57603bff7419" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 6.5211283365885411" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

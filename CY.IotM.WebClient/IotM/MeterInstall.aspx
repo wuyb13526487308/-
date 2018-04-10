@@ -114,6 +114,19 @@
 
                         </tr>
 
+                         
+                           <tr>
+                            <td>表量程:</td>
+                            <td>
+                             
+                                <input class="easyui-validatebox" id="CNMeterRange" type="text" name="CNMeterRange" default="" />
+                            </td>
+                             <td>物联网卡号:</td>
+                            <td>
+                              <input class="easyui-validatebox" type="text" id="CNIotPhone"  name="CNIotPhone" default="" />
+                            </td>
+                        </tr>
+
 
                          <tr>
                             <td>安装日期:</td>
@@ -123,12 +136,30 @@
                                  id="CNInstallDate" name="CNInstallDate" style="width: 108px"/>
 
                             </td>
-                             <td></td>
-                             <td></td>
+                             <td>安装人：</td>
+                             <td> <input class="easyui-validatebox" type="text" id="CNInstaller"  name="CNInstaller" default="" /></td>
 
                         </tr>
                     
-                      
+                         <tr>
+                            <td>安装类型:</td>
+                            <td>
+                                <select class="easyui-combobox" name="CNInstallType" id="CNInstallType"style="width: 180px;">
+                                <option value="户内" selected>户内</option>
+                                <option value="户外">户外</option>
+                            </select>
+                            </td>
+                             <td>安装位置：</td>
+                             <td> 
+                                 <input class="easyui-validatebox" type="text" id="CNInstallPlace"  name="CNInstallPlace" default="" />
+                             </td>
+
+                        </tr>
+                         <tr>
+                             <td>防盗卡号：</td>
+                             <td> <input class="easyui-validatebox" type="text" id="CNFDKH1"  name="CNFDKH1" default="" /></td>
+                             <td></td>
+                         </tr>
                         <tr>
 
                             <td colspan="4" align="center">

@@ -12,8 +12,7 @@ using CY.IotM.Common;
 using CY.IotM.Common.Tool;
 using CY.IotM.WebHandler;
 using CY.IoTM.Common.Business;
-
-
+using NPOI.HSSF.UserModel;
 
 namespace CY.IotM.WebClient.Handler
 {
@@ -38,102 +37,146 @@ namespace CY.IotM.WebClient.Handler
             WCFServiceProxy<IUserManage> proxy = null;
             try
             {
-
+                proxy = new WCFServiceProxy<IUserManage>();
                 if (AjaxType == "UPLOAD")
                 {
-
-                  
-                    string strUploadPath = string.Format("{0}\\UserUpload\\{1}\\{2}\\{3}\\",
-
-                    context.Server.MapPath("~"), loginOperator.CompanyID, loginOperator.OperID, System.DateTime.Now.ToString("yyyyMMdd"));
-                    string fileName = string.Empty;
                     if (context.Request.Files != null && context.Request.Files.Count == 1)
                     {
-                        if (!Directory.Exists(strUploadPath))
-                        {
-                            Directory.CreateDirectory(strUploadPath);
-                        }
                         HttpPostedFile postedFile = context.Request.Files[0];
 
-                        if (postedFile.ContentLength < 2000000)
+                        DataTable dt = null;
+                        Message m;
+                        List<IoT_UserTemp> list = new List<IoT_UserTemp>();
+
+                        NPOI.HSSF.UserModel.HSSFWorkbook book = new NPOI.HSSF.UserModel.HSSFWorkbook(postedFile.InputStream);
+
+                        int sheetCount = book.NumberOfSheets;
+                        for (int sheetIndex = 0; sheetIndex < sheetCount; sheetIndex++)
                         {
-                            fileName = strUploadPath + System.Web.HttpUtility.UrlDecode(Path.GetFileName(postedFile.FileName));
-                            string extension = Path.GetExtension(fileName).ToLower();
-                            if (fileName != "" && (extension == ".xls" || extension == ".xlsx" ))
+                            NPOI.SS.UserModel.ISheet sheet = book.GetSheetAt(sheetIndex);
+                            if (sheet == null) continue;
+
+                            NPOI.SS.UserModel.IRow row = sheet.GetRow(0);
+                            if (row == null) continue;
+                            int firstCellNum = row.FirstCellNum;
+                            int lastCellNum = row.LastCellNum;
+                            if (firstCellNum == lastCellNum) continue;
+
+                            dt = new DataTable(sheet.SheetName);
+                            for (int i = firstCellNum; i < lastCellNum; i++)
                             {
-                                try
+                                dt.Columns.Add(row.GetCell(i).StringCellValue, typeof(string));
+                            }
+
+                            for (int i = 1; i <= sheet.LastRowNum; i++)
+                            {
+                                DataRow newRow = dt.NewRow();
+                                for (int j = firstCellNum; j < lastCellNum; j++)
                                 {
-                                    postedFile.SaveAs(fileName);
-
-                                    DataTable dt= ExcelToDataTable(fileName,"sheet1");
-
-                                    proxy = new WCFServiceProxy<IUserManage>();
-
-                                    Message m;Boolean IsRepeat=false;
-
-                                    //清除临时表
-                                    proxy.getChannel.DeleteUserTemp();
-
-                                    foreach (DataRow dr in dt.Rows){
-
-
-                                        Int64 meterNoInt;
-                                        bool isMeterNoInt = Int64.TryParse(dr[2].ToString(), out meterNoInt);
-                                        if (!isMeterNoInt) { break; }
-
-                                        decimal meterNum = decimal.TryParse(dr[3].ToString(), out meterNum) ? meterNum : 0;
-                                        
-                                        IoT_UserTemp gas = new IoT_UserTemp()
+                                    NPOI.SS.UserModel.ICell cell = sheet.GetRow(i).GetCell(j);
+                                    if(cell == null)
+                                    {
+                                        newRow[j] = "";
+                                    }
+                                    else
+                                    {
+                                        switch (cell.CellType)
                                         {
-                                              UserName=dr[0].ToString(),
-                                              UserID=dr[1].ToString(),
-                                              MeterNo=dr[2].ToString(),
-                                              MeterNum = meterNum,
-                                              Street = dr[4].ToString(),
-                                              Community = dr[5].ToString(),
-                                              Door = dr[6].ToString(),
-                                              Address=dr[7].ToString(),
-                                              CompanyID = loginOperator.CompanyID
-                                        };
-
-                                        m = proxy.getChannel.AddTemp(gas);
-                                        if (m.Result)
-                                        {
-                                            IsRepeat = true;
+                                            case NPOI.SS.UserModel.CellType.Blank:
+                                            case NPOI.SS.UserModel.CellType.Unknown:
+                                                newRow[j] = "";
+                                                break;
+                                            case NPOI.SS.UserModel.CellType.Numeric:
+                                                if (HSSFDateUtil.IsCellDateFormatted(cell))
+                                                {
+                                                    newRow[j] = cell.DateCellValue.ToString("yyyy-MM-dd");
+                                                }
+                                                else
+                                                {
+                                                    newRow[j] = cell.NumericCellValue;
+                                                }
+                                                break;
+                                            case NPOI.SS.UserModel.CellType.String:
+                                                newRow[j] = cell.StringCellValue;
+                                                break;
+                                            case NPOI.SS.UserModel.CellType.Formula:
+                                                newRow[j] = cell.CellFormula;
+                                                break;
+                                            case NPOI.SS.UserModel.CellType.Boolean:
+                                                newRow[j] = cell.BooleanCellValue;
+                                                break;
+                                            case NPOI.SS.UserModel.CellType.Error:
+                                                newRow[j] = "";
+                                                break;
+                                            default:
+                                                newRow[j] = "";
+                                                break;
                                         }
                                     }
-
-                                    jsonMessage = new Message() { Result = true, TxtMessage = "导入成功" };
-
-                                    if (IsRepeat) {
-
-                                        jsonMessage = new Message() { Result = true, TxtMessage = "导入成功,已自动剔除表号重复数据" };
-                                    }
-
-
                                 }
-                                catch (Exception ex)
+                                if (lastCellNum < 8) continue;
+                                decimal meterNum = decimal.TryParse(newRow[3].ToString(), out meterNum) ? meterNum : 0;
+
+                                IoT_UserTemp gas = new IoT_UserTemp()
                                 {
-                                    jsonMessage = new Message() { Result = false, TxtMessage = ex.Message };
-                                    if (File.Exists(fileName))
-                                    {
-                                        File.Delete(fileName);
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                jsonMessage = new Message() { Result = false, TxtMessage = "文件格式不正确" };
-                            }
-                        }
-                        else
-                        {
-                            jsonMessage = new Message() { Result = false, TxtMessage = "文件超过2M" };
-                        }
-                    }
-                }
+                                    UserName = newRow[0].ToString(),
+                                    UserID = newRow[1].ToString(),
+                                    MeterNo = newRow[2].ToString(),
+                                    MeterNum = meterNum,
+                                    Street = newRow[4].ToString(),
+                                    Community = newRow[5].ToString(),
+                                    Door = newRow[6].ToString(),
+                                    Address = newRow[7].ToString(),
+                                    CompanyID = loginOperator.CompanyID
+                                };
 
-               
+                                /*
+                                                                     Direction = newRow[8].ToString(),
+                                    InstallType = newRow[9].ToString(),
+                                    Phone = newRow[10].ToString(),
+                                    UserType = newRow[11].ToString() =="0"?"0":"1",
+                                    InstallDate = newRow[12].ToString(),                                 */
+
+                                if(lastCellNum >= 9)
+                                {
+                                    gas.Direction = newRow[8].ToString();
+                                }
+                                if (lastCellNum >= 10)
+                                {
+                                    gas.InstallType = newRow[9].ToString();
+                                }
+                                if (lastCellNum >= 11)
+                                {
+                                    gas.Phone = newRow[10].ToString();
+                                }
+                                if (lastCellNum >= 12)
+                                {
+                                    gas.UserType = newRow[11].ToString();
+                                }
+
+                                if (lastCellNum >= 13)
+                                {
+                                    try
+                                    {
+                                        gas.InstallDate = Convert.ToDateTime(newRow[12].ToString()).ToString("yyyy-MM-dd");
+                                    }
+                                    catch { }
+                                }
+
+                                m = proxy.getChannel.AddTemp(gas);
+                                if (!m.Result)
+                                {
+                                    list.Add(gas);
+                                }
+                            }                            
+                        }
+                        jsonMessage = new Message()
+                        {
+                            Result = true,
+                            TxtMessage = Newtonsoft.Json.JsonConvert.SerializeObject(list)
+                        };
+                    }
+                }               
             }
             catch (Exception  ex){
                 jsonMessage = new Message()
@@ -144,7 +187,7 @@ namespace CY.IotM.WebClient.Handler
             }
             finally
             {
-               
+                proxy.CloseChannel();
             }       
             context.Response.Write(JSon.TToJson<Message>(jsonMessage));
         }

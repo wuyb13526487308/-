@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="IotMeter" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LAPTOP-Q6VK00MU\SQLEXPRESS;Initial Catalog=IotMeter;Integrated Security=True" SettingsObjectName="CY.IoTM.SystemInterface.Properties.Settings" SettingsPropertyName="IotMeterConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.IoT_Meter" Member="IoT_Meter">
+    <Type Name="IoT_Meter">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MeterNo" Type="System.String" DbType="Char(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Direction" Type="System.String" DbType="Char(4)" CanBeNull="true" />
+      <Column Name="InstallDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MeterModel" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MeterRange" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Installer" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IotPhone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="InstallType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="InstallPlace" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FDKH1" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="FDKH2" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="InstallFDK" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IoT_User" Member="IoT_User">
+    <Type Name="IoT_User">
+      <Column Name="UserID" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Street" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Community" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Door" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="UserType" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="SFZH" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BZRQ" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BZFY" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="YJBZFY" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DY" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BGL" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ZS" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="YGBX" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="BXGMRQ" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="BXYXQ" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BXGMRSFZ" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="YQHTQD" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="YQHTQDRQ" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="YQHTBH" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FYQHTR" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="QYQHTR" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BZCZYBH" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SYBWG" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="BWGCD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SF_UserId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
