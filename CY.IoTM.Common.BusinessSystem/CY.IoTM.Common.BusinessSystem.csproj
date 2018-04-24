@@ -79,6 +79,7 @@
     <Compile Include="IHuanBiao.cs" />
     <Compile Include="IMeterGasBill.cs" />
     <Compile Include="IMeterTopUp.cs" />
+    <Compile Include="IOneNetService.cs" />
     <Compile Include="IPriceParManage.cs" />
     <Compile Include="ICommunityManage.cs" />
     <Compile Include="IPricingManage.cs" />

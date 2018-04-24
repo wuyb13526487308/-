@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>物联网表管理系统</title>
+    <title>NBIoT物联网表管理系统</title>
     <link id="easyuiTheme" href="../Scripts/easyui1.3.3/themes/default/easyui.css" rel="stylesheet" type="text/css" />
     <link href="../Scripts/easyui1.3.3/themes/icon.css" rel="stylesheet" type="text/css" />
 
@@ -447,7 +447,7 @@
        <div region="north" border="true" class="cs-north">
         <div class="cs-north-bg">
             <div id="CompanyName" class="cs-north-logo">
-                物联网表管理系统</div>
+                NBIoT物联网表管理系统</div>
             <div class="l-topmenu-welcome">
                   <div>
                    <%-- <span style="font-size: large;" id="txtCompanyInfo"></span>--%>

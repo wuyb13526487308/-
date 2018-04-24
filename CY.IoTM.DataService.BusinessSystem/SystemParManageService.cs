@@ -141,7 +141,13 @@ namespace CY.IoTM.DataService.Business
             }
             if (dbinfo == null)
             {
-                dbinfo = new IoT_SystemPar() { AutoKey = true };
+                string strKey = $"{System.Configuration.ConfigurationManager.AppSettings["Key"]}";
+                try
+                {
+
+                }
+                catch { }
+                dbinfo = new IoT_SystemPar() { AutoKey = false,MKey=strKey };
             }
 
             return dbinfo;

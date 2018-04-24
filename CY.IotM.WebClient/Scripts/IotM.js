@@ -265,7 +265,7 @@ IotM.CheckLogin = function () {
                                           if ($("#txtCompanyInfo"))
                                           { $("#txtCompanyInfo").text(companyInfo.CompanyName); }
                                           if ($("#CompanyName")) {
-                                              $("#CompanyName").text(companyInfo.CompanyName + " 物联网表管理系统");
+                                              $("#CompanyName").text(companyInfo.CompanyName + " NBIoT 物联网表管理系统");
                                           }
                                       }
                                   }

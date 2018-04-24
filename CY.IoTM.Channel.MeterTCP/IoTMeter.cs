@@ -170,7 +170,7 @@ namespace CY.IoTM.Channel.MeterTCP
                 {
                     this._currentCommand.Dowith(data, MKey);
 
-                    if (this._currentCommand.Command.Identification == "A014")
+                    if (this._currentCommand.Command.Identification == "A011")
                     {
                         //设置通讯密钥
                         this.meter.IsDianHuo = true; 
@@ -209,6 +209,8 @@ namespace CY.IoTM.Channel.MeterTCP
             //检查是否有校正任务
             if (this._xZTaskList != null)
             {
+                Log.getInstance().Write(new OneMeterDataLogMsg(this.MAC, $" 有{this._xZTaskList.Count()}条修正记录需要发送"));
+
                 this.Execute(this._xZTaskList);
                 this._xZTaskList = null;
             }

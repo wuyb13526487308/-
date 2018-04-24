@@ -535,7 +535,7 @@ IotM.Initiate.JieSuanZhouQiType =
 { TypeID: '00', TypeName: '月周期' },
 { TypeID: '01', TypeName: '日周期' },
 { TypeID: '02', TypeName: '时周期' },
-{ TypeID: '03', TypeName: '周期采集' }
+{ TypeID: '03', TypeName: '分钟周期' }
 ];
 IotM.Initiate.LoadJieSuanZhouQiTypeComboBox = function (id, withAll, required) {
     IotM.LoadComboBox(IotM.Initiate.JieSuanZhouQiType, id, withAll, required, 105);

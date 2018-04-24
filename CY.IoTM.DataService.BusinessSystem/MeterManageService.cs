@@ -104,6 +104,7 @@ namespace CY.IoTM.DataService.Business
         {
             IoT_SystemPar par = new SystemParManageService().getSystemPar(companyID);
             byte[] keys = { 0x88, 0x88, 0x88, 0x88, 0x88, 0x88, 0x88, 0x88 };
+
             if ((bool)par.AutoKey)
             {
                 Random random = new Random(DateTime.Now.Millisecond);

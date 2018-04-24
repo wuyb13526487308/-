@@ -224,7 +224,7 @@
 
 
                                     <td>
-                                        <input type="checkbox" id="switch6" />LCD状态检测
+                                        <input type="checkbox" id="switch6" />允许远程直接开阀
                                     </td>
                                     <td></td>
 
@@ -238,7 +238,7 @@
                                     <td>异常大流量:
                                     </td>
                                     <td>
-                                        <input class="easyui-numberbox" type="text" id="CNPar4" name="CNPar4" data-options="min:0,max:100,precision:2" default="" />m³/h &nbsp;&nbsp;
+                                        <input class="easyui-numberbox" type="text" id="CNPar4" name="CNPar4" data-options="min:0,max:100,precision:2" default="10" />m³/h &nbsp;&nbsp;
                                     </td>
 
 

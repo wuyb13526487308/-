@@ -63,7 +63,13 @@ namespace CY.IoTM.CollectionService.Console
             System.Console.WriteLine(DataChannelFactoryService.getInstance().StartChannelService());
             DDService.getInstance();
 
-             
+
+            //new System.Threading.Thread(p =>
+            //{
+            //    DataService.Business.OneNetChannelService _oneNetService = new DataService.Business.OneNetChannelService();
+            //    System.Console.WriteLine(_oneNetService.PostToOneNet("29720180402002", hexstr));
+            //    System.Console.WriteLine($"ApartmentState:{System.Threading.Thread.CurrentThread.ApartmentState} CurrentUICulture:{System.Threading.Thread.CurrentThread.CurrentUICulture.Name} CurrentThread.Priority:{System.Threading.Thread.CurrentThread.Priority.ToString()}");
+            //}).Start();
 
             while (true)
             {

@@ -39,7 +39,7 @@ IotM.SetUpLoadDate.LoadDataGrid = function () {
                              if (value == "00") { return "月周期"; }
                              else if (value == "01") { return "日周期"; }
                              else if (value == "02") { return "时周期"; }
-                             else if (value == "03") { return "周期采集"; }
+                             else if (value == "03") { return "分钟周期"; }
                              else { return "未知"; }
                          }
                      },{

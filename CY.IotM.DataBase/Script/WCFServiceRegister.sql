@@ -781,3 +781,13 @@ values( 'CY.IotM.DataService.CommonSearchService<CY.IoTM.Common.ADSystem.dll,CY.
 'CommonSearchOf_IoT_View_AdPublishUserInfo',
 'CY.IotM.Common.ICommonSearch<CY.IoTM.Common.ADSystem.dll,CY.IoTM.Common.ADSystem.View_AdPublishUserInfo>',
 'CY.IotM.Common.dll')
+
+
+--oneNet接口服务
+INSERT INTO Frame_RemotingObject(ObjectType, objectDll,URI, interfaceType, interfaceDll)
+values( 'CY.IoTM.DataService.Business.OneNetChannelService',
+'CY.IoTM.DataService.BusinessSystem.dll',
+'OneNetChannelService',
+'CY.IoTM.Common.Business.IOneNetService',
+'CY.IoTM.Common.BusinessSystem.dll'
+)
