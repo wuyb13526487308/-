@@ -180,34 +180,34 @@ namespace OneNETDataReceiver.Proxy
             }
         }
 
-        /// <summary>
-        /// 发送数据给oneNet平台
-        /// </summary>
-        /// <param name="arge"></param>
-        void SendReq(TaskArge arge)
-        {
-            this.bWaitOneNetResp = true;
-            Frame frame = new Frame(arge);
-            byte[] buffer = frame.GetBytes();
-            ResponseData respData = Newtonsoft.Json.JsonConvert.DeserializeObject<ResponseData>(PostToOneNet(BytesToHexStr(buffer),frame.Adress));
-            if (respData.errno == 0)
-            {
-                WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now,
-                ($"->主站请求的数据已发送给onenet平台发送成功，表号:{arge.IoTMac}"), this.meter.Mac));
-            }
-            else
-            {
-                WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now,
-               ($"->主站请求的数据已发送给onenet平台失败，表号:{arge.IoTMac}，原因："+respData.error), this.meter.Mac));
+        ///// <summary>
+        ///// 发送数据给oneNet平台
+        ///// </summary>
+        ///// <param name="arge"></param>
+        //void SendReq(TaskArge arge)
+        //{
+        //    this.bWaitOneNetResp = true;
+        //    Frame frame = new Frame(arge);
+        //    byte[] buffer = frame.GetBytes();
+        //    ResponseData respData = Newtonsoft.Json.JsonConvert.DeserializeObject<ResponseData>(PostToOneNet(BytesToHexStr(buffer),frame.Adress));
+        //    if (respData.errno == 0)
+        //    {
+        //        WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now,
+        //        ($"->主站请求的数据已发送给onenet平台发送成功，表号:{arge.IoTMac}"), this.meter.Mac));
+        //    }
+        //    else
+        //    {
+        //        WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now,
+        //       ($"->主站请求的数据已发送给onenet平台失败，表号:{arge.IoTMac}，原因："+respData.error), this.meter.Mac));
 
-                this.IsOnline = false;
-                if (this.tcpClient != null)
-                {
-                    this.tcpClient.Close();
-                    this.tcpClient = null;
-                }
-            }
-        }
+        //        this.IsOnline = false;
+        //        if (this.tcpClient != null)
+        //        {
+        //            this.tcpClient.Close();
+        //            this.tcpClient = null;
+        //        }
+        //    }
+        //}
 
         /// <summary>
         /// post数据给onenet平台
@@ -232,9 +232,9 @@ namespace OneNETDataReceiver.Proxy
                 result = response.Content; // raw content as string
                 proxy = new WCFServiceProxy<IOneNetService>();
 
-                string tmp = $"nbiot?imei={mac}&obj_id=3200&obj_inst_id=0&mode=2";
-                proxy.getChannel.OutPutLog(mac, $"->向oneNet平台发送数据,URI PARAM:{tmp}");                
-                proxy.getChannel.OutPutLog(mac, $"->向oneNet平台发送数据完成，返回结果：{result}");
+                //string tmp = $"nbiot?imei={mac}&obj_id=3200&obj_inst_id=0&mode=2";
+                proxy.getChannel.OutPutLog(mac, $"->向oneNet平台发送数据:{hex}，返回结果：{result}");                
+                //proxy.getChannel.OutPutLog(mac, $"->向oneNet平台发送数据完成，返回结果：{result}");
             }
             catch
             {
@@ -267,25 +267,33 @@ namespace OneNETDataReceiver.Proxy
                         //主站指令
                         //接收到主站请求数据
                         WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now,
-                        ($"->主站发向表：{this.meter.Mac}的请求指令成功，控制码：{taskArge.ControlCode}"), this.meter.Mac));
+                        ($"->主站发向表[{this.meter.Mac}]发送指令成功，控制码：{taskArge.ControlCode}"), this.meter.Mac));
                         this.bWaitOneNetResp = true;
                     }
                     else
                     {
                         //主站应答
                         WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now,
-                            ($"->主站应答表：{this.meter.Mac} 数据成功。"), this.meter.Mac));
+                            ($"->主站向表[{this.meter.Mac}]发送应答数据成功。"), this.meter.Mac));
                         this.bWaitIotSeviceResp = false;
                     }
                 }
 
-                WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now, $"->发送应答给OneNet平台成功", this.meter.Mac));
+                //WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now, $"->发送应答给OneNet平台成功", this.meter.Mac));
             }
             else
             {
-                WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now,
-                    ($"->主站向OneNet平台发送数据失败，表号:{taskArge.IoTMac}，原因：" + respData.error), this.meter.Mac));
+                if (taskArge.ControlCode != ControlCode.CTR_7 && taskArge.ControlCode != ControlCode.CTR_8)
+                {
+                    WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now, 
+                        ($"->主站发向表[{this.meter.Mac}]发送指令失败，控制码：{taskArge.ControlCode}"), this.meter.Mac));
 
+                }
+                else
+                {
+                    WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now, 
+                        ($"->主站向表[{this.meter.Mac}]发送应答数据失败，控制码：{taskArge.ControlCode}"), this.meter.Mac));
+                }
                 this.IsOnline = false;
                 if (this.tcpClient != null)
                 {
@@ -326,14 +334,13 @@ namespace OneNETDataReceiver.Proxy
                     {
                         //oneNet应答数据给表平台
                         WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now,
-                        $"->表：{this.meter.Mac}应答主站请求完成。", this.meter.Mac));
+                                $"->表{this.meter.Mac}]应答主站请求成功。", this.meter.Mac));
 
                     }
                     else
                     {
                         //nb表上报的数据，需要后台应答
-                        WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now,
-                         $"->表：{this.meter.Mac}向主站上报数据完成。", this.meter.Mac));
+                        WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now, $"->表[{this.meter.Mac}]向主站上报数据成功。", this.meter.Mac));
                     }
     
 
@@ -357,7 +364,7 @@ namespace OneNETDataReceiver.Proxy
                 }
                 if (!isResult)
                 {
-                    WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now,$"->表：{this.meter.Mac}向主站发送数据失败。", this.meter.Mac));
+                    WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now,$"->表[{this.meter.Mac}]向主站发送数据失败。", this.meter.Mac));
                 }
                 return isResult;
             }
@@ -445,8 +452,7 @@ namespace OneNETDataReceiver.Proxy
             Stopwatch watch = new Stopwatch();
             watch.Start();
             int iTime = 1;
-            WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now,
-                ($"->开始登录"),this.meter.Mac));
+            WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now,($"->开始登录"),this.meter.Mac));
 
             while (socket.Poll(100, SelectMode.SelectWrite))
             {
@@ -456,8 +462,7 @@ namespace OneNETDataReceiver.Proxy
             //Notice(string.Format("{1:HH:mm:ss} 第{0}次发送上报数据请求帧\r{2}\r", iTime, DateTime.Now, MyDataConvert.BytesToHexStr(buffer)));
 
             bWaitIotSeviceResp = true;
-            WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now, 
-                ($"->等待主站应答"),this.meter.Mac));
+            WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now, ($"->等待主站应答"),this.meter.Mac));
 
             //等待应答
             while (bWaitIotSeviceResp)
@@ -471,8 +476,7 @@ namespace OneNETDataReceiver.Proxy
                         this.tcpClient.Close();
                         this.tcpClient = null;
                         this.IsOnline = false;
-                        WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now, 
-                            ($"->等待应答超时，登录失败"),this.meter.Mac));
+                        WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now, ($"->主站应答超时，登录失败"),this.meter.Mac));
                         return false;
                     }
                     iTime++;
@@ -480,15 +484,14 @@ namespace OneNETDataReceiver.Proxy
                     watch.Restart();
                 }
             }
-
+            WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now, ($"->登录成功"), this.meter.Mac));
             return true;
         }
 
         private TaskArge JieXi(byte[] buffer, out string message)
         {
             message = "";
-            WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now, 
-                ($"->开始解析数据..."),this.meter.Mac));
+            WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now, ($"->开始解析数据..."),this.meter.Mac));
 
             try
             {
@@ -543,7 +546,7 @@ namespace OneNETDataReceiver.Proxy
                     //校验和错误
                     message = "校验和错误";
                     WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now, 
-                        ($"{DateTime.Now.ToString("yy-MM-dd HH:mm:dd.fff")}->解析数据失败，原因："+ message),this.meter.Mac));
+                        ($"->解析数据失败，原因："+ message),this.meter.Mac));
 
                     return null;
                 }
@@ -612,7 +615,7 @@ namespace OneNETDataReceiver.Proxy
                         break;
                 }
                 WebSocketService.getInstance().SendMessage(new MessageInfo(DateTime.Now, 
-                    ($"->解析数据完成，表号：{_MAC} 控制码:{ctrCode}"),_MAC));
+                    ($"->解析数据完成, 控制码:{ctrCode}"),_MAC));
 
                 return new TaskArge(_MAC, item, (ControlCode)buffer[index + 9], pType, this.MKey);
             }
