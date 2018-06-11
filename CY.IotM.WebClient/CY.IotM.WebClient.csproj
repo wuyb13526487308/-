@@ -225,6 +225,7 @@
     <Content Include="IotM\HuanBiaoManege.aspx" />
     <Content Include="IotM\MeterGasBillManage.aspx" />
     <Content Include="IotM\JieSuanRi.aspx" />
+    <Content Include="IotM\Monitor\index.html" />
     <Content Include="IotM\Monitor\MonitorShow.aspx" />
     <Content Include="IotM\PreViewImage.aspx" />
     <Content Include="IotM\PriceParManage.aspx" />

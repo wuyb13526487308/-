@@ -22,7 +22,8 @@ namespace OneNETDataReceiver.Proxy
         /// <summary>
         /// 通信密钥：用于加密物联网表和后台的通信数据，由{color:red}0~9和A~F{color}之间的16个字符组成表出厂时默认的密钥为：16个8
         /// </summary>
-        public string Key { get; set; } = "8888888888888888";
+        public string Key { get; set; } = "6E4A572D98C92D9B"; // 6E4A572D98C92D9B       public string Key { get; set; } = "6E4A572D98C92D9B";
+
         /// <summary>
         /// 旧密钥
         /// </summary>

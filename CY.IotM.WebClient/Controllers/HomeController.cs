@@ -23,7 +23,6 @@ namespace CY.IotM.WebClient.Controllers
             Stream req = Request.InputStream;
             req.Seek(0, System.IO.SeekOrigin.Begin);
             string body = new StreamReader(req).ReadToEnd();
-
             try
             {
                 var obj = Util.resolveBody(body, Param.isJiaMi);
@@ -84,11 +83,24 @@ namespace CY.IotM.WebClient.Controllers
 
                     Console.WriteLine("data receive: body empty error");
                 }
-
+    
             }
             catch
             {
             }
+            if (body.Contains("*lockSocket*"))
+            {
+                ProxyFactory.getInstance().IsLock = true;
+                Console.WriteLine($"isLock = {ProxyFactory.getInstance().IsLock}");
+                return "ok";
+            }
+            else if (body.Contains("*unlockSocket*"))
+            {
+                ProxyFactory.getInstance().IsLock = false;
+                Console.WriteLine($"isLock = {ProxyFactory.getInstance().IsLock}");
+                return "*unlockSocket* is ok.";
+            }
+
             return "ok";
         }
 
@@ -118,5 +130,7 @@ namespace CY.IotM.WebClient.Controllers
                 return "error";
             }
         }
+
+        
     }
 }

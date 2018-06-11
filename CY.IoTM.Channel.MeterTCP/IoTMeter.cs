@@ -45,7 +45,7 @@ namespace CY.IoTM.Channel.MeterTCP
 
 
         /// <summary>
-        /// 密钥版本
+        /// 密钥版本 6E4A572D98C92D9B
         /// </summary>
         byte keyVer = 0;
         private byte[] MKey// = { 0x88, 0x88, 0x88, 0x88, 0x88, 0x88, 0x88, 0x88 };
@@ -53,10 +53,11 @@ namespace CY.IoTM.Channel.MeterTCP
             get
             {
                 if(meter == null ) return new byte[] { 0x88, 0x88, 0x88, 0x88, 0x88, 0x88, 0x88, 0x88 };
-                if(meter.IsDianHuo )
-                    return MyDataConvert.StrToToHexByte(meter.Key.PadLeft(16, '0'));
-                else
-                    return new byte[] { 0x88, 0x88, 0x88, 0x88, 0x88, 0x88, 0x88, 0x88 };
+                return MyDataConvert.StrToToHexByte(meter.Key.PadLeft(16, '0'));
+                //if (meter.IsDianHuo )
+                //    return MyDataConvert.StrToToHexByte(meter.Key.PadLeft(16, '0'));
+                //else
+                //    return new byte[] { 0x88, 0x88, 0x88, 0x88, 0x88, 0x88, 0x88, 0x88 };
             }
         }
         Meter meter;
@@ -96,8 +97,10 @@ namespace CY.IoTM.Channel.MeterTCP
                 //读取当前表的信息并初始化     
                 //Stopwatch sw = new Stopwatch();
                 //sw.Start();
+                 meter = tms.GetMeter(mac);
+
                 this._meterLink.OnReviced += _meterLink_OnReviced;
-                meter = tms.GetMeter(mac);
+               
                 //应答并上报数据
                 ReportData(mac,control, data, protocolType);
 
@@ -139,12 +142,14 @@ namespace CY.IoTM.Channel.MeterTCP
 
         void _meterLink_OnConnectClosed(MeterLink e)
         {
+            this.meter = null;
             this.isRunning = false;
         }
 
         void _meterLink_OnReviced(Meter_DATA data)
         {
             //处理接收到应答数据
+            if (this.meter == null) return;
             if (this._currentCommand != null)
             {
                 if (this._currentCommand.Command.Identification == "A013" && data.Control== 0xc4)
@@ -156,8 +161,8 @@ namespace CY.IoTM.Channel.MeterTCP
                     return;
                 }
                 this.meter.LastTopUpSer++;
-
-                this.tms.UpdateMeter(this.meter);
+                //if(this.meter.MeterType == "01" && this.meter.IsDianHuo)
+                //    this.tms.UpdateMeter(this.meter);
 
                 this._semaphore.Release();
                 //判断表回复广告文件
@@ -192,11 +197,11 @@ namespace CY.IoTM.Channel.MeterTCP
         {
             //while (this._reportWatch.ElapsedMilliseconds < 1000 * 5)
                 Thread.Sleep(50);
-
+            if (this.meter == null) return;
             List<Task> taskList = null;
 
             //检查是否要校时
-            if (this.meter.IsJiaoShi(JiaoShiDays))
+            if (this.meter != null && this.meter.IsJiaoShi(JiaoShiDays))
             {                
                 //处理对时操作
                 taskList = new List<Task>();  
@@ -219,7 +224,7 @@ namespace CY.IoTM.Channel.MeterTCP
             if(taskList != null)
                 this.Execute(taskList);
 
-            while (isRunning)
+            while (this.meter != null && isRunning)
             {
                 try
                 {
@@ -414,10 +419,12 @@ namespace CY.IoTM.Channel.MeterTCP
             //    item_C001.LJGas, item_C001.LJMoney, item_C001.SYMoney, item_C001.LastLJGas)));
 
             //WCFServiceProxy<IReportData> _iReportDataProxy = new WCFServiceProxy<IReportData>();
+            this.meter = this.tms.GetMeter(meter.Mac);
             this.meter.TotalAmount = item_C001.LJGas;
+
             if (!meter.IsDianHuo && meter.LastGasPoint>item_C001.LJGas && meter.TotalTopUp ==0)
             {
-                this.meter.LastGasPoint = item_C001.LJGas;
+                //this.meter.LastGasPoint = item_C001.LJGas;
             }
 
             CY.IoTM.DataService.Business.ReportDataService rds = new DataService.Business.ReportDataService();
@@ -583,15 +590,21 @@ namespace CY.IoTM.Channel.MeterTCP
             //WCFServiceProxy<ITaskManage> _iTaskManageProxy = new WCFServiceProxy<ITaskManage>();
             try
             {
+
                 task.Finished = DateTime.Now;
                 if (task.TaskType == TaskType.TaskType_充值 && task.TaskState == TaskState.Failed) return;//充值失败允许多次操作，所以不更新充值任务的队列状态
+                this.meter = this.tms.GetMeter(meter.Mac);
 
                 string result = this.tms.TaskCompletes(task,this._lastReportData.LJGas);
                 //完成下列任务时需要重新加载表对象数据
                 if (task.TaskType == TaskType.TaskType_点火)
                 {
                     this.meter.MeterState = "0";
-                    //this.meter.TotalAmount = this._lastReportData.LJGas;
+                    this.meter.IsDianHuo = true;
+                    this.meter.MeterType = "01";
+                    this.meter.NextSettlementPointGas = this.meter.LastTotal + this.meter.Gas1;
+                    this.meter.SetNextSettlementDateTime();
+                    this.tms.UpdateMeter(this.meter);
                 }
                 else if (task.TaskType == TaskType.TaskType_充值)
                 {

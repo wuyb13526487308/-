@@ -14,6 +14,9 @@ namespace OneNETDataReceiver.Proxy
         private List<ProxyService> list;
         private Semaphore _semaphore = new Semaphore(1, 1);
 
+        private bool isLock = false;
+
+        public bool IsLock { get => isLock; set => isLock = value; }
 
         private ProxyFactory()
         {
@@ -48,6 +51,7 @@ namespace OneNETDataReceiver.Proxy
         /// <param name="data"></param>
         public void RevData(int deviceId,string data)
         {
+            if (isLock) return;
            // _semaphore.WaitOne();
             var ps = this.list.Where(p => p.DeviceId == deviceId).SingleOrDefault();
             if (ps == null)

@@ -25,7 +25,7 @@ namespace CY.IoTM.DataService.Business
         {
             SubmitResult result = new SubmitResult();
             //如果表为金额表，则判断是否需要效验，如需要则添加校准任务
-            if (meter.MeterType == ((byte)CY.IoTM.Common.Item.MeterType.金额表).ToString ().PadLeft(2,'0') && meter.MeterState =="0")
+            if (meter.IsDianHuo && meter.MeterType == ((byte)CY.IoTM.Common.Item.MeterType.金额表).ToString ().PadLeft(2,'0') && meter.MeterState =="0")
             {
                 new Settlement().Calculate(meter, dataItem, result);
             }

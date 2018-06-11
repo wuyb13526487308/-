@@ -43,7 +43,7 @@ namespace CY.IoTM.DataService.Business
                         return string.Format("表{0}已点火完成，不能重复操作。", m.MeterNo);
                     }
                     Meter _meter = tmd.QueryMeter(m.MeterNo.Trim());
-                    tmd.InsertMeter(m);
+                    tmd.UpdateMeter(m);
                     IoT_SetAlarm alarmPar = new IoT_SetAlarm();
                     alarmPar.SwitchTag = "000000000       ";
                     alarmPar.Par1 = 30;
@@ -58,8 +58,9 @@ namespace CY.IoTM.DataService.Business
                     new SetAlarmService().UpdateMeterAlarmPar(m.MeterNo.Trim(), alarmPar);
 
                     //点火状态,需要修改表的通讯密钥
-                    if (_mms.Edit(m).Result == false)
-                        return string.Format("点火失败，原因：登记表{0}点火信息失败。", m.MeterNo);
+                    Message msg = _mms.Edit(m);
+                    if (msg.Result == false)
+                        return string.Format("点火失败，原因：登记表{0}点火信息失败，原因：{1}", m.MeterNo,msg.TxtMessage);
                     string result = dhDA.SubmitDianHuoASK(_oldMeter);
                     new UserManageService().UpadteUserStatus("2", m.UserID);//用户表状态置为 撤销点火
                     if (result != "")

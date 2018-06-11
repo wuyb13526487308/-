@@ -227,6 +227,8 @@ namespace CY.IoTM.MongoDataHelper
                 cmd.DataCommand = MyDataConvert.BytesToHexStr(item_A010.GetBytes());
                 cmd.Order = 1;
                 CommandDA.Insert(cmd);
+
+
                 new PricingPlanDA().NewPricingPlan(info);
 
                 //注：该函数如何进行事务处理，保证所有数据更新都成功。

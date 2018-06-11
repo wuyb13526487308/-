@@ -274,7 +274,7 @@ namespace CY.IoTM.DataService.Business
                     return new Message()
                     {
                         Result = false,
-                        TxtMessage = "该用户已换标成功，若需要换表请重新填写申请单！"
+                        TxtMessage = "该用户已换表成功，若需要换表请重新填写申请单！"
                     };
                 }
                 Table<IoT_MeterHistory> tbHistory = dd.GetTable<IoT_MeterHistory>();
@@ -456,11 +456,13 @@ namespace CY.IoTM.DataService.Business
                   p.TaskID == taskID).SingleOrDefault();
                 if (state == TaskState.Finished)
                 {
+                    dbinfo.FinishedDate = DateTime.Now;
                     dbinfo.State = '3';
                 }
                 else if (state == TaskState.Undo)
                 {
                     dbinfo.State = '4';//撤销
+                    dbinfo.FinishedDate = DateTime.Now;
                     new M_SetParameterService().UnSetParameter(taskID);
                 }
                 else

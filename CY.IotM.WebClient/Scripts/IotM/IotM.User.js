@@ -496,7 +496,7 @@ IotM.User.SerachClick = function () {
 };
 
 IotM.User.AdressChange = function () {
-    $("#CNAddress").val( $('#CNStreet').combobox("getText") + $('#CNCommunity').combobox("getText") + $("#CNDoor").val());
+    $("#CNAddress").val($('#CNStreet').combobox("getText") + $('#CNCommunity').combobox("getText") + $('#CNLD').combobox("getText") + $('#CNDY').combobox("getText")+ $("#CNDoor").val());
 }
 
 

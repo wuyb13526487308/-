@@ -175,19 +175,22 @@ namespace CY.IoTM.DataService.Business
                 Bill bill = new Bill() { BillID = meter.BillID,UserID = meter.UserID,BeginDate = DateTime.Now.ToString ("yyyy-MM-dd HH:mm:ss")};
                 new M_BillRecordService().AddBill(bill);
 
-                meter.SetNextSettlementDateTime(); 
                 returnResult.IsReLoadMeter = true;
                 //更新结算数据
+                if (meter.NextSettlementPointGas != 0 && !String.IsNullOrEmpty(meter.SettlementDateTime))
+                {
+                    meter.LastTotal = dataItem.LJGas;
+                }
+                meter.SetNextSettlementDateTime(); 
                 meter.TotalAmount = dataItem.LJGas;
                 meter.LastSettlementAmount = amount;
-                meter.LastTotal = dataItem.LJGas;
                 meter.CurrentLadder = 1;
                 meter.CurrentPrice = meter.Price1;
 
                 if (meter.IsUsedLadder && meter.CurrentLadder < meter.Ladder)
                 {
                     //设置第1个节点的结算点气量
-                    meter.NextSettlementPointGas = meter.LastTotal + meter.Gas1;
+                    meter.NextSettlementPointGas = meter.LastTotal + gas[meter.CurrentLadder - 1];
                 }
                 else
                 {
@@ -399,8 +402,9 @@ namespace CY.IoTM.DataService.Business
             //计算当前阶段用气量
             ReCalulate:
             decimal JieDuanYongQiLiang = ljGas - meter.LastGasPoint;
+            meter.CurrentPrice = prices[meter.CurrentLadder - 1];
 
-            if (meter.IsUsedLadder && meter.IsDianHuo && meter.Ladder >1 && meter.NextSettlementPointGas != -1 && ljGas >= meter.NextSettlementPointGas)
+            if (meter.Ladder >1 && meter.NextSettlementPointGas != -1 && ljGas >= meter.NextSettlementPointGas)
             {
                 //已到达阶梯结算点
                 JieDuanYongQiLiang = meter.NextSettlementPointGas - meter.LastGasPoint;

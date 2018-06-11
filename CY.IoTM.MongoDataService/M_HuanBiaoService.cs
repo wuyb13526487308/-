@@ -36,36 +36,36 @@ namespace CY.IoTM.MongoDataHelper
             byte ser = Convert.ToByte(new Random().Next(0, 255));
             cmd = new Command();
             //1.写密钥
-            DataItem_A014 item_A014 = new DataItem_A014(ser, (byte)meter.MKeyVer, meter.MKey);//
-            cmd.TaskID = task.TaskID;
-            cmd.Identification = ((UInt16)item_A014.IdentityCode).ToString("X2");
-            cmd.ControlCode = (byte)ControlCode.WriteData;//写操作
-            cmd.DataLength = Convert.ToByte(item_A014.Length);
-            cmd.DataCommand = MyDataConvert.BytesToHexStr(item_A014.GetBytes());
-            cmd.Order = 1;
-            CommandDA.Insert(cmd);
+            //DataItem_A014 item_A014 = new DataItem_A014(ser, (byte)meter.MKeyVer, meter.MKey);//
+            //cmd.TaskID = task.TaskID;
+            //cmd.Identification = ((UInt16)item_A014.IdentityCode).ToString("X2");
+            //cmd.ControlCode = (byte)ControlCode.WriteData;//写操作
+            //cmd.DataLength = Convert.ToByte(item_A014.Length);
+            //cmd.DataCommand = MyDataConvert.BytesToHexStr(item_A014.GetBytes());
+            //cmd.Order = 1;
+            //CommandDA.Insert(cmd);
 
-            //2.设置上传周期
-            DataItem_C105 item_C105 = new DataItem_C105(Convert.ToByte(new Random().Next(0, 255)), ReportCycleType.天周期, 1, 23, 59);
-            cmd = new Command();
-            cmd.TaskID = task.TaskID;
-            cmd.Identification = ((UInt16)item_C105.IdentityCode).ToString("X2");
-            cmd.ControlCode = (byte)ControlCode.CYWriteData;//设置参数
-            cmd.DataLength = Convert.ToByte(item_C105.Length);
-            cmd.DataCommand = MyDataConvert.BytesToHexStr(item_C105.GetBytes());
-            cmd.Order = 2;
-            CommandDA.Insert(cmd);
+            ////2.设置上传周期
+            //DataItem_C105 item_C105 = new DataItem_C105(Convert.ToByte(new Random().Next(0, 255)), ReportCycleType.天周期, 1, 23, 59);
+            //cmd = new Command();
+            //cmd.TaskID = task.TaskID;
+            //cmd.Identification = ((UInt16)item_C105.IdentityCode).ToString("X2");
+            //cmd.ControlCode = (byte)ControlCode.CYWriteData;//设置参数
+            //cmd.DataLength = Convert.ToByte(item_C105.Length);
+            //cmd.DataCommand = MyDataConvert.BytesToHexStr(item_C105.GetBytes());
+            //cmd.Order = 2;
+            //CommandDA.Insert(cmd);
 
-            //3.设置报警参数
-            DataItem_C103 item_C103 = new DataItem_C103(Convert.ToByte(new Random().Next(0, 255)), new WaringSwitchSign() { 长期未使用切断报警 = true, 长期未与服务器通讯报警 = true });
-            cmd = new Command();
-            cmd.TaskID = task.TaskID;
-            cmd.Identification = ((UInt16)item_C103.IdentityCode).ToString("X2");
-            cmd.ControlCode = (byte)ControlCode.CYWriteData;//设置参数
-            cmd.DataLength = Convert.ToByte(item_C103.Length);
-            cmd.DataCommand = MyDataConvert.BytesToHexStr(item_C103.GetBytes());
-            cmd.Order = 3;
-            CommandDA.Insert(cmd);
+            ////3.设置报警参数
+            //DataItem_C103 item_C103 = new DataItem_C103(Convert.ToByte(new Random().Next(0, 255)), new WaringSwitchSign() { 长期未使用切断报警 = true, 长期未与服务器通讯报警 = true });
+            //cmd = new Command();
+            //cmd.TaskID = task.TaskID;
+            //cmd.Identification = ((UInt16)item_C103.IdentityCode).ToString("X2");
+            //cmd.ControlCode = (byte)ControlCode.CYWriteData;//设置参数
+            //cmd.DataLength = Convert.ToByte(item_C103.Length);
+            //cmd.DataCommand = MyDataConvert.BytesToHexStr(item_C103.GetBytes());
+            //cmd.Order = 3;
+            //CommandDA.Insert(cmd);
 
             //4.写价格表
             DataItem_A010 item_A010 = null;

@@ -321,7 +321,9 @@ namespace CY.IoTM.DataService.Business
             {
                 IoT_PricingMeter dbinfo = dd.GetTable<IoT_PricingMeter>().Where(p =>
                   p.TaskID == taskID).SingleOrDefault();
+
                 dbinfo.State = Convert.ToChar(((byte)state).ToString());
+                dbinfo.FinishedDate = DateTime.Now;
                 // 更新操作
                 dd.SubmitChanges();
 
@@ -330,9 +332,12 @@ namespace CY.IoTM.DataService.Business
                 if (iCount == 0)//表具任务都执行完成后 更新调价任务状态
                 {
                     uploadCycle = dd.GetTable<IoT_Pricing>().Where(p => p.ID == dbinfo.ID).SingleOrDefault();
-                    uploadCycle.State = Convert.ToChar(((byte)state).ToString());
+                    uploadCycle.State = Convert.ToChar(((byte)state).ToString());                   
                 }
                 dd.SubmitChanges();
+                IoT_PricePar pricePar = dd.GetTable<IoT_PricePar>().Where(p => p.ID.ToString() == uploadCycle.PriceType).SingleOrDefault();
+
+
                 if (state == TaskState.Undo)
                 {
                     new M_SetParameterService().UnSetParameter(taskID);
@@ -356,6 +361,8 @@ namespace CY.IoTM.DataService.Business
                     meterInfo.Ladder = uploadCycle.Ladder == null ? 3 : uploadCycle.Ladder;
 
                     meterInfo.SettlementType = uploadCycle.SettlementType;
+                    meterInfo.SettlementDay = pricePar.SettlementDay;
+                    meterInfo.SettlementMonth = pricePar.SettlementMonth;
 
                     // 更新操作
                     dd.SubmitChanges();

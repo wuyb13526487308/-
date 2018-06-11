@@ -27,7 +27,7 @@
             IotM.CheckLogin();
 
             IotM.User.LoadDataGridView();
-
+            IotM.Initiate.LoadGasDirectionComboBox('CNDirection', false, true);
             IotM.regvalidatebox("formAdd");
 
             $(window).resize(function () {
@@ -50,8 +50,18 @@
                 {
                     onSelect: function (rec) { IotM.User.AdressChange(); }
                 });
-
-
+            $('#CNLD').combobox(
+                {
+                    onChange: function (newValue, oldValue) {
+                        IotM.User.AdressChange();
+                    }                    
+                });
+            $('#CNDY').combobox(
+                {
+                    onChange: function (newValue, oldValue) {
+                        IotM.User.AdressChange();
+                    }                    
+                });
         });
 
     </script>
@@ -96,7 +106,7 @@
                                 <td>
                                     <select class="easyui-combobox" name="CNUserType" id="CNUserType" style="width: 180px;">
                                         <option value="0" selected>居民</option>
-                                        <option value="1">非居民</option>
+                                        <option value="1">工商业</option>
                                     </select>
                                 </td>
                                 <td>证号:</td>
@@ -232,13 +242,19 @@
                                             <option value="户外">户外</option>
                                         </select>
                                     </td>
-                                    <td>安装位置</td>
+                                    <td>进气方向:</td>
                                     <td>
-                                        <input class="easyui-validatebox" type="text" id="CNInstallPlace" name="CNInstallPlace" default="" />
+                             
+                                        <input class="easyui-combobox" type="text" name="CNDirection" id="CNDirection" default="" />
                                     </td>
+
 
                                 </tr>
                                 <tr>
+                                 <td>安装位置</td>
+                                    <td>
+                                        <input class="easyui-validatebox" type="text" id="CNInstallPlace" name="CNInstallPlace" default="" />
+                                    </td>
                                     <td>防盗卡号：</td>
                                     <td>
                                         <input class="easyui-validatebox" type="text" id="CNFDKH1" name="CNFDKH1" default="" /></td>

@@ -234,7 +234,7 @@ namespace CY.IoTM.MongoDataHelper
             meter.LastSettlementAmount = meter.CurrentBalance;
             meter.LastTotal = meter.TotalAmount - changeUseGas;
             meter.LJMoney = 0;
-            meter.IsDianHuo = false;//点火完成标记
+            meter.IsDianHuo = true;//点火完成标记
             return this.InsertMeter(meter);//同时插入数据到mongoDB中
         }
 

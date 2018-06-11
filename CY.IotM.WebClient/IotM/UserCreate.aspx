@@ -55,6 +55,18 @@
                 {
                     onSelect: function (rec) { IotM.User.AdressChange(); }
                 });
+                        $('#CNLD').combobox(
+                {
+                    onChange: function (newValue, oldValue) {
+                        IotM.User.AdressChange();
+                    }                    
+                });
+            $('#CNDY').combobox(
+                {
+                    onChange: function (newValue, oldValue) {
+                        IotM.User.AdressChange();
+                    }                    
+                });
 
         });
 
@@ -108,7 +120,7 @@
                         <td>
                             <select class="easyui-combobox" name="CNUserType" id="CNUserType" style="width: 180px;">
                                 <option value="0" selected>居民</option>
-                                <option value="1">非居民</option>
+                                <option value="1">工商业</option>
                             </select>
                         </td>
                         <td>证号:</td>
